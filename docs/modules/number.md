@@ -14,7 +14,7 @@
 
 ▸ **isNumber**(`target`: any): *boolean*
 
-Defined in number/utils.ts:11
+*Defined in [number/utils.ts:11](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/number/utils.ts#L11)*
 
 지정된 소스를 number 로 문제없이 변경이 가능한지 여부.
 (예: null -> false, 공백 문자 -> false, true -> false '01' -> true, 1 -> true)

@@ -22,7 +22,7 @@
 
 • **alternative**? : *string*
 
-Defined in date/utils.ts:33
+*Defined in [date/utils.ts:33](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/date/utils.ts#L33)*
 
 at 정보가 invalid 할 때 대체 문자
 
@@ -32,7 +32,7 @@ ___
 
 • **format**? : *string*
 
-Defined in date/utils.ts:23
+*Defined in [date/utils.ts:23](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/date/utils.ts#L23)*
 
 at 정보를 변경할 문자 포맷
 YYYY: 년
@@ -50,6 +50,6 @@ ___
 
 • **multiple**? : *number*
 
-Defined in date/utils.ts:28
+*Defined in [date/utils.ts:28](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/date/utils.ts#L28)*
 
 at 의 곱셈(at 정보를 unixtime 으로 다루는 경우 1000 을 옵션으로 지정)

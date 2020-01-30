@@ -28,7 +28,7 @@
 
 • **dayLabel**? : *string*
 
-Defined in date/utils.ts:137
+*Defined in [date/utils.ts:137](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/date/utils.ts#L137)*
 
 '일 전' 라벨
 
@@ -38,7 +38,7 @@ ___
 
 • **dayMax**? : *number*
 
-Defined in date/utils.ts:132
+*Defined in [date/utils.ts:132](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/date/utils.ts#L132)*
 
 'n일 전' 으로 표시될 최대 시간(초)
 
@@ -48,7 +48,7 @@ ___
 
 • **format**? : *string*
 
-Defined in date/utils.ts:142
+*Defined in [date/utils.ts:142](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/date/utils.ts#L142)*
 
 dayMax 도 넘어가는 시간인 경우 표시될 날짜 포맷
 
@@ -58,7 +58,7 @@ ___
 
 • **hourLabel**? : *string*
 
-Defined in date/utils.ts:127
+*Defined in [date/utils.ts:127](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/date/utils.ts#L127)*
 
 '시간 전' 라벨
 
@@ -68,7 +68,7 @@ ___
 
 • **hourMax**? : *number*
 
-Defined in date/utils.ts:122
+*Defined in [date/utils.ts:122](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/date/utils.ts#L122)*
 
 'n시간 전' 으로 표시될 최대 시간(초)
 
@@ -78,7 +78,7 @@ ___
 
 • **justLabel**? : *string*
 
-Defined in date/utils.ts:107
+*Defined in [date/utils.ts:107](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/date/utils.ts#L107)*
 
 '방금 전' 라벨
 
@@ -88,7 +88,7 @@ ___
 
 • **justMax**? : *number*
 
-Defined in date/utils.ts:102
+*Defined in [date/utils.ts:102](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/date/utils.ts#L102)*
 
 방금 전으로 표시될 최대 시간(초)
 
@@ -98,7 +98,7 @@ ___
 
 • **minuteLabel**? : *string*
 
-Defined in date/utils.ts:117
+*Defined in [date/utils.ts:117](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/date/utils.ts#L117)*
 
 '분 전' 라벨
 
@@ -108,6 +108,6 @@ ___
 
 • **minuteMax**? : *number*
 
-Defined in date/utils.ts:112
+*Defined in [date/utils.ts:112](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/date/utils.ts#L112)*
 
 'n분 전' 으로 표시될 최대 시간(초)

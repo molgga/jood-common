@@ -15,7 +15,7 @@
 
 ▸ **availableOr**(`available`: any[], `value`: any, `or`: any): *any*
 
-Defined in array/utils.ts:12
+*Defined in [array/utils.ts:12](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/array/utils.ts#L12)*
 
 지정된 avaliable 에 value 가 포함되는 경우 value 를, 그렇지 않은 경우 or 값을 반환
 
@@ -35,7 +35,7 @@ ___
 
 ▸ **insert**(`ref`: any[], `index`: number, `value`: any): *any[]*
 
-Defined in array/utils.ts:26
+*Defined in [array/utils.ts:26](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/array/utils.ts#L26)*
 
 지정된 ref 배열에 index 에 value 를 삽입.
 

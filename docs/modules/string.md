@@ -31,7 +31,7 @@
 
 ▸ **insert**(`text`: string, `index`: number, `addText`: string): *string*
 
-Defined in string/utils.ts:90
+*Defined in [string/utils.ts:90](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/string/utils.ts#L90)*
 
 지정된 인덱스에 문자를 삽입
 
@@ -51,7 +51,7 @@ ___
 
 ▸ **leadingTime**(`time`: string | number): *string*
 
-Defined in string/utils.ts:141
+*Defined in [string/utils.ts:165](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/string/utils.ts#L165)*
 
 지정된 시간 숫자 앞에 0을 채워야 하는 경우 0을 채움.
 (예: 2 -> 02, 9 -> 09, 10 -> 10)
@@ -68,9 +68,9 @@ ___
 
 ###  padEnd
 
-▸ **padEnd**(`text`: string | number, `addText`: string, `addCount`: number): *string*
+▸ **padEnd**(`text`: string | number, `addText`: string, `expectCount`: number): *string*
 
-Defined in string/utils.ts:127
+*Defined in [string/utils.ts:139](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/string/utils.ts#L139)*
 
 문자열 우측에 지정된 갯 수 만큼 문자 삽입
 
@@ -80,7 +80,7 @@ Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
 `text` | string &#124; number | - | 소스 문자열 |
 `addText` | string | - | 추가될 문자열 |
-`addCount` | number | 1 | 추가될 갯 수  |
+`expectCount` | number | 1 | 합쳐진 문자열 수  |
 
 **Returns:** *string*
 
@@ -88,9 +88,9 @@ ___
 
 ###  padStart
 
-▸ **padStart**(`text`: string | number, `addText`: string, `addCount`: number): *string*
+▸ **padStart**(`text`: string | number, `addText`: string, `expectCount`: number): *string*
 
-Defined in string/utils.ts:112
+*Defined in [string/utils.ts:112](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/string/utils.ts#L112)*
 
 문자열 좌측에 지정된 갯 수 만큼 문자 삽입
 
@@ -100,7 +100,7 @@ Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
 `text` | string &#124; number | - | 소스 문자열 |
 `addText` | string | - | 추가될 문자열 |
-`addCount` | number | 1 | 추가될 갯 수  |
+`expectCount` | number | 1 | 합쳐진 문자열 수  |
 
 **Returns:** *string*
 
@@ -110,7 +110,7 @@ ___
 
 ▸ **refineSafeHtmlText**(`source`: string): *string*
 
-Defined in string/utils.ts:268
+*Defined in [string/utils.ts:292](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/string/utils.ts#L292)*
 
 엔티티 코드로 변형된 html 을 태그 문자열로 변경
 (예: &lt;&nbsp;1&amp;2&nbsp;&gt; -> < 1&2 >)
@@ -129,7 +129,7 @@ ___
 
 ▸ **removeTag**(`tagText`: string, `removeTabSpace`: boolean): *string*
 
-Defined in string/utils.ts:29
+*Defined in [string/utils.ts:29](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/string/utils.ts#L29)*
 
 태그 문자열에서 태그를 모두 제거
 
@@ -148,7 +148,7 @@ ___
 
 ▸ **replaceAll**(`text`: string, `find`: string, `replace`: string): *string*
 
-Defined in string/utils.ts:14
+*Defined in [string/utils.ts:14](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/string/utils.ts#L14)*
 
 일치하는 모든 문자를 변경
 
@@ -168,7 +168,7 @@ ___
 
 ▸ **toCamelFromKebab**(`text`: string): *string*
 
-Defined in string/utils.ts:62
+*Defined in [string/utils.ts:62](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/string/utils.ts#L62)*
 
 소스 문자열의 하이픈(-)을 카멜 케이스로 변경
 
@@ -186,7 +186,7 @@ ___
 
 ▸ **toCamelFromSnake**(`text`: string): *string*
 
-Defined in string/utils.ts:52
+*Defined in [string/utils.ts:52](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/string/utils.ts#L52)*
 
 소스 문자열의 언더바(_)를 카멜 케이스로 변경
 
@@ -204,7 +204,7 @@ ___
 
 ▸ **toCurrencyFormat**(`price`: string | number, `options`: [CurrencyPriceOption](../interfaces/string.currencypriceoption.md)): *string*
 
-Defined in string/utils.ts:174
+*Defined in [string/utils.ts:198](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/string/utils.ts#L198)*
 
 지정된 숫자(문자)를 가격 표시용 문자로 변경
 (예: 1000 -> 1,000)
@@ -224,7 +224,7 @@ ___
 
 ▸ **toEllipsisEnd**(`text`: string, `max`: number, `alternative`: string): *string*
 
-Defined in string/utils.ts:244
+*Defined in [string/utils.ts:268](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/string/utils.ts#L268)*
 
 지정된 소스 문자열이 기준 수를 넘어가면 마지막을 잘라내고 문자를 삽입.
 (예: abcdefghijklmn -> abcd...)
@@ -245,7 +245,7 @@ ___
 
 ▸ **toEllipsisMiddle**(`text`: string, `max`: number, `alternative`: string): *string*
 
-Defined in string/utils.ts:220
+*Defined in [string/utils.ts:244](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/string/utils.ts#L244)*
 
 지정된 소스 문자열이 기준 수를 넘어가면 좌, 우로 잘라내고 사이에 대체 문자를 삽입.
 
@@ -265,7 +265,7 @@ ___
 
 ▸ **toUpperCaseHead**(`text`: string): *string*
 
-Defined in string/utils.ts:42
+*Defined in [string/utils.ts:42](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/string/utils.ts#L42)*
 
 소스 문자열의 맨 앞 문자를 대문자로 변경
 
@@ -283,7 +283,7 @@ ___
 
 ▸ **toWordArray**(`text`: string): *string[]*
 
-Defined in string/utils.ts:72
+*Defined in [string/utils.ts:72](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/string/utils.ts#L72)*
 
 소스 문자열을 단어 단위로 분리
 

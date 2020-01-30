@@ -20,7 +20,7 @@
 
 ▸ **toFormat**(`at`: number, `options`: [DateFormatOption](../interfaces/date.dateformatoption.md)): *string*
 
-Defined in date/utils.ts:41
+*Defined in [date/utils.ts:41](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/date/utils.ts#L41)*
 
 지정된 시간을 지정된 옵션의 포맷으로 변경
 
@@ -39,7 +39,7 @@ ___
 
 ▸ **toPast**(`fromAt`: number, `pastAt`: number, `options`: [DatePastOption](../interfaces/date.datepastoption.md)): *string*
 
-Defined in date/utils.ts:151
+*Defined in [date/utils.ts:151](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/date/utils.ts#L151)*
 
 pastAt 이 fromAt 으로 부터 지나간 시간을 지정된 옵션에 따라 반환.
 

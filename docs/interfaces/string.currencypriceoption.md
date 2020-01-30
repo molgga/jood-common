@@ -21,7 +21,7 @@
 
 • **fixed**? : *number*
 
-Defined in string/utils.ts:160
+*Defined in [string/utils.ts:184](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/string/utils.ts#L184)*
 
 소숫점 까지 표시되어야 하는 경우 지정된 숫자만큼 표시
 (예: fixed = 1 -> 99.0, fixed = 2 -> 99.00)
@@ -32,6 +32,6 @@ ___
 
 • **replaceChar**? : *string*
 
-Defined in string/utils.ts:165
+*Defined in [string/utils.ts:189](https://github.com/molgga/jood-common/blob/16a3c52/projects/packages/string/utils.ts#L189)*
 
 가격 표시 중간에 들어가 대치 문자

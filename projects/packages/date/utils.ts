@@ -7,29 +7,14 @@ import { isNumber } from "../number/utils";
 
 /**
  * 날짜 포맷 옵션
+ * @interface
+ * @property format {string} at 정보를 변경할 문자 포맷 (예: YYYY-MM-DD AA hh -> 2020-01-01 오전 12시)
+ * @property multiple {number} at 의 곱셈(at 정보를 unixtime 으로 다루는 경우 1000 을 옵션으로 지정)
+ * @property alternative {string} at 정보가 invalid 할 때 대체 문자
  */
 export interface DateFormatOption {
-  /**
-   * at 정보를 변경할 문자 포맷
-   * YYYY: 년
-   * MM: 월
-   * DD: 일
-   * AA: 오전|오후
-   * hh: 시
-   * mm: 분
-   * ss: 초
-   * (예: YYYY-MM-DD AA hh -> 2020-01-01 오전 12시)
-   */
   format?: string;
-
-  /**
-   * at 의 곱셈(at 정보를 unixtime 으로 다루는 경우 1000 을 옵션으로 지정)
-   */
   multiple?: number;
-
-  /**
-   * at 정보가 invalid 할 때 대체 문자
-   */
   alternative?: string;
 }
 

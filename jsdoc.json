@@ -1,0 +1,12 @@
+{
+  "opts": {
+    "readme": "projects/packages/README.md",
+    "encoding": "utf8",
+    "template": "node_modules/postman-jsdoc-theme"
+  },
+  "source": {
+    "include": ["projects/packages/"],
+    "exclude": ["node_modules", "public-api.ts", "test.ts"],
+    "includePattern": ".+\\.(j|t)s?$"
+  }
+}

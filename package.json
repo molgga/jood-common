@@ -5,11 +5,11 @@
     "ng": "ng",
     "start:dev": "ng serve dev",
     "packages:build": "ng build packages",
-    "packages:deploy": "npm publish ./dist/packages --access=public",
     "packages:test": "ng test packages",
-    "packages:doc": "typedoc --tsconfig ./tsconfig.doc.json --options ./typedoc.json",
+    "packages:doc": "jsdoc -c jsdoc.json -r -d docs",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "packages:deploy": "npm publish ./dist/packages --access=public"
   },
   "private": true,
   "dependencies": {
@@ -31,11 +31,15 @@
     "@angular/cli": "~8.3.21",
     "@angular/compiler-cli": "~8.2.14",
     "@angular/language-service": "~8.2.14",
+    "@daybrush/jsdoc": "^0.3.7",
     "@jood/common": "~0.0.2",
+    "@toast-ui/doc": "^1.0.1",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^8.9.5",
     "codelyzer": "^5.0.0",
+    "docdash": "^1.2.0",
+    "flex-jsdoc-theme": "^1.0.5",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
@@ -44,13 +48,11 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
     "ng-packagr": "^5.4.0",
+    "postman-jsdoc-theme": "0.0.3",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tsickle": "^0.37.0",
     "tslint": "~5.15.0",
-    "typedoc": "^0.16.9",
-    "typedoc-plugin-external-module-name": "^3.0.0",
-    "typedoc-plugin-markdown": "^2.2.16",
     "typescript": "~3.5.3"
   }
 }

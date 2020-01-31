@@ -1,6 +1,24 @@
-import { isNumber } from "./utils";
+import { isNumber, randomRangeInt, randomRangeFloat } from "./utils";
 
 describe("number utils", () => {
+  it("randomRangeInt", () => {
+    for (let i = 0; i < 100; i++) {
+      const start = i * 10;
+      const end = i * 100;
+      const random = randomRangeInt(start, end);
+      expect(start <= random && random <= end).toBe(true);
+    }
+  });
+
+  it("randomRangeFloat", () => {
+    for (let i = 0; i < 100; i++) {
+      const start = i * 10;
+      const end = i * 100;
+      const random = randomRangeFloat(start, end);
+      expect(start <= random && random <= end).toBe(true);
+    }
+  });
+
   it("isNumber", () => {
     expect(isNumber(0)).toBe(true);
     expect(isNumber(1)).toBe(true);

@@ -13,10 +13,47 @@ import {
   CurrencyPriceOption,
   toEllipsisMiddle,
   toEllipsisEnd,
-  refineSafeHtmlText
+  refineSafeHtmlText,
+  escape,
+  refineWhitespace,
+  trimStart,
+  trimEnd,
+  collapseMultiline
 } from "./utils";
 
 describe("string utils", () => {
+  it("refineWhitespace", () => {
+    expect(refineWhitespace("\u2800")).toBe(" ");
+    expect(refineWhitespace("&#10240;")).toBe(" ");
+    expect(refineWhitespace("&#10240;\u2800")).toBe("  ");
+    expect(refineWhitespace("&#10240;\u2800&#10240;\u2800")).toBe("    ");
+  });
+
+  it("trimStart", () => {
+    expect(trimStart(" a")).toBe("a");
+    expect(trimStart("   a ")).toBe("a ");
+    expect(trimStart(" a b ")).toBe("a b ");
+    expect(trimStart("\u2800 a b ")).toBe("a b ");
+    expect(trimStart(" \u2800 a b")).toBe("a b");
+    expect(trimStart("&#10240; \u2800 a b")).toBe("a b");
+  });
+
+  it("trimEnd", () => {
+    expect(trimEnd("a ")).toBe("a");
+    expect(trimEnd("   a ")).toBe("   a");
+    expect(trimEnd(" a b ")).toBe(" a b");
+    expect(trimEnd("a b \u2800")).toBe("a b");
+    expect(trimEnd("  a b \u2800 ")).toBe("  a b");
+    expect(trimEnd("a b &#10240; \u2800")).toBe("a b");
+  });
+
+  it("escape", () => {
+    const test1 = `<div>abcd</div>`;
+    const test2 = `<div>ab&cd</div>`;
+    expect(escape(test1)).toEqual("&lt;div&gt;abcd&lt;/div&gt;");
+    expect(escape(test2)).toEqual("&lt;div&gt;ab&amp;cd&lt;/div&gt;");
+  });
+
   it("refineHtmlText", () => {
     const test1 = `&lt;div&gt;1&lt;/div&gt;`;
     const test2 = `&lt;div&gt;1&lt;span&gt;2&lt;/span&gt;&lt;/div&gt;`;
@@ -176,5 +213,28 @@ describe("string utils", () => {
     expect(removeTag(test2)).toBe("JavaScript 코드 작성과 디버깅");
     expect(removeTag(test3)).toBe(`Complete beginners
 first steps`);
+  });
+
+  it("collapseMultiline", () => {
+    expect(
+      collapseMultiline(`1
+
+
+      2`)
+    ).toBe(`1
+
+      2`);
+
+    // 한줄 허용
+    expect(
+      collapseMultiline(
+        `1
+
+
+      2`,
+        1
+      )
+    ).toBe(`1
+      2`);
   });
 });

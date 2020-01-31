@@ -300,3 +300,71 @@ export function refineSafeHtmlText(source: string): string {
   }
   return refine;
 }
+
+/**
+ * html 문자열의 엔티티 처리
+ * @param text 소스(html) 문자열
+ */
+export function escape(text: string): string {
+  return text.replace(/[<>&]/g, function(match) {
+    switch (match) {
+      case "<":
+        return "&lt;";
+      case ">":
+        return "&gt;";
+      case "&":
+        return "&amp;";
+      default:
+        return match;
+    }
+  });
+}
+
+/**
+ * 시작 공백 제거
+ * @param {string} text 소스 문자열
+ */
+export function trimStart(text: string) {
+  return text.replace(/^(\u2800|&#10240;|\s)+/g, "");
+}
+
+/**
+ * 끝 공백 제거
+ * @param {string} text 소스 문자열
+ */
+export function trimEnd(text: string) {
+  return text.replace(/(\u2800|&#10240;|\s)+$/g, "");
+}
+
+/**
+ * u+2800, &#10240 을 일반 문자 공백으로 치환
+ * @param {string} text 소스 문자열
+ */
+export function refineWhitespace(text: string) {
+  return text.replace(/(\u2800|&#10240;)/g, " ");
+}
+
+/**
+ * allow 이상 연속되는 줄바꿈을 제거
+ * @param text
+ * @param [allow=2]
+ */
+export function collapseMultiline(text: string, allow: number = 2) {
+  const separate = text.split(/\n/);
+  const refine: string[] = [];
+  const testReg: RegExp = /[^\s]/;
+  let cnt: number = 0;
+  separate.forEach((str: string) => {
+    const isBreak = !testReg.test(str);
+    if (isBreak) {
+      cnt++;
+      if (cnt < allow) {
+        refine.push(str);
+      }
+    } else {
+      refine.push(str);
+      cnt = 0;
+    }
+  });
+  return refine.join("\n");
+}

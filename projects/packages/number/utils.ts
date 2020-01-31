@@ -15,3 +15,23 @@ export function isNumber(target: any): boolean {
   if (isNaN(target)) return false;
   return true;
 }
+
+/**
+ * 랜덤으로 숫자(int) 뽑기
+ * @param min
+ * @param max
+ */
+export function randomRangeInt(min: number, max: number) {
+  if (min > max) return 0;
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+/**
+ * 랜덤으로 숫자(float) 뽑기
+ * @param min
+ * @param max
+ */
+export function randomRangeFloat(min: number, max: number) {
+  if (min > max) return 0;
+  return Math.random() * (max - min) + min;
+}

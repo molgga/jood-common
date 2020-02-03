@@ -6,6 +6,7 @@
     "start:dev": "ng serve dev",
     "packages:build": "ng build packages",
     "packages:test": "ng test packages",
+    "packages:doc": "jsdoc -c jsdoc.json -r -d docs",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },

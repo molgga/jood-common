@@ -32,7 +32,7 @@
     "@angular/language-service": "~8.2.14",
     "@daybrush/jsdoc": "^0.3.7",
     "@jood/common": "0.0.10",
-    "@jood/jsdoc-theme": "^0.1.5",
+    "@jood/jsdoc-theme": "^0.1.8",
     "@toast-ui/doc": "^1.0.1",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",

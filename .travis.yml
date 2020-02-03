@@ -1,0 +1,65 @@
+language: node_js
+
+os: linux
+
+node_js:
+  - "10"
+
+cache:
+  directories:
+    - node_modules
+
+# 알림 설정
+# see: https://docs.travis-ci.com/user/notifications#configuring-email-notifications
+notifications:
+  email:
+    recipients:
+      - molgga84@gmail.com
+    on_success: always
+    on_failure: always
+
+# Job Lifecycle
+# 1.  OPTIONAL Install apt addons
+# 2.  OPTIONAL Install cache components
+# 3.  before_install
+# 4.  install
+# 5.  before_script
+# 6.  script
+# 7.  OPTIONAL before_cache (for cleaning up cache)
+# 8.  after_success or after_failure
+# 9.  OPTIONAL before_deploy
+# 10. OPTIONAL deploy
+# 11. OPTIONAL after_deploy
+# 12. after_script
+# see: https://docs.travis-ci.com/user/job-lifecycle/#the-job-lifecycle
+
+install:
+  - npm install
+
+script:
+  - npm run packages:build
+  - npm run packages:doc
+
+deploy:
+  # 배포 설정 - npm module
+  - provider: npm
+    edge: true
+    skip_cleanup: true
+    email: $NPM_PUBLISH_EMAIL
+    api_key: $NPM_PUBLISH_TOKEN
+    src: ./dist/packages
+    access: public
+    on:
+      tags: true
+      repo: molgga/jood-common
+      branch: master
+
+  # 배포 설정 - github page
+  - provider: pages
+    edge: true
+    skip_cleanup: true
+    target_branch: docs
+    local_dir: docs
+    github_token: $GITHUB_PAGES_TOKEN
+    on:
+      branch: master

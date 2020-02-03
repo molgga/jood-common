@@ -14,4 +14,6 @@ import { replaceAll } from "@jood/common/string";
 import { isNumber } from "@jood/common/number";
 import { insert } from "@jood/common/array";
 import { toFormat } from "@jood/common/date";
+
+console.log(replaceAll("hello-foo", "-", "#")); // "hello#foo"
 ```

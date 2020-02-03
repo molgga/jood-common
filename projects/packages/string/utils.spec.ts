@@ -65,7 +65,7 @@ describe("string utils", () => {
     expect(refineSafeHtmlText(test4)).toEqual("1&2");
   });
 
-  it("toStringSplitMiddle", () => {
+  it("toEllipsisEnd", () => {
     const test1 =
       "https://developers.google.com/web/fundamentals/architecture/app-shell";
     const test2 = "0123456789012345678901234567890123456789";

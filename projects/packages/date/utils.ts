@@ -22,6 +22,14 @@ export interface DateFormatOption {
  * 지정된 시간을 지정된 옵션의 포맷으로 변경
  * @param at 시간
  * @param options 옵션
+ * @example
+ * const at1 = 1553146437000; // new Date("2019-03-21 14:33:57").getTime();
+ * const at2 = 1553146437; // unixtime
+ * console.log(toFormat(at1)); // "2019-03-21 14:33:57"
+ * console.log(toFormat(at1, { format: "YYYY-MM-DD" })); // "2019-03-21"
+ * console.log(toFormat(at1, { format: "hh:mm:ss YYYY/MM/DD" })); // "14:33:57 2019/03/21"
+ * console.log(toFormat(at2, { multiple: 1000 })); // "2019-03-21 14:33:57"
+ * console.log(toFormat("", { alternative: "Unknown" })); // "Unknown"
  */
 export function toFormat(at: number, options: DateFormatOption = {}): string {
   const {
@@ -79,51 +87,26 @@ export function toFormat(at: number, options: DateFormatOption = {}): string {
 
 /**
  * 지난시간 포맷 옵션
+ * @interface
+ * @property justMax? {number} 방금 전으로 표시될 최대 시간(초)
+ * @property justLabel? {string} '방금 전' 라벨
+ * @property minuteMax? {number} 'n분 전' 으로 표시될 최대 시간(초)
+ * @property minuteLabel? {string} '분 전' 라벨
+ * @property hourMax? {number} 'n시간 전' 으로 표시될 최대 시간(초)
+ * @property hourLabel? {string} '시간 전' 라벨
+ * @property dayMax? {number} 'n일 전' 으로 표시될 최대 시간(초)
+ * @property dayLabel? {string} '일 전' 라벨
+ * @property format? {string} dayMax 도 넘어가는 시간인 경우 표시될 날짜 포맷
  */
 export interface DatePastOption {
-  /**
-   * 방금 전으로 표시될 최대 시간(초)
-   */
   justMax?: number;
-
-  /**
-   * '방금 전' 라벨
-   */
   justLabel?: string;
-
-  /**
-   * 'n분 전' 으로 표시될 최대 시간(초)
-   */
   minuteMax?: number;
-
-  /**
-   * '분 전' 라벨
-   */
   minuteLabel?: string;
-
-  /**
-   * 'n시간 전' 으로 표시될 최대 시간(초)
-   */
   hourMax?: number;
-
-  /**
-   * '시간 전' 라벨
-   */
   hourLabel?: string;
-
-  /**
-   * 'n일 전' 으로 표시될 최대 시간(초)
-   */
   dayMax?: number;
-
-  /**
-   * '일 전' 라벨
-   */
   dayLabel?: string;
-
-  /**
-   * dayMax 도 넘어가는 시간인 경우 표시될 날짜 포맷
-   */
   format?: string;
 }
 
@@ -132,6 +115,14 @@ export interface DatePastOption {
  * @param fromAt 기준 시간
  * @param pastAt 비교할 시간
  * @param options 옵션
+ * @example
+ * const now = new Date("2019-03-12 08:10:20").getTime();
+ * console.log(toPast(now, new Date("2019-03-12 08:09:21").getTime())); // '방금 전'
+ * console.log(toPast(now, new Date("2019-03-12 08:00:20").getTime())); // '10분 전'
+ * console.log(toPast(now, new Date("2019-03-12 07:10:20").getTime())); // '1시간 전'
+ * console.log(toPast(now, new Date("2019-03-11 08:10:21").getTime())); // '23시간 전'
+ * console.log(toPast(now, new Date("2019-03-10 08:10:20").getTime())); // '2일 전'
+ * console.log(toPast(now, new Date("2019-02-10 08:10:19").getTime(), { format: "YYYY년 MM월 DD일"})); // "2019년 02월 10일"
  */
 export function toPast(
   fromAt: number,

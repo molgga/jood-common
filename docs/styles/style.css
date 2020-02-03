@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+.readme h1 {
+  font-size: 32px;
+}
+
 h1.page-title {
   margin: 0;
   padding: 10px 30px;
@@ -10,6 +14,18 @@ h1.page-title {
 
 h3 {
   font-size: 1.3em;
+}
+
+h4.name {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid #e9e9e9;
+}
+
+.name,
+.signature {
+  font-size: 0.9em;
+  color: #1d65c1;
 }
 
 h5,
@@ -49,6 +65,7 @@ nav > ul > li > a {
   position: relative;
   color: rgba(255, 255, 255, 0.6);
 }
+
 nav > ul > li > a:before {
   content: "";
   position: absolute;
@@ -81,10 +98,9 @@ nav > ul > li > a:before {
   padding: 4px 10px;
 }
 
-.name,
-.signature {
-  font-size: 0.9em;
-  color: #bd6519;
+dl.param-type {
+  border-bottom-width: 0;
+  padding-bottom: 0;
 }
 
 .details {
@@ -93,4 +109,49 @@ nav > ul > li > a:before {
 
 .prettyprint code {
   background-color: transparent;
+}
+
+@media only screen and (max-width: 680px) and (min-width: 320px) {
+  #main h1.page-title {
+    margin: 0 -25px;
+    padding: 10px 25px;
+  }
+
+  .navicon-button {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 48px;
+    height: 45px;
+    padding: 0;
+    opacity: 1;
+    box-sizing: border-box;
+    border-radius: 2px;
+    background-color: rgba(55, 134, 216, 0.8);
+  }
+
+  .navicon {
+    width: 26px;
+    height: 2px;
+    margin-top: 22px;
+    margin-left: 12px;
+    border-radius: 0;
+    background-color: rgba(255, 255, 255, 1);
+  }
+
+  .navicon:before,
+  .navicon:after {
+    width: 100%;
+    height: 2px;
+    border-radius: 0;
+    background-color: rgba(255, 255, 255, 1);
+  }
+  .navicon:before,
+  .navicon-button:hover .navicon:before {
+    top: 8px;
+  }
+  .navicon:after,
+  .navicon-button:hover .navicon:after {
+    top: -8px;
+  }
 }

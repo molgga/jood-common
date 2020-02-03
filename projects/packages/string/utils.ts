@@ -9,6 +9,8 @@ import { isNumber } from "../number/utils";
  * @param text 소스 문자열
  * @param find 검색 문자열
  * @param replace 치환 문자열
+ * @example
+ * console.log(replaceAll("a-b-c", "-", "@")); // "a@b@c"
  */
 export function replaceAll(
   text: string,
@@ -24,6 +26,8 @@ export function replaceAll(
  * 태그 문자열에서 태그를 모두 제거
  * @param tagText 소스 문자열
  * @param removeTabSpace 탭 문자를 제거할지 여부
+ * @example
+ * console.log(removeTag(`<div><h1>Complete beginners</h1> <h2>first steps</h2></div>`)); // "Complete beginners first steps"
  */
 export function removeTag(
   tagText: string,
@@ -37,6 +41,8 @@ export function removeTag(
 /**
  * 소스 문자열의 맨 앞 문자를 대문자로 변경
  * @param text 소스 문자열
+ * @example
+ * console.log(toUpperCaseHead("abc")); // "Abc"
  */
 export function toUpperCaseHead(text: string): string {
   const head = text.substring(0, 1).toUpperCase();
@@ -47,6 +53,8 @@ export function toUpperCaseHead(text: string): string {
 /**
  * 소스 문자열의 언더바(_)를 카멜 케이스로 변경
  * @param text 소스 문자열
+ * @example
+ * console.log(toCamelFromSnake("user_name")); // "userName"
  */
 export function toCamelFromSnake(text: string): string {
   return text.replace(/([_][a-z])/gi, $1 => {
@@ -57,6 +65,8 @@ export function toCamelFromSnake(text: string): string {
 /**
  * 소스 문자열의 하이픈(-)을 카멜 케이스로 변경
  * @param text 소스 문자열
+ * @example
+ * console.log(toCamelFromKebab("user-name")); // "userName"
  */
 export function toCamelFromKebab(text: string): string {
   return text.replace(/([-][a-z])/gi, $1 => {
@@ -67,6 +77,8 @@ export function toCamelFromKebab(text: string): string {
 /**
  * 소스 문자열을 단어 단위로 분리
  * @param text 소스 문자열
+ * @example
+ * console.log(toWordArray("hello foo bar")); // ["hello", "foo", "bar"]
  */
 export function toWordArray(text: string): string[] {
   const refine = [];
@@ -85,6 +97,8 @@ export function toWordArray(text: string): string[] {
  * @param text 소스 문자열
  * @param index 삽입될 인덱스
  * @param addText 삽입될 문자열
+ * @example
+ * console.log(insert("abcde", 1, "@")); // "a@bcde"
  */
 export function insert(text: string, index: number, addText: string): string {
   let head = null;
@@ -107,6 +121,8 @@ export function insert(text: string, index: number, addText: string): string {
  * @param text 소스 문자열
  * @param addText 추가될 문자열
  * @param expectCount 합쳐진 문자열 수
+ * @example
+ * console.log(padStart("123", "0", 5)); // "00123"
  */
 export function padStart(
   text: string | number,
@@ -134,6 +150,8 @@ export function padStart(
  * @param text 소스 문자열
  * @param addText 추가될 문자열
  * @param expectCount 합쳐진 문자열 수
+ * @example
+ * console.log(padEnd("123", "0", 5)); // "12300"
  */
 export function padEnd(
   text: string | number,
@@ -160,6 +178,8 @@ export function padEnd(
  * 지정된 시간 숫자 앞에 0을 채워야 하는 경우 0을 채움.
  * (예: 2 -> 02, 9 -> 09, 10 -> 10)
  * @param time 시간 표시용 숫자 | 문자
+ * @example
+ * console.log(leadingTime(5)); // "05"
  */
 export function leadingTime(time: string | number): string {
   let refine;
@@ -188,6 +208,9 @@ export interface CurrencyPriceOption {
  * (예: 1000 -> 1,000)
  * @param price 가격 문자 | 숫자
  * @param options 옵션
+ * @example
+ * console.log(toCurrencyFormat(1234)); // "1,234"
+ * console.log(toCurrencyFormat(1234.9, { fixed: 2 })); // "1,234.90"
  */
 export function toCurrencyFormat(
   price: string | number,
@@ -234,6 +257,8 @@ export function toCurrencyFormat(
  * @param text 소스 문자열
  * @param max 잘라낼 기준 수
  * @param alternative 잘라낸 문자열 사이에 들어갈 문자열
+ * @example
+ * console.log(toEllipsisMiddle("https://developers.google.com/web/fundamentals/architecture/app-shell", 30)); // "https://develop...cture/app-shell"
  */
 export function toEllipsisMiddle(
   text: string,
@@ -258,6 +283,8 @@ export function toEllipsisMiddle(
  * @param text 소스 문자열
  * @param max 잘라낼 기준 수
  * @param alternative 잘라낸 문자열 마지막에 들어갈 문자열
+ * @example
+ * console.log(toEllipsisEnd("https://developers.google.com/web/fundamentals/architecture/app-shell", 10)); // "https://de..."
  */
 export function toEllipsisEnd(
   text: string,
@@ -282,6 +309,8 @@ let _domParser: DOMParser = null;
  * 엔티티 코드로 변형된 html 을 태그 문자열로 변경
  * (예: &lt;&nbsp;1&amp;2&nbsp;&gt; -> < 1&2 >)
  * @param source 소스 문자열
+ * @example
+ * console.log(refineSafeHtmlText("&lt;div&gt;1&lt;/div&gt;")); // "<div>1</div>"
  */
 export function refineSafeHtmlText(source: string): string {
   let refine = "";
@@ -298,6 +327,8 @@ export function refineSafeHtmlText(source: string): string {
 /**
  * html 문자열의 엔티티 처리
  * @param text 소스(html) 문자열
+ * @example
+ * console.log(escape("<div>ab&cd</div>")); // "&lt;div&gt;ab&amp;cd&lt;/div&gt;"
  */
 export function escape(text: string): string {
   return text.replace(/[<>&]/g, function(match) {
@@ -317,6 +348,8 @@ export function escape(text: string): string {
 /**
  * 시작 공백 제거
  * @param {string} text 소스 문자열
+ * @example
+ * console.log(trimStart("&#10240; \u2800 a b ")); // "a b "
  */
 export function trimStart(text: string): string {
   return text.replace(/^(\u2800|&#10240;|\s)+/g, "");
@@ -325,6 +358,8 @@ export function trimStart(text: string): string {
 /**
  * 끝 공백 제거
  * @param {string} text 소스 문자열
+ * @example
+ * console.log(trimEnd(" a b &#10240; \u2800")); // " a b"
  */
 export function trimEnd(text: string): string {
   return text.replace(/(\u2800|&#10240;|\s)+$/g, "");
@@ -333,6 +368,8 @@ export function trimEnd(text: string): string {
 /**
  * u+2800, &#10240 을 일반 문자 공백으로 치환
  * @param {string} text 소스 문자열
+ * @example
+ * console.log(refineWhitespace("&#10240;\u2800")); // "  "
  */
 export function refineWhitespace(text: string): string {
   return text.replace(/(\u2800|&#10240;)/g, " ");
@@ -344,8 +381,7 @@ export function refineWhitespace(text: string): string {
  * @param [allow=2]
  * @example
  * console.log(collapseMutiline("hello\n\n\n\nfoo", 2)); // "hello\n\nfoo"
- * console.log(collapseMutiline("hello\n\n\n\nfoo", 2)); // "hello\n\nfoo"
- * console.log(collapseMutiline("hello\n\n\n\nfoo", 2)); // "hello\n\nfoo"
+ * console.log(collapseMutiline("hello\n\n\n\nfoo", 3)); // "hello\n\n\nfoo"
  */
 export function collapseMultiline(text: string, allow: number = 2): string {
   const separate = text.split(/\n/);

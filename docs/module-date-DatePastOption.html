@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>date - Documentation</title>
+    <title>DatePastOption - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -30,7 +30,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">date</h1>
+    <h1 class="page-title">DatePastOption</h1>
     
 
     
@@ -42,6 +42,11 @@
 
 <header>
     
+        <h2>
+            <span class="ancestors"><a href="module-date.html">date</a>~</span>
+        
+        DatePastOption
+        </h2>
         
     
 </header>
@@ -50,6 +55,288 @@
     <div class="container-overview">
     
         
+            <div class="description">지난시간 포맷 옵션</div>
+        
+
+        
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>justMax?</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">방금 전으로 표시될 최대 시간(초)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>justLabel?</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">'방금 전' 라벨</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>minuteMax?</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">'n분 전' 으로 표시될 최대 시간(초)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>minuteLabel?</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">'분 전' 라벨</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>hourMax?</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">'n시간 전' 으로 표시될 최대 시간(초)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>hourLabel?</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">'시간 전' 라벨</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>dayMax?</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">'n일 전' 으로 표시될 최대 시간(초)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>dayLabel?</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">'일 전' 라벨</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>format?</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">dayMax 도 넘어가는 시간인 경우 표시될 날짜 포맷</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="date_utils.ts.html">date/utils.ts</a>, <a href="date_utils.ts.html#line101">line 101</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
 
         
     
@@ -67,475 +354,6 @@
 
     
 
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="~toFormat"><span class="type-signature">(inner) </span>toFormat<span class="signature">(at, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
-
-    
-
-
-
-<div class="description">
-    지정된 시간을 지정된 옵션의 포맷으로 변경
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>at</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last">시간</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">DateFormatOption</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    {}
-                
-                </td>
-            
-
-            <td class="description last">옵션</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="date_utils.ts.html">date/utils.ts</a>, <a href="date_utils.ts.html#line34">line 34</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">string</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>const at1 = 1553146437000; // new Date("2019-03-21 14:33:57").getTime();
-const at2 = 1553146437; // unixtime
-console.log(toFormat(at1)); // "2019-03-21 14:33:57"
-console.log(toFormat(at1, { format: "YYYY-MM-DD" })); // "2019-03-21"
-console.log(toFormat(at1, { format: "hh:mm:ss YYYY/MM/DD" })); // "14:33:57 2019/03/21"
-console.log(toFormat(at2, { multiple: 1000 })); // "2019-03-21 14:33:57"
-console.log(toFormat("", { alternative: "Unknown" })); // "Unknown"</code></pre>
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~toPast"><span class="type-signature">(inner) </span>toPast<span class="signature">(fromAt, pastAt, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
-
-    
-
-
-
-<div class="description">
-    pastAt 이 fromAt 으로 부터 지나간 시간을 지정된 옵션에 따라 반환.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>fromAt</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last">기준 시간</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>pastAt</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last">비교할 시간</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">DatePastOption</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    {}
-                
-                </td>
-            
-
-            <td class="description last">옵션</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="date_utils.ts.html">date/utils.ts</a>, <a href="date_utils.ts.html#line127">line 127</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">string</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>const now = new Date("2019-03-12 08:10:20").getTime();
-console.log(toPast(now, new Date("2019-03-12 08:09:21").getTime())); // '방금 전'
-console.log(toPast(now, new Date("2019-03-12 08:00:20").getTime())); // '10분 전'
-console.log(toPast(now, new Date("2019-03-12 07:10:20").getTime())); // '1시간 전'
-console.log(toPast(now, new Date("2019-03-11 08:10:21").getTime())); // '23시간 전'
-console.log(toPast(now, new Date("2019-03-10 08:10:20").getTime())); // '2일 전'
-console.log(toPast(now, new Date("2019-02-10 08:10:19").getTime(), { format: "YYYY년 MM월 DD일"})); // "2019년 02월 10일"</code></pre>
-
-
-
-        
     
 
     

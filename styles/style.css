@@ -27,8 +27,8 @@ h3.subsection-title {
 }
 
 h4.name {
-  margin-top: 30px;
-  padding-top: 30px;
+  margin-top: 15px;
+  padding-top: 15px;
   border-top: 1px solid #e9e9e9;
 }
 
@@ -140,6 +140,7 @@ nav > ul > li > a:before {
 dl.param-type {
   border-bottom-width: 0;
   padding-bottom: 0;
+  margin-bottom: 0.3em;
 }
 
 .details {

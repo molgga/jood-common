@@ -58,7 +58,6 @@ deploy:
   - provider: pages
     edge: true
     skip_cleanup: true
-    target_branch: docs
     local_dir: docs
     github_token: $GITHUB_PAGES_TOKEN
     on:

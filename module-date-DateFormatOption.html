@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>DateFormatOption - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow-eighties.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+    <link type="text/css" rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-array.html">array</a><ul class='methods'><li data-type='method'><a href="module-array.html#~availableOr">availableOr</a></li><li data-type='method'><a href="module-array.html#~insert">insert</a></li></ul></li><li><a href="module-date.html">date</a><ul class='methods'><li data-type='method'><a href="module-date.html#~toFormat">toFormat</a></li><li data-type='method'><a href="module-date.html#~toPast">toPast</a></li></ul></li><li><a href="module-number.html">number</a><ul class='methods'><li data-type='method'><a href="module-number.html#~isNumber">isNumber</a></li><li data-type='method'><a href="module-number.html#~randomRangeFloat">randomRangeFloat</a></li><li data-type='method'><a href="module-number.html#~randomRangeInt">randomRangeInt</a></li></ul></li><li><a href="module-string.html">string</a><ul class='methods'><li data-type='method'><a href="module-string.html#~collapseMultiline">collapseMultiline</a></li><li data-type='method'><a href="module-string.html#~escape">escape</a></li><li data-type='method'><a href="module-string.html#~insert">insert</a></li><li data-type='method'><a href="module-string.html#~leadingTime">leadingTime</a></li><li data-type='method'><a href="module-string.html#~padEnd">padEnd</a></li><li data-type='method'><a href="module-string.html#~padStart">padStart</a></li><li data-type='method'><a href="module-string.html#~refineSafeHtmlText">refineSafeHtmlText</a></li><li data-type='method'><a href="module-string.html#~refineWhitespace">refineWhitespace</a></li><li data-type='method'><a href="module-string.html#~removeTag">removeTag</a></li><li data-type='method'><a href="module-string.html#~replaceAll">replaceAll</a></li><li data-type='method'><a href="module-string.html#~toCamelFromKebab">toCamelFromKebab</a></li><li data-type='method'><a href="module-string.html#~toCamelFromSnake">toCamelFromSnake</a></li><li data-type='method'><a href="module-string.html#~toCurrencyFormat">toCurrencyFormat</a></li><li data-type='method'><a href="module-string.html#~toEllipsisEnd">toEllipsisEnd</a></li><li data-type='method'><a href="module-string.html#~toEllipsisMiddle">toEllipsisMiddle</a></li><li data-type='method'><a href="module-string.html#~toUpperCaseHead">toUpperCaseHead</a></li><li data-type='method'><a href="module-string.html#~toWordArray">toWordArray</a></li><li data-type='method'><a href="module-string.html#~trimEnd">trimEnd</a></li><li data-type='method'><a href="module-string.html#~trimStart">trimStart</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="JdArray.html">JdArray</a></li><li><a href="JdDate.html">JdDate</a></li><li><a href="JdNumber.html">JdNumber</a></li><li><a href="JdString.html">JdString</a></li></ul><h3>Interfaces</h3><ul><li><a href="module-date-DateFormatOption.html">DateFormatOption</a></li><li><a href="module-date-DatePastOption.html">DatePastOption</a></li><li><a href="module-string-CurrencyPriceOption.html">CurrencyPriceOption</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">DateFormatOption</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="module-date.html">date</a>~</span>
+        
+        DateFormatOption
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">날짜 포맷 옵션</div>
+        
+
+        
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>format</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">at 정보를 변경할 문자 포맷 (예: YYYY-MM-DD AA hh -> 2020-01-01 오전 12시)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>multiple</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">at 의 곱셈(at 정보를 unixtime 으로 다루는 경우 1000 을 옵션으로 지정)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>alternative</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">at 정보가 invalid 할 때 대체 문자</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="date_utils.ts.html">date/utils.ts</a>, <a href="date_utils.ts.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated at Mon Feb 03 2020 07:59:38 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

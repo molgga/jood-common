@@ -1,0 +1,3698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>string - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow-eighties.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+    <link type="text/css" rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-array.html">array</a><ul class='methods'><li data-type='method'><a href="module-array.html#~availableOr">availableOr</a></li><li data-type='method'><a href="module-array.html#~insert">insert</a></li></ul></li><li><a href="module-date.html">date</a><ul class='methods'><li data-type='method'><a href="module-date.html#~toFormat">toFormat</a></li><li data-type='method'><a href="module-date.html#~toPast">toPast</a></li></ul></li><li><a href="module-number.html">number</a><ul class='methods'><li data-type='method'><a href="module-number.html#~isNumber">isNumber</a></li><li data-type='method'><a href="module-number.html#~randomRangeFloat">randomRangeFloat</a></li><li data-type='method'><a href="module-number.html#~randomRangeInt">randomRangeInt</a></li></ul></li><li><a href="module-string.html">string</a><ul class='methods'><li data-type='method'><a href="module-string.html#~collapseMultiline">collapseMultiline</a></li><li data-type='method'><a href="module-string.html#~escape">escape</a></li><li data-type='method'><a href="module-string.html#~insert">insert</a></li><li data-type='method'><a href="module-string.html#~leadingTime">leadingTime</a></li><li data-type='method'><a href="module-string.html#~padEnd">padEnd</a></li><li data-type='method'><a href="module-string.html#~padStart">padStart</a></li><li data-type='method'><a href="module-string.html#~refineSafeHtmlText">refineSafeHtmlText</a></li><li data-type='method'><a href="module-string.html#~refineWhitespace">refineWhitespace</a></li><li data-type='method'><a href="module-string.html#~removeTag">removeTag</a></li><li data-type='method'><a href="module-string.html#~replaceAll">replaceAll</a></li><li data-type='method'><a href="module-string.html#~toCamelFromKebab">toCamelFromKebab</a></li><li data-type='method'><a href="module-string.html#~toCamelFromSnake">toCamelFromSnake</a></li><li data-type='method'><a href="module-string.html#~toCurrencyFormat">toCurrencyFormat</a></li><li data-type='method'><a href="module-string.html#~toEllipsisEnd">toEllipsisEnd</a></li><li data-type='method'><a href="module-string.html#~toEllipsisMiddle">toEllipsisMiddle</a></li><li data-type='method'><a href="module-string.html#~toUpperCaseHead">toUpperCaseHead</a></li><li data-type='method'><a href="module-string.html#~toWordArray">toWordArray</a></li><li data-type='method'><a href="module-string.html#~trimEnd">trimEnd</a></li><li data-type='method'><a href="module-string.html#~trimStart">trimStart</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="JdArray.html">JdArray</a></li><li><a href="JdDate.html">JdDate</a></li><li><a href="JdNumber.html">JdNumber</a></li><li><a href="JdString.html">JdString</a></li></ul><h3>Interfaces</h3><ul><li><a href="module-date-DateFormatOption.html">DateFormatOption</a></li><li><a href="module-date-DatePastOption.html">DatePastOption</a></li><li><a href="module-string-CurrencyPriceOption.html">CurrencyPriceOption</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">string</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="~collapseMultiline"><span class="type-signature">(inner) </span>collapseMultiline<span class="signature">(text, allow<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="module-string.html">string</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    allow 이상 연속되는 줄바꿈을 제거
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>allow</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    2
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="string_utils.ts.html">string/utils.ts</a>, <a href="string_utils.ts.html#line386">line 386</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(collapseMutiline("hello\n\n\n\nfoo", 2)); // "hello\n\nfoo"
+console.log(collapseMutiline("hello\n\n\n\nfoo", 3)); // "hello\n\n\nfoo"</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~escape"><span class="type-signature">(inner) </span>escape<span class="signature">(text)</span><span class="type-signature"> &rarr; {<a href="module-string.html">string</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    html 문자열의 엔티티 처리
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">소스(html) 문자열</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="string_utils.ts.html">string/utils.ts</a>, <a href="string_utils.ts.html#line333">line 333</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(escape("&lt;div>ab&amp;cd&lt;/div>")); // "&amp;lt;div&amp;gt;ab&amp;amp;cd&amp;lt;/div&amp;gt;"</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~insert"><span class="type-signature">(inner) </span>insert<span class="signature">(text, index, addText)</span><span class="type-signature"> &rarr; {<a href="module-string.html">string</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    지정된 인덱스에 문자를 삽입
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">소스 문자열</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>index</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">삽입될 인덱스</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>addText</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">삽입될 문자열</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="string_utils.ts.html">string/utils.ts</a>, <a href="string_utils.ts.html#line103">line 103</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(insert("abcde", 1, "@")); // "a@bcde"</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~leadingTime"><span class="type-signature">(inner) </span>leadingTime<span class="signature">(time)</span><span class="type-signature"> &rarr; {<a href="module-string.html">string</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    지정된 시간 숫자 앞에 0을 채워야 하는 경우 0을 채움.
+(예: 2 -> 02, 9 -> 09, 10 -> 10)
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>time</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-string.html">string</a> | number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">시간 표시용 숫자 | 문자</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="string_utils.ts.html">string/utils.ts</a>, <a href="string_utils.ts.html#line184">line 184</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(leadingTime(5)); // "05"</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~padEnd"><span class="type-signature">(inner) </span>padEnd<span class="signature">(text, addText, expectCount<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="module-string.html">string</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    문자열 우측에 지정된 갯 수 만큼 문자 삽입
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-string.html">string</a> | number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">소스 문자열</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>addText</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">추가될 문자열</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>expectCount</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    1
+                
+                </td>
+            
+
+            <td class="description last">합쳐진 문자열 수</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="string_utils.ts.html">string/utils.ts</a>, <a href="string_utils.ts.html#line156">line 156</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(padEnd("123", "0", 5)); // "12300"</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~padStart"><span class="type-signature">(inner) </span>padStart<span class="signature">(text, addText, expectCount<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="module-string.html">string</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    문자열 좌측에 지정된 갯 수 만큼 문자 삽입
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-string.html">string</a> | number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">소스 문자열</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>addText</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">추가될 문자열</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>expectCount</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    1
+                
+                </td>
+            
+
+            <td class="description last">합쳐진 문자열 수</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="string_utils.ts.html">string/utils.ts</a>, <a href="string_utils.ts.html#line127">line 127</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(padStart("123", "0", 5)); // "00123"</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~refineSafeHtmlText"><span class="type-signature">(inner) </span>refineSafeHtmlText<span class="signature">(source)</span><span class="type-signature"> &rarr; {<a href="module-string.html">string</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    엔티티 코드로 변형된 html 을 태그 문자열로 변경
+(예: &lt;&nbsp;1&amp;2&nbsp;&gt; -> < 1&2 >)
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>source</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">소스 문자열</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="string_utils.ts.html">string/utils.ts</a>, <a href="string_utils.ts.html#line315">line 315</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(refineSafeHtmlText("&amp;lt;div&amp;gt;1&amp;lt;/div&amp;gt;")); // "&lt;div>1&lt;/div>"</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~refineWhitespace"><span class="type-signature">(inner) </span>refineWhitespace<span class="signature">(text)</span><span class="type-signature"> &rarr; {<a href="module-string.html">string</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    u+2800, &#10240 을 일반 문자 공백으로 치환
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">소스 문자열</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="string_utils.ts.html">string/utils.ts</a>, <a href="string_utils.ts.html#line374">line 374</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(refineWhitespace("&amp;#10240;\u2800")); // "  "</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~removeTag"><span class="type-signature">(inner) </span>removeTag<span class="signature">(tagText, removeTabSpace<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="module-string.html">string</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    태그 문자열에서 태그를 모두 제거
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>tagText</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">소스 문자열</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>removeTabSpace</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last">탭 문자를 제거할지 여부</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="string_utils.ts.html">string/utils.ts</a>, <a href="string_utils.ts.html#line32">line 32</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(removeTag(`&lt;div>&lt;h1>Complete beginners&lt;/h1> &lt;h2>first steps&lt;/h2>&lt;/div>`)); // "Complete beginners first steps"</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~replaceAll"><span class="type-signature">(inner) </span>replaceAll<span class="signature">(text, find, replace<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="module-string.html">string</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    일치하는 모든 문자를 변경
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">소스 문자열</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>find</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">검색 문자열</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>replace</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    ""
+                
+                </td>
+            
+
+            <td class="description last">치환 문자열</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="string_utils.ts.html">string/utils.ts</a>, <a href="string_utils.ts.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(replaceAll("a-b-c", "-", "@")); // "a@b@c"</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~toCamelFromKebab"><span class="type-signature">(inner) </span>toCamelFromKebab<span class="signature">(text)</span><span class="type-signature"> &rarr; {<a href="module-string.html">string</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    소스 문자열의 하이픈(-)을 카멜 케이스로 변경
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">소스 문자열</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="string_utils.ts.html">string/utils.ts</a>, <a href="string_utils.ts.html#line71">line 71</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(toCamelFromKebab("user-name")); // "userName"</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~toCamelFromSnake"><span class="type-signature">(inner) </span>toCamelFromSnake<span class="signature">(text)</span><span class="type-signature"> &rarr; {<a href="module-string.html">string</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    소스 문자열의 언더바(_)를 카멜 케이스로 변경
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">소스 문자열</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="string_utils.ts.html">string/utils.ts</a>, <a href="string_utils.ts.html#line59">line 59</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(toCamelFromSnake("user_name")); // "userName"</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~toCurrencyFormat"><span class="type-signature">(inner) </span>toCurrencyFormat<span class="signature">(price, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="module-string.html">string</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    지정된 숫자(문자)를 가격 표시용 문자로 변경
+(예: 1000 -> 1,000)
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>price</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-string.html">string</a> | number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">가격 문자 | 숫자</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">CurrencyPriceOption</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last">옵션</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="string_utils.ts.html">string/utils.ts</a>, <a href="string_utils.ts.html#line215">line 215</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(toCurrencyFormat(1234)); // "1,234"
+console.log(toCurrencyFormat(1234.9, { fixed: 2 })); // "1,234.90"</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~toEllipsisEnd"><span class="type-signature">(inner) </span>toEllipsisEnd<span class="signature">(text, max<span class="signature-attributes">opt</span>, alternative<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="module-string.html">string</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    지정된 소스 문자열이 기준 수를 넘어가면 마지막을 잘라내고 문자를 삽입.
+(예: abcdefghijklmn -> abcd...)
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">소스 문자열</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>max</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    50
+                
+                </td>
+            
+
+            <td class="description last">잘라낼 기준 수</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>alternative</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    "..."
+                
+                </td>
+            
+
+            <td class="description last">잘라낸 문자열 마지막에 들어갈 문자열</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="string_utils.ts.html">string/utils.ts</a>, <a href="string_utils.ts.html#line289">line 289</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(toEllipsisEnd("https://developers.google.com/web/fundamentals/architecture/app-shell", 10)); // "https://de..."</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~toEllipsisMiddle"><span class="type-signature">(inner) </span>toEllipsisMiddle<span class="signature">(text, max<span class="signature-attributes">opt</span>, alternative<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="module-string.html">string</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    지정된 소스 문자열이 기준 수를 넘어가면 좌, 우로 잘라내고 사이에 대체 문자를 삽입.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">소스 문자열</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>max</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    50
+                
+                </td>
+            
+
+            <td class="description last">잘라낼 기준 수</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>alternative</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    "..."
+                
+                </td>
+            
+
+            <td class="description last">잘라낸 문자열 사이에 들어갈 문자열</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="string_utils.ts.html">string/utils.ts</a>, <a href="string_utils.ts.html#line263">line 263</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(toEllipsisMiddle("https://developers.google.com/web/fundamentals/architecture/app-shell", 30)); // "https://develop...cture/app-shell"</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~toUpperCaseHead"><span class="type-signature">(inner) </span>toUpperCaseHead<span class="signature">(text)</span><span class="type-signature"> &rarr; {<a href="module-string.html">string</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    소스 문자열의 맨 앞 문자를 대문자로 변경
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">소스 문자열</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="string_utils.ts.html">string/utils.ts</a>, <a href="string_utils.ts.html#line47">line 47</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(toUpperCaseHead("abc")); // "Abc"</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~toWordArray"><span class="type-signature">(inner) </span>toWordArray<span class="signature">(text)</span><span class="type-signature"> &rarr; {<a href="module-string.html">string</a>[]}</span></h4>
+
+    
+
+
+
+<div class="description">
+    소스 문자열을 단어 단위로 분리
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">소스 문자열</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="string_utils.ts.html">string/utils.ts</a>, <a href="string_utils.ts.html#line83">line 83</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="module-string.html">string</a>[]</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(toWordArray("hello foo bar")); // ["hello", "foo", "bar"]</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~trimEnd"><span class="type-signature">(inner) </span>trimEnd<span class="signature">(text)</span><span class="type-signature"> &rarr; {<a href="module-string.html">string</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    끝 공백 제거
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">소스 문자열</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="string_utils.ts.html">string/utils.ts</a>, <a href="string_utils.ts.html#line364">line 364</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(trimEnd(" a b &amp;#10240; \u2800")); // " a b"</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~trimStart"><span class="type-signature">(inner) </span>trimStart<span class="signature">(text)</span><span class="type-signature"> &rarr; {<a href="module-string.html">string</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    시작 공백 제거
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">소스 문자열</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="string_utils.ts.html">string/utils.ts</a>, <a href="string_utils.ts.html#line354">line 354</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="module-string.html">string</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(trimStart("&amp;#10240; \u2800 a b ")); // "a b "</code></pre>
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated at Mon Feb 03 2020 07:59:38 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

@@ -30,7 +30,7 @@ body {
 
 a,
 a:active {
-  color: #7F3416;
+  color: #000;
   text-decoration: none;
 }
 
@@ -151,7 +151,7 @@ nav {
 nav h2 {
   margin: 0;
   padding: 0;
-  background: #ff6429;
+  background: rgb(18, 102, 150);
 }
 
 nav > h2 > a {
@@ -264,17 +264,9 @@ footer {
   color: #aaa;
 }
 
-.signature {
+.name, .signature {
   font-family: 'Source Code Pro';
   font-size: 80%;
-}
-
-.name {
-  font-family: 'Source Code Pro';
-  font-size: 110%;
-  font-weight: bold;
-  color: #ff6429;
-  padding-top: 30px;
 }
 
 .details {
@@ -403,7 +395,7 @@ footer {
 .params .name, .props .name, .name code {
    color: #4D4E53;
    font-family: 'Source Code Pro';
-   font-size: 100%;
+   font-size: 80%;
 }
 
 .params td, .params th, .props td, .props th {

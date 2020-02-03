@@ -342,6 +342,10 @@ export function refineWhitespace(text: string): string {
  * allow 이상 연속되는 줄바꿈을 제거
  * @param text
  * @param [allow=2]
+ * @example
+ * console.log(collapseMutiline("hello\n\n\n\nfoo", 2)); // "hello\n\nfoo"
+ * console.log(collapseMutiline("hello\n\n\n\nfoo", 2)); // "hello\n\nfoo"
+ * console.log(collapseMutiline("hello\n\n\n\nfoo", 2)); // "hello\n\nfoo"
  */
 export function collapseMultiline(text: string, allow: number = 2): string {
   const separate = text.split(/\n/);

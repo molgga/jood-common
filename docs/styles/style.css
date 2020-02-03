@@ -1,0 +1,96 @@
+@charset "utf-8";
+
+h1.page-title {
+  margin: 0;
+  padding: 10px 30px;
+  font-size: 20px;
+  color: #ffffff;
+  background-color: #3786d8;
+}
+
+h3 {
+  font-size: 1.3em;
+}
+
+h5,
+.container-overview .subsection-title {
+  position: relative;
+  font-size: 1em;
+  padding-left: 10px;
+}
+
+h5:before,
+.container-overview .subsection-title:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 2px;
+  height: 12px;
+  margin-top: -6px;
+  background-color: #ff9900;
+}
+
+nav h2 {
+  background-color: inherit;
+}
+
+nav ul a {
+  line-height: 1.8;
+  font-size: 13px;
+}
+
+nav ul ul a {
+  color: rgba(255, 255, 255, 0.6);
+  border-left-width: 0;
+}
+
+nav > ul > li > a {
+  position: relative;
+  color: rgba(255, 255, 255, 0.6);
+}
+nav > ul > li > a:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 3px;
+  height: 1px;
+  margin-top: -1px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.params,
+.props {
+  border-width: 0;
+  border-radius: 4px;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12),
+    0 -1px 1px 0 rgba(0, 0, 0, 0.075);
+}
+
+.params thead th,
+.props thead th {
+  background-color: #f9f9f9;
+}
+
+.params td,
+.params th,
+.props td,
+.props th {
+  padding: 4px 10px;
+}
+
+.name,
+.signature {
+  font-size: 0.9em;
+  color: #bd6519;
+}
+
+.details {
+  font-size: 0.8em;
+}
+
+.prettyprint code {
+  background-color: transparent;
+}

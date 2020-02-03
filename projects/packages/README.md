@@ -2,11 +2,9 @@
 
 common utils, snippets ...
 
-| Quick          | description             | link                                                                        |
-| -------------- | ----------------------- | --------------------------------------------------------------------------- |
-| `@jood/common` | npm package             | [link](https://www.npmjs.com/package/@jood/common)                          |
-| `packages`     | library packages source | [link](https://github.com/molgga/jood-common/tree/master/projects/packages) |
-| `Doc:api`      | api document            | [link](https://molgga.github.io/jood-common)                                |
+- [Package npm](https://www.npmjs.com/package/@jood/common)
+- [Package source](https://github.com/molgga/jood-common/tree/master/projects/packages)
+- [Doc - API](https://molgga.github.io/jood-common)
 
 ---
 
@@ -17,9 +15,3 @@ import { isNumber } from "@jood/common/number";
 import { insert } from "@jood/common/array";
 import { toFormat } from "@jood/common/date";
 ```
-
-<style>
-table {
-  width:100%;
-}
-</style>

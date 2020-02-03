@@ -2,7 +2,7 @@
   "opts": {
     "readme": "projects/packages/README.md",
     "encoding": "utf8",
-    "template": "node_modules/postman-jsdoc-theme"
+    "template": "node_modules/@jood/jsdoc-theme"
   },
   "source": {
     "include": ["projects/packages/"],

@@ -12,8 +12,18 @@ h1.page-title {
   background-color: #3786d8;
 }
 
+h2 {
+  font-size: 1.4em;
+}
+
 h3 {
   font-size: 1.3em;
+}
+
+h3.subsection-title {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 3px double #dddddd;
 }
 
 h4.name {
@@ -45,6 +55,30 @@ h5:before,
   height: 12px;
   margin-top: -6px;
   background-color: #ff9900;
+}
+
+h2 + h4.name,
+h3.subsection-title + h4.name {
+  margin-top: 20px;
+  padding-top: 0;
+  border-top-width: 0;
+}
+
+h5 + ul {
+  margin: 0.2em 0;
+}
+
+.class-description {
+  font-size: 1em;
+}
+
+.description {
+  margin: 0.5em;
+}
+
+.type-signature:first-child {
+  display: block;
+  font-size: 0.8em;
 }
 
 nav h2 {
@@ -98,6 +132,11 @@ nav > ul > li > a:before {
   padding: 4px 10px;
 }
 
+.param-desc,
+.param-type {
+  margin-left: 10px;
+}
+
 dl.param-type {
   border-bottom-width: 0;
   padding-bottom: 0;
@@ -108,6 +147,7 @@ dl.param-type {
 }
 
 .prettyprint code {
+  margin: 0;
   background-color: transparent;
 }
 

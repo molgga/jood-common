@@ -1,8 +1,19 @@
 {
   "name": "@jood/common",
-  "version": "0.0.12",
+  "version": "0.0.13",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/molgga/jood-common.git"
+  },
+  "bugs": {
+    "url": "https://github.com/molgga/jood-common/issues",
+    "email": "molgga84@gmail.com"
+  },
+  "homepage": "https://molgga.github.io/jood-common",
+  "keywords": [],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   }
 }

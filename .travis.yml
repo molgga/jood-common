@@ -43,9 +43,18 @@ script:
 branches:
   only:
     - master
-    - /^v\d+\.\d+\.\d+$/
+    - /^v[0-9]+\.[0-9]+\.[0-9]+$/
 
 deploy:
+  - provider: script
+    script:
+      - echo $TRAVIS_COMMIT
+      - echo $TRAVIS_TAG
+      - echo $TRAVIS_BRANCH
+      - echo $TRAVIS_BUILD_NUMBER
+      - echo $TRAVIS_REPO_SLUG
+      - echo $TRAVIS_TAG =~ ^v[0-9]+\.[0-9]+\.[0-9]+$
+
   # 배포 설정 - npm module
   - provider: npm
     edge: true
@@ -55,19 +64,18 @@ deploy:
     src: ./dist/packages
     access: public
     on:
-      # repo: molgga/jood-common
+      repo: molgga/jood-common
       # tag: true
       # branch: /^v\d+\.\d+\.\d+$/
-      # repo: molgga/jood-common
+
       # all_branches: true
       # condition: $TRAVIS_TAG =~ ^v\d+\.\d+\.\d+$
-      # repo: molgga/jood-common
+
       # all_branches: true
       # condition: $TRAVIS_BRANCH =~ ^v\d+\.\d+\.\d+$
-      repo: molgga/jood-common
-      tag: true
+
       all_branches: true
-      condition: $TRAVIS_TAG =~ ^v\d+\.\d+\.\d+$
+      condition: $TRAVIS_TAG =~ ^v[0-9]+\.[0-9]+\.[0-9]+$
 
   # 배포 설정 - github page
   - provider: pages

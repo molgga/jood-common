@@ -55,9 +55,12 @@ deploy:
     src: ./dist/packages
     access: public
     on:
+      # repo: molgga/jood-common
+      # tag: true
+      # branch: /^v\d+\.\d+\.\d+$/
       repo: molgga/jood-common
-      tag: true
-      branch: /^v\d+\.\d+\.\d+$/
+      all_branches: true
+      condition: $TRAVIS_BRANCH =~ ^v\d+\.\d+\.\d+$
 
   # 배포 설정 - github page
   - provider: pages

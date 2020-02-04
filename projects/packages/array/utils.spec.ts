@@ -1,6 +1,95 @@
-import { availableOr, insert } from "./utils";
+import {
+  availableOr,
+  insert,
+  tail,
+  extract,
+  distinct,
+  uniqueFilter
+} from "./utils";
 
 describe("array utils", () => {
+  it("uniqueFilter", () => {
+    const arr1 = [
+      { id: 1, name: "google" },
+      { id: 2, name: "microsoft" },
+      { id: 1, name: "google" },
+      { id: 3, name: "amazone" }
+    ];
+    const idFilter = item => {
+      return item.id;
+    };
+    const nameFilter = item => {
+      return item.name;
+    };
+    expect(arr1.filter(uniqueFilter(idFilter))).toEqual([
+      { id: 1, name: "google" },
+      { id: 2, name: "microsoft" },
+      { id: 3, name: "amazone" }
+    ]);
+    expect(arr1.filter(uniqueFilter(nameFilter))).toEqual([
+      { id: 1, name: "google" },
+      { id: 2, name: "microsoft" },
+      { id: 3, name: "amazone" }
+    ]);
+  });
+
+  it("distinct", () => {
+    const arr1 = [1, 2, 3, 4, 5];
+    const arr2 = [1, 2, 1, 3, 4, 4, 3, 5, 1];
+    const arr3 = [
+      { id: 1, name: "google" },
+      { id: 2, name: "microsoft" },
+      { id: 1, name: "google" },
+      { id: 3, name: "amazone" }
+    ];
+
+    expect(distinct(arr1)).toEqual([1, 2, 3, 4, 5]);
+    expect(distinct(arr2)).toEqual([1, 2, 3, 4, 5]);
+    expect(
+      distinct(arr3, item => {
+        return item.id;
+      })
+    ).toEqual([
+      { id: 1, name: "google" },
+      { id: 2, name: "microsoft" },
+      { id: 3, name: "amazone" }
+    ]);
+  });
+
+  it("extract", () => {
+    expect(extract([1, 2, 3, 4])).toEqual([2, 3, 4]);
+    expect(extract([1, 2, 3, 4], 1, 1)).toEqual([1, 3, 4]);
+    expect(extract([1, 2, 3, 4], 2, 1)).toEqual([1, 2, 4]);
+    expect(extract([1, 2, 3, 4], 3, 1)).toEqual([1, 2, 3]);
+    expect(extract([1, 2, 3, 4], 0, 2)).toEqual([3, 4]);
+    expect(extract([1, 2, 3, 4], 0, 10)).toEqual([]);
+    expect(extract([1, 2, 3, 4], 2, 10)).toEqual([1, 2]);
+  });
+
+  it("tail", () => {
+    const arr1 = [1, 2, 3, 4];
+    expect(tail(arr1, -1)).toBe(4);
+    expect(tail(arr1, 0)).toBe(4);
+    expect(tail(arr1, 1)).toBe(3);
+    expect(tail(arr1, 2)).toBe(2);
+    expect(tail(arr1, 3)).toBe(1);
+    expect(tail(arr1, 4)).toBe(1);
+    expect(tail(arr1, 5)).toBe(1);
+
+    const arr2 = [{ a: 1 }, { a: 2 }, { a: 3 }, { a: 4 }];
+    expect(tail(arr2, -1)).toEqual({ a: 4 });
+    expect(tail(arr2, 0)).toEqual({ a: 4 });
+    expect(tail(arr2, 1)).toEqual({ a: 3 });
+    expect(tail(arr2, 2)).toEqual({ a: 2 });
+    expect(tail(arr2, 3)).toEqual({ a: 1 });
+    expect(tail(arr2, 4)).toEqual({ a: 1 });
+    expect(tail(arr2, 5)).toEqual({ a: 1 });
+
+    const arr3 = [1, "s", { a: 3 }];
+    expect(tail(arr3, 0)).toEqual({ a: 3 });
+    expect(tail(arr3, 1)).toBe("s");
+  });
+
   it("availableOr", () => {
     enum TestEnum {
       A = 100,

@@ -32,6 +32,25 @@ export function isNumber(target: any): boolean {
 }
 
 /**
+ * seed 지정시 가급적 편향되지 않는 난수 생성기를, 미저정시 Math.random 을 반환.
+ * @param [seed]
+ * @see https://stackoverflow.com/questions/521295/seeding-the-random-number-generator-in-javascript
+ * @example
+ * const random = getRandomizer();
+ * console.log(random()); // random number
+ */
+export function getRandomizer(seed?: number): () => number {
+  if (typeof seed === "number") {
+    return () => {
+      const x = Math.sin(seed++) * 179426549;
+      return x - Math.floor(x);
+    };
+  } else {
+    return Math.random;
+  }
+}
+
+/**
  * 랜덤으로 숫자(int) 뽑기
  * @param min
  * @param max
@@ -40,7 +59,9 @@ export function isNumber(target: any): boolean {
  */
 export function randomRangeInt(min: number, max: number) {
   if (min > max) return 0;
-  return Math.floor(Math.random() * (max - min) + min);
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 /**
@@ -52,5 +73,7 @@ export function randomRangeInt(min: number, max: number) {
  */
 export function randomRangeFloat(min: number, max: number) {
   if (min > max) return 0;
+  min = Math.ceil(min);
+  max = Math.floor(max);
   return Math.random() * (max - min) + min;
 }

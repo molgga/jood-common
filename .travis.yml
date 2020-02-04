@@ -38,7 +38,6 @@ install:
 
 script:
   - npm run packages:build
-  - npm run packages:doc
 
 deploy:
   # 배포 설정 - npm module
@@ -53,6 +52,7 @@ deploy:
       tags: true
       repo: molgga/jood-common
       branch: master
+      condition: $TRAVIS_TAG =~ ^v(\d+\.)(\d+\.)(\d+)$
 
   # 배포 설정 - github page
   - provider: pages
@@ -60,5 +60,7 @@ deploy:
     skip_cleanup: true
     local_dir: docs
     github_token: $GITHUB_PAGES_TOKEN
+    script:
+      - npm run packages:doc
     on:
       branch: master

@@ -52,8 +52,7 @@ deploy:
     on:
       repo: molgga/jood-common
       tag: true
-      condition: $TRAVIS_TAG =~ ^v(\d+\.)(\d+\.)(\d+)$
-      all_branches: true
+      branch: master
 
   # 배포 설정 - github page
   - provider: pages
@@ -63,3 +62,8 @@ deploy:
     github_token: $GITHUB_PAGES_TOKEN
     on:
       branch: master
+
+branches:
+  only:
+    - master
+    - /^v(\d+\.)(\d+\.)(\d+)$/

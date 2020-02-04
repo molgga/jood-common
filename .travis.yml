@@ -52,7 +52,9 @@ deploy:
     on:
       repo: molgga/jood-common
       tag: true
-      branch: /^v(\d+\.)(\d+\.)(\d+)$/
+      branch:
+        - master
+        - /^v\d+\.\d+\.\d+$/
 
   # 배포 설정 - github page
   - provider: pages
@@ -61,9 +63,11 @@ deploy:
     local_dir: docs
     github_token: $GITHUB_PAGES_TOKEN
     on:
-      branch: master
+      branch:
+        - master
+        - /^v\d+\.\d+\.\d+$/
 
 branches:
   only:
     - master
-    - /^v(\d+\.)(\d+\.)(\d+)$/
+    - /^v\d+\.\d+\.\d+$/

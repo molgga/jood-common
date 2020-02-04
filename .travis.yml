@@ -61,9 +61,13 @@ deploy:
       # repo: molgga/jood-common
       # all_branches: true
       # condition: $TRAVIS_TAG =~ ^v\d+\.\d+\.\d+$
+      # repo: molgga/jood-common
+      # all_branches: true
+      # condition: $TRAVIS_BRANCH =~ ^v\d+\.\d+\.\d+$
       repo: molgga/jood-common
+      tag: true
       all_branches: true
-      condition: $TRAVIS_BRANCH =~ ^v\d+\.\d+\.\d+$
+      condition: $TRAVIS_TAG =~ ^v\d+\.\d+\.\d+$
 
   # 배포 설정 - github page
   - provider: pages

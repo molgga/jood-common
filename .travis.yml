@@ -9,13 +9,17 @@ cache:
   directories:
     - node_modules
 
+# Set DISPLAY for Xvfb
+env:
+  - DISPLAY=:99.0
+
 # 알림 설정
 # see: https://docs.travis-ci.com/user/notifications#configuring-email-notifications
 notifications:
   email:
     recipients:
       - molgga84@gmail.com
-    on_success: always
+    on_success: never
     on_failure: always
 
 # Job Lifecycle
@@ -36,6 +40,9 @@ notifications:
 install:
   - npm install
 
+services:
+  - xvfb
+
 script:
   - echo $TRAVIS_COMMIT
   - echo $TRAVIS_BRANCH
@@ -44,6 +51,7 @@ script:
   - echo $TRAVIS_REPO_SLUG
   - npm run packages:build
   - npm run packages:doc
+  - npm run travis:test
 
 branches:
   only:
@@ -61,15 +69,6 @@ deploy:
     access: public
     on:
       repo: molgga/jood-common
-      # tag: true
-      # branch: /^v\d+\.\d+\.\d+$/
-
-      # all_branches: true
-      # condition: $TRAVIS_TAG =~ ^v\d+\.\d+\.\d+$
-
-      # all_branches: true
-      # condition: $TRAVIS_BRANCH =~ ^v\d+\.\d+\.\d+$
-
       all_branches: true
       condition: $TRAVIS_TAG =~ ^v[0-9]+\.[0-9]+\.[0-9]+$
 

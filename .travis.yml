@@ -37,6 +37,11 @@ install:
   - npm install
 
 script:
+  - echo -e "TRAVIS_COMMIT: $TRAVIS_COMMIT"
+  - echo -e "TRAVIS_TAG: $TRAVIS_TAG"
+  - echo -e "TRAVIS_BRANCH: $TRAVIS_BRANCH"
+  - echo -e "TRAVIS_BUILD_NUMBER: $TRAVIS_BUILD_NUMBER"
+  - echo -e "TRAVIS_REPO_SLUG: $TRAVIS_BRANCH"
   - npm run packages:build
   - npm run packages:doc
 
@@ -46,15 +51,6 @@ branches:
     - /^v[0-9]+\.[0-9]+\.[0-9]+$/
 
 deploy:
-  - provider: script
-    script:
-      - echo $TRAVIS_COMMIT
-      - echo $TRAVIS_TAG
-      - echo $TRAVIS_BRANCH
-      - echo $TRAVIS_BUILD_NUMBER
-      - echo $TRAVIS_REPO_SLUG
-      - echo $TRAVIS_TAG =~ ^v[0-9]+\.[0-9]+\.[0-9]+$
-
   # 배포 설정 - npm module
   - provider: npm
     edge: true

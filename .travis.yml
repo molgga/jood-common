@@ -63,7 +63,3 @@ deploy:
     github_token: $GITHUB_PAGES_TOKEN
     on:
       branch: master
-
-branches:
-  only:
-    - master

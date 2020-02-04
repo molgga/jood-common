@@ -52,7 +52,7 @@ deploy:
     on:
       repo: molgga/jood-common
       tag: true
-      branch: master
+      branch: ^v(\d+\.)(\d+\.)(\d+)$
       # branch: /^v(\d+\.)(\d+\.)(\d+)$/
       # condition: $TRAVIS_TAG =~ ^v(\d+\.)(\d+\.)(\d+)$
 

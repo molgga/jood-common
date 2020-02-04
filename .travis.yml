@@ -50,10 +50,10 @@ deploy:
     src: ./dist/packages
     access: public
     on:
-      tags: true
       repo: molgga/jood-common
-      branch: master
+      tag: true
       condition: $TRAVIS_TAG =~ ^v(\d+\.)(\d+\.)(\d+)$
+      all_branches: true
 
   # 배포 설정 - github page
   - provider: pages

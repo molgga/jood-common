@@ -113,6 +113,7 @@ describe("date utils", () => {
         alternative: "Unknown"
       })
     ).toBe("Unknown");
-    expect(toFormat(0)).toBe("1970-01-01 09:00:00");
+
+    expect(toFormat(0, { format: "YYYY-MM-DD" })).toBe("1970-01-01"); // timezone offset 때문에 시간은 테스트 제외함
   });
 });

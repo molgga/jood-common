@@ -40,6 +40,11 @@ script:
   - npm run packages:build
   - npm run packages:doc
 
+branches:
+  only:
+    - master
+    - /^v\d+\.\d+\.\d+$/
+
 deploy:
   # 배포 설정 - npm module
   - provider: npm
@@ -52,8 +57,7 @@ deploy:
     on:
       repo: molgga/jood-common
       tag: true
-      branch:
-        - /^v\d+\.\d+\.\d+$/
+      branch: /^v\d+\.\d+\.\d+$/
 
   # 배포 설정 - github page
   - provider: pages
@@ -62,11 +66,4 @@ deploy:
     local_dir: docs
     github_token: $GITHUB_PAGES_TOKEN
     on:
-      branch:
-        - master
-        - /^v\d+\.\d+\.\d+$/
-
-branches:
-  only:
-    - master
-    - /^v\d+\.\d+\.\d+$/
+      all_branches: true

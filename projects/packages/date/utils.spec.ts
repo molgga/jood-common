@@ -78,6 +78,11 @@ describe("date utils", () => {
         format: "YYYY년 MM월 DD일"
       })
     ).toBe("2019년 02월 10일");
+
+    expect(toPast(now, undefined)).toBe("Unknown");
+    expect(toPast(now, undefined, { alternative: "알수없음" })).toBe(
+      "알수없음"
+    );
   });
 
   it("toFormat", () => {

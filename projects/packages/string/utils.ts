@@ -85,9 +85,9 @@ export function toWordArray(text: string): string[] {
   const strReg = /\s*\S*/g;
   let word = strReg.exec(text)[0].trim();
   while (word) {
-    if (word === "") break;
     refine.push(word);
     word = strReg.exec(text)[0].trim();
+    if (word === "") break;
   }
   return refine;
 }
@@ -215,9 +215,9 @@ export interface CurrencyPriceOption {
 export function toCurrencyFormat(
   price: string | number,
   options: CurrencyPriceOption = {}
-): string {
+): string | any {
   if (!isNumber(price)) {
-    return String(price);
+    return price;
   }
   const { fixed = 0, replaceChar = "," } = options;
   const safeStr = String(price);
@@ -291,7 +291,7 @@ export function toEllipsisEnd(
   max: number = 50,
   alternative: string = "..."
 ): string {
-  if (!text) return null;
+  if (!text) return text;
   let refine = text.toString();
   const strLen = refine.length;
   if (max < strLen) {

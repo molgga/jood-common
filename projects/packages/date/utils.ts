@@ -4,6 +4,7 @@
  */
 
 import { isNumber } from "../number/utils";
+import { leadingTime } from "../string/utils";
 
 /**
  * 날짜 포맷 옵션
@@ -51,36 +52,16 @@ export function toFormat(at: number, options: DateFormatOption = {}): string {
 
     dateStr = format;
     dateStr = dateStr.replace(/YYYY/, dtYear.toString());
-    dateStr = dateStr.replace(
-      /MM/,
-      (dtMonth < 10 ? `0${dtMonth}` : dtMonth).toString()
-    );
-    dateStr = dateStr.replace(
-      /DD/,
-      (dtDate < 10 ? `0${dtDate}` : dtDate).toString()
-    );
-
+    dateStr = dateStr.replace(/MM/, leadingTime(dtMonth));
+    dateStr = dateStr.replace(/DD/, leadingTime(dtDate));
     if (/AA/.test(dateStr) === true) {
       dateStr = dateStr.replace(/AA/, dtAA);
-      dateStr = dateStr.replace(
-        /hh/,
-        (dtHourA < 10 ? `0${dtHourA}` : dtHourA).toString()
-      );
+      dateStr = dateStr.replace(/hh/, leadingTime(dtHourA));
     } else {
-      dateStr = dateStr.replace(
-        /hh/,
-        (dtHour < 10 ? `0${dtHour}` : dtHour).toString()
-      );
+      dateStr = dateStr.replace(/hh/, leadingTime(dtHour));
     }
-
-    dateStr = dateStr.replace(
-      /mm/,
-      (dtMinute < 10 ? `0${dtMinute}` : dtMinute).toString()
-    );
-    dateStr = dateStr.replace(
-      /ss/,
-      (dtSecond < 10 ? `0${dtSecond}` : dtSecond).toString()
-    );
+    dateStr = dateStr.replace(/mm/, leadingTime(dtMinute));
+    dateStr = dateStr.replace(/ss/, leadingTime(dtSecond));
   }
   return dateStr;
 }

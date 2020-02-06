@@ -159,27 +159,41 @@ export function insert(text: string, index: number, addText: string): string {
 }
 
 /**
- * 문자열 좌측에 지정된 갯 수 만큼 문자 삽입
+ * 문자열 좌측을 지정된 길이로 채웁니다.
+ * 문자열의 길이가 지정된 길이 보다 길다면 좌측 부터 잘라냅니다.
  * @param text 소스 문자열
  * @param addText 추가될 문자열
- * @param expectCount 합쳐진 문자열 수
+ * @param expectCount 최종 문자열 수
  * @example
- * console.log(padStart("123", "0", 5)); // "00123"
+  console.log(padStart("123", "0", 5)); // "00123"
+  console.log(padStart("hello", "0", 1)); // "h"
+  console.log(padStart("hello", "0", 2)); // "he"
+  console.log(padStart("hello", "0", 3)); // "hel"
+  console.log(padStart("hello", "0", 4)); // "hell"
+  console.log(padStart("hello", "0", 5)); // "hello"
+  console.log(padStart("hello", "0", 6)); // "0hello"
  */
 export function padStart(
   text: string | number,
   addText: string,
-  expectCount: number = 1
-): string {
+  expectCount?: number
+): string | number {
   let refine;
+  if (!expectCount) {
+    return text;
+  }
   if (typeof text === "string" || typeof text === "number") {
     refine = text.toString();
     const len = refine.length;
-    const count = expectCount - len;
-    const adds = Array.from(Array(count)).map(() => addText);
-    refine = `${adds.join("")}${text}`;
-    if (expectCount &lt; refine.length) {
-      refine = refine.substring(refine.length - expectCount, refine.length);
+    if (len &lt; expectCount) {
+      const count = expectCount - len;
+      const adds = Array.from(Array(count)).map(() => addText);
+      refine = `${adds.join("")}${text}`;
+      if (expectCount &lt; refine.length) {
+        refine = refine.substring(refine.length - expectCount, refine.length);
+      }
+    } else {
+      refine = refine.substring(0, expectCount);
     }
   } else {
     refine = text;
@@ -188,27 +202,41 @@ export function padStart(
 }
 
 /**
- * 문자열 우측에 지정된 갯 수 만큼 문자 삽입
+ * 문자열 우측을 지정된 길이로 채웁니다.
+ * 문자열의 길이가 지정된 길이 보다 길다면 우측 부터 잘라냅니다.
  * @param text 소스 문자열
  * @param addText 추가될 문자열
  * @param expectCount 합쳐진 문자열 수
  * @example
- * console.log(padEnd("123", "0", 5)); // "12300"
+  console.log(padEnd("123", "0", 5)); // "12300"
+  console.log(padEnd("hello", "0", 1)); // "o"
+  console.log(padEnd("hello", "0", 2)); // "lo"
+  console.log(padEnd("hello", "0", 3)); // "llo"
+  console.log(padEnd("hello", "0", 4)); // "ello"
+  console.log(padEnd("hello", "0", 5)); // "hello"
+  console.log(padEnd("hello", "0", 6)); // "hello0"
  */
 export function padEnd(
   text: string | number,
   addText: string,
-  expectCount: number = 1
-): string {
+  expectCount?: number
+): string | number {
   let refine;
+  if (!expectCount) {
+    return text;
+  }
   if (typeof text === "string" || typeof text === "number") {
     refine = text.toString();
     const len = refine.length;
-    const count = expectCount - len;
-    const adds = Array.from(Array(count)).map(() => addText);
-    refine = `${text}${adds.join("")}`;
-    if (expectCount &lt; refine.length) {
-      refine = refine.substring(0, expectCount);
+    if (len &lt; expectCount) {
+      const count = expectCount - len;
+      const adds = Array.from(Array(count)).map(() => addText);
+      refine = `${text}${adds.join("")}`;
+      if (expectCount &lt; refine.length) {
+        refine = refine.substring(0, expectCount);
+      }
+    } else {
+      refine = refine.substring(len - expectCount, len);
     }
   } else {
     refine = text;
@@ -300,7 +328,10 @@ export function toCurrencyFormat(
  * @param max 잘라낼 기준 수
  * @param alternative 잘라낸 문자열 사이에 들어갈 문자열
  * @example
- * console.log(toEllipsisMiddle("https://developers.google.com/web/fundamentals/architecture/app-shell", 30)); // "https://develop...cture/app-shell"
+ console.log(toEllipsisMiddle("https://developers.google.com/web/fundamentals/architecture/app-shell", 30)); // "https://develop...cture/app-shell"
+ console.log(toEllipsisMiddle("01234567890", 6)); // "012...789"
+ console.log(toEllipsisMiddle("01234567890", 10)); // "0123456789"
+ console.log(toEllipsisMiddle("01234567890", 11)); // "0123456789"
  */
 export function toEllipsisMiddle(
   text: string,
@@ -326,7 +357,10 @@ export function toEllipsisMiddle(
  * @param max 잘라낼 기준 수
  * @param alternative 잘라낸 문자열 마지막에 들어갈 문자열
  * @example
- * console.log(toEllipsisEnd("https://developers.google.com/web/fundamentals/architecture/app-shell", 10)); // "https://de..."
+ console.log(toEllipsisEnd("https://developers.google.com/web/fundamentals/architecture/app-shell", 10)); // "https://de..."
+ console.log(toEllipsisEnd("01234567890", 5)); // "01234..."
+ console.log(toEllipsisEnd("01234567890", 10)); // "01234567890"
+ console.log(toEllipsisEnd("01234567890", 11)); // "01234567890"
  */
 export function toEllipsisEnd(
   text: string,
@@ -456,7 +490,7 @@ export function collapseMultiline(text: string, allow: number = 2): string {
 <br class="clear">
 
 <footer>
-    Documentation generated at Thu Feb 06 2020 04:46:48 GMT+0000 (Coordinated Universal Time)
+    Documentation generated at Thu Feb 06 2020 06:03:35 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script>prettyPrint();</script>

@@ -150,6 +150,7 @@ export interface DatePastOption {
   dayMax?: number;
   dayLabel?: string;
   format?: string;
+  alternative?: any;
 }
 
 /**
@@ -180,11 +181,12 @@ export function toPast(
     minuteLabel = "분 전",
     hourLabel = "시간 전",
     dayLabel = "일 전",
-    format = "YYYY-MM-DD hh:mm:ss"
+    format = "YYYY-MM-DD hh:mm:ss",
+    alternative = "Unknown"
   }: DatePastOption = options;
 
   if (!pastAt || !fromAt || fromAt &lt;= pastAt) {
-    return justLabel;
+    return alternative;
   }
 
   const pastSecond = Math.floor((fromAt - pastAt) / 1000);
@@ -196,7 +198,6 @@ export function toPast(
   if (pastSecond &lt; minuteMax) return `${pastMinute}${minuteLabel}`;
   if (pastSecond &lt; hourMax) return `${pastHour}${hourLabel}`;
   if (pastSecond &lt;= dayMax) return `${pastDay}${dayLabel}`;
-
   return toFormat(pastAt, { format });
 }
 </code></pre>
@@ -211,7 +212,7 @@ export function toPast(
 <br class="clear">
 
 <footer>
-    Documentation generated at Tue Feb 04 2020 09:54:27 GMT+0000 (Coordinated Universal Time)
+    Documentation generated at Thu Feb 06 2020 02:19:52 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script>prettyPrint();</script>

@@ -7,7 +7,10 @@
     "packages:build": "ng build packages",
     "packages:test": "ng test packages --code-coverage",
     "packages:doc": "jsdoc -c jsdoc.json -r -d docs",
+    "travis:build": "npn run build",
     "travis:test": "ng test packages --watch=false --code-coverage --browsers=ChromeHeadless",
+    "travis:doc": "npm run packages:doc",
+    "travis:codecov": "codecov",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },

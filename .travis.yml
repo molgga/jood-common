@@ -49,14 +49,17 @@ script:
   - echo $TRAVIS_TAG
   - echo $TRAVIS_BUILD_NUMBER
   - echo $TRAVIS_REPO_SLUG
-  - npm run packages:build
-  - npm run packages:doc
+  - npm run travis:build
+  - npm run travis:doc
   - npm run travis:test
 
 branches:
   only:
     - master
     - /^v[0-9]+\.[0-9]+\.[0-9]+$/
+
+after_success:
+  - npm run travis:codecov
 
 deploy:
   # 배포 설정 - npm module
@@ -79,4 +82,4 @@ deploy:
     local_dir: docs
     github_token: $GITHUB_PAGES_TOKEN
     on:
-      all_branches: true
+      branch: master

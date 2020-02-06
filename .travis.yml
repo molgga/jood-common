@@ -68,7 +68,7 @@ deploy:
   # 배포 설정 - npm module
   - provider: npm
     edge: true
-    skip_cleanup: true
+    cleanup: true
     email: $NPM_PUBLISH_EMAIL
     api_key: $NPM_PUBLISH_TOKEN
     src: ./dist/packages
@@ -81,7 +81,7 @@ deploy:
   # 배포 설정 - github page
   - provider: pages
     edge: true
-    skip_cleanup: true
+    cleanup: true
     local_dir: docs
     github_token: $GITHUB_PAGES_TOKEN
     on:

@@ -96,6 +96,7 @@ describe("array utils", () => {
     const arr4 = [1, 2, 3, 4];
     expect(tail(arr4, 10, false)).toBe(undefined);
     expect(tail(arr4, 10, true)).toBe(1);
+    expect(tail(arr4, undefined)).toBe(4);
   });
 
   it("availableOr", () => {
@@ -124,6 +125,9 @@ describe("array utils", () => {
     expect(availableOr(available2, 99, TestEnum.A)).toBe(100);
     expect(availableOr(available2, 99, TestEnum.B)).toBe(200);
     expect(availableOr(available2, 99, TestEnum.C)).toBe(300);
+
+    expect(availableOr(undefined, 10)).toBe(null);
+    expect(availableOr(undefined, 10, "Unknown")).toBe("Unknown");
   });
 
   it("insert", () => {
@@ -132,6 +136,7 @@ describe("array utils", () => {
     expect(insert([1, 2, 3], 10, 99)).toEqual([1, 2, 3, 99]);
     expect(insert([1, 2, 3], 10, ["A", "B"])).toEqual([1, 2, 3, "A", "B"]);
     expect(insert([1, 2, 3], null, "A")).toEqual(["A", 1, 2, 3]);
+    expect(insert([1, 2, 3], undefined, "A")).toEqual(["A", 1, 2, 3]);
   });
 
   it("shuffle", () => {

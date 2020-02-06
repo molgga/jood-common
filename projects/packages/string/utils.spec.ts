@@ -76,9 +76,14 @@ describe("string utils", () => {
     expect(toEllipsisEnd(test2, 20)).toBe("01234567890123456789...");
     expect(toEllipsisEnd(test3, 9)).toBe("012345678...");
     expect(toEllipsisEnd(test3, 5)).toBe("01234...");
+    expect(toEllipsisEnd(test3, 10)).toBe("0123456789");
     expect(toEllipsisEnd(test3, 11)).toBe("0123456789");
     expect(toEllipsisEnd(null, 11)).toBe(null);
     expect(toEllipsisEnd(undefined, 11)).toBe(undefined);
+
+    const def = toEllipsisEnd(test1);
+    expect(def).toBe("https://developers.google.com/web/fundamentals/arc...");
+    expect(def.length).toBe(53); // 기본값 50 + ...(alternative 3)
   });
 
   it("toEllipsisMiddle", () => {
@@ -94,9 +99,14 @@ describe("string utils", () => {
     expect(toEllipsisMiddle(test3, 8)).toBe("0123...6789");
     expect(toEllipsisMiddle(test3, 7)).toBe("012...789");
     expect(toEllipsisMiddle(test3, 6)).toBe("012...789");
+    expect(toEllipsisMiddle(test3, 10)).toBe("0123456789");
     expect(toEllipsisMiddle(test3, 11)).toBe("0123456789");
     expect(toEllipsisMiddle(null, 11)).toBe(null);
     expect(toEllipsisMiddle(undefined, 11)).toBe(undefined);
+
+    const def = toEllipsisMiddle(test1);
+    expect(def).toBe("https://developers.google...ls/architecture/app-shell");
+    expect(def.length).toBe(53); // 기본값 50 + ...(alternative 3)
   });
 
   it("padStart", () => {
@@ -105,8 +115,16 @@ describe("string utils", () => {
     expect(padStart("123", "0", 5)).toBe("00123");
     expect(padStart("foo", "#", 3)).toBe("foo");
     expect(padStart("foo", "#", 4)).toBe("#foo");
+    expect(padStart("hello", "0", 1)).toBe("h");
+    expect(padStart("hello", "0", 2)).toBe("he");
+    expect(padStart("hello", "0", 3)).toBe("hel");
+    expect(padStart("hello", "0", 4)).toBe("hell");
+    expect(padStart("hello", "0", 5)).toBe("hello");
+    expect(padStart("hello", "0", 6)).toBe("0hello");
     expect(padStart("hello", "@@", 5)).toBe("hello");
     expect(padStart("hello", "@@", 6)).toBe("@hello");
+    expect(padStart("hello", "0", undefined)).toBe("hello");
+    expect(padStart("", "0", 1)).toBe("0");
     expect(padStart(undefined, "@@", 6)).toBe(undefined);
     expect(padStart(null, "@@", 6)).toBe(null);
   });
@@ -117,8 +135,16 @@ describe("string utils", () => {
     expect(padEnd("123", "0", 5)).toBe("12300");
     expect(padEnd("foo", "#", 3)).toBe("foo");
     expect(padEnd("foo", "#", 4)).toBe("foo#");
+    expect(padEnd("hello", "0", 1)).toBe("o");
+    expect(padEnd("hello", "0", 2)).toBe("lo");
+    expect(padEnd("hello", "0", 3)).toBe("llo");
+    expect(padEnd("hello", "0", 4)).toBe("ello");
+    expect(padEnd("hello", "0", 5)).toBe("hello");
+    expect(padEnd("hello", "0", 6)).toBe("hello0");
     expect(padEnd("hello", "@@", 5)).toBe("hello");
     expect(padEnd("hello", "@@", 6)).toBe("hello@");
+    expect(padEnd("hello", "0", undefined)).toBe("hello");
+    expect(padEnd("", "0", 1)).toBe("0");
     expect(padEnd(undefined, "@@", 6)).toBe(undefined);
     expect(padEnd(null, "@@", 6)).toBe(null);
   });
@@ -191,6 +217,7 @@ describe("string utils", () => {
     expect(replaceAll("a-b-c", "-", "@")).toBe("a@b@c");
     expect(replaceAll("a-b-c", "", "@")).toBe("a-b-c");
     expect(replaceAll("a-b-c", "-", "")).toBe("abc");
+    expect(replaceAll("a-b-c", "-", undefined)).toBe("abc");
     expect(replaceAll(null, "-", "")).toBe(null);
     expect(replaceAll(undefined, "-", "")).toBe(undefined);
   });

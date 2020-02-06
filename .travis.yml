@@ -61,6 +61,7 @@ branches:
     - /^v[0-9]+\.[0-9]+\.[0-9]+$/
 
 # condition https://stackoverflow.com/questions/34591587/travis-conditional-on-branch-after-success
+#  - test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && npm run travis:codecov
 after_success:
   - test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && npm run travis:codecov
 
@@ -68,7 +69,7 @@ deploy:
   # 배포 설정 - npm module
   - provider: npm
     edge: true
-    cleanup: true
+    skip_cleanup: true
     email: $NPM_PUBLISH_EMAIL
     api_key: $NPM_PUBLISH_TOKEN
     src: ./dist/packages
@@ -81,7 +82,7 @@ deploy:
   # 배포 설정 - github page
   - provider: pages
     edge: true
-    cleanup: true
+    skip_cleanup: true
     local_dir: docs
     github_token: $GITHUB_PAGES_TOKEN
     on:

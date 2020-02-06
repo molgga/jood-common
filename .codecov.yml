@@ -1,6 +1,6 @@
 # see: https://docs.codecov.io/docs/codecovyml-reference
 codecov:
-  token: "$CODECOV_TOKEN"
+  token: $CODECOV_TOKEN
   bot: "codecov-io"
   ci:
     - "travis.org"

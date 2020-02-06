@@ -153,9 +153,67 @@ dl.param-type {
 }
 
 @media only screen and (max-width: 680px) and (min-width: 320px) {
+  #main {
+    padding: 0 15px;
+    min-width: initial;
+  }
+
   #main h1.page-title {
     margin: 0 -25px;
     padding: 10px 25px;
+    font-size: 0.8em;
+  }
+  h2 {
+    margin-top: 0.8em;
+    font-size: 1.1em;
+  }
+  h3.subsection-title {
+    margin-top: 10px;
+    padding-top: 20px;
+    font-size: 1.1em;
+  }
+  h5,
+  .container-overview .subsection-title {
+    font-size: 0.8em;
+  }
+  h5 + ul {
+    margin: 0;
+    padding-left: 25px;
+    font-size: 0.8em;
+  }
+  .description {
+    font-size: 0.9em;
+  }
+  .param-desc,
+  .param-type {
+    margin-left: 0;
+  }
+
+  .readme {
+    font-size: 14px;
+  }
+  .readme h1 {
+    margin: 1em 0;
+    font-size: 1.6em;
+  }
+  .readme h2 {
+    font-size: 1.2em;
+  }
+  .readme h3 {
+    font-size: 1.1em;
+  }
+  .readme h4 {
+    font-size: 1em;
+  }
+  .readme h5 {
+    font-size: 0.9em;
+  }
+  .readme h6 {
+    font-size: 0.8em;
+  }
+  .readme ul,
+  .readme ol {
+    padding-left: 25px;
   }
 
   .navicon-button {
@@ -194,5 +252,29 @@ dl.param-type {
   .navicon:after,
   .navicon-button:hover .navicon:after {
     top: -8px;
+  }
+
+  .parameters-wrap {
+    margin: -5px -15px;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: auto;
+  }
+  .parameters-wrap:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .parameters-inner {
+    float: left;
+    padding: 5px 15px;
+    box-sizing: border-box;
+    min-width: 100%;
+  }
+
+  .params thead th,
+  .props thead th {
+    font-size: 0.8em;
   }
 }

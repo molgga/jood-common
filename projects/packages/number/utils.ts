@@ -58,7 +58,8 @@ export function getRandomizer(seed?: number): () => number {
  * console.log(randomRangeInt(0, 10)); // 0 ~ 10
  */
 export function randomRangeInt(min: number, max: number) {
-  if (min > max) return 0;
+  if (max < min) return 0;
+  if (max === min) return max;
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -72,7 +73,8 @@ export function randomRangeInt(min: number, max: number) {
  * console.log(randomRangeFloat(0, 10)); // 0.* ~ 10.*
  */
 export function randomRangeFloat(min: number, max: number) {
-  if (min > max) return 0;
+  if (max < min) return 0;
+  if (max === min) return max;
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.random() * (max - min) + min;

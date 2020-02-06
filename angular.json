@@ -6,7 +6,7 @@
     "packages": {
       "projectType": "library",
       "root": "projects/packages",
-      "sourceRoot": "projects/packages/src",
+      "sourceRoot": "projects/packages",
       "prefix": "lib",
       "architect": {
         "build": {

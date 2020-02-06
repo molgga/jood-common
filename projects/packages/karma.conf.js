@@ -25,15 +25,8 @@ module.exports = function(config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    // browsers: ["Chrome"],
+    browsers: ["Chrome"],
     singleRun: false,
-    restartOnFileChange: true,
-    browsers: ["ChromeDebugging"],
-    customLaunchers: {
-      ChromeDebugging: {
-        base: "Chrome",
-        flags: ["--remote-debugging-port=9222"]
-      }
-    }
+    restartOnFileChange: true
   });
 };

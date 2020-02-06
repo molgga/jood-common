@@ -4,7 +4,8 @@ import {
   tail,
   extract,
   distinct,
-  uniqueFilter
+  uniqueFilter,
+  shuffle
 } from "./utils";
 
 describe("array utils", () => {
@@ -64,6 +65,9 @@ describe("array utils", () => {
     expect(extract([1, 2, 3, 4], 0, 2)).toEqual([3, 4]);
     expect(extract([1, 2, 3, 4], 0, 10)).toEqual([]);
     expect(extract([1, 2, 3, 4], 2, 10)).toEqual([1, 2]);
+
+    const origin = [1, 2, 3, 4];
+    expect(extract(origin, -1, 10)).toBe(origin);
   });
 
   it("tail", () => {
@@ -88,6 +92,10 @@ describe("array utils", () => {
     const arr3 = [1, "s", { a: 3 }];
     expect(tail(arr3, 0)).toEqual({ a: 3 });
     expect(tail(arr3, 1)).toBe("s");
+
+    const arr4 = [1, 2, 3, 4];
+    expect(tail(arr4, 10, false)).toBe(undefined);
+    expect(tail(arr4, 10, true)).toBe(1);
   });
 
   it("availableOr", () => {
@@ -124,5 +132,14 @@ describe("array utils", () => {
     expect(insert([1, 2, 3], 10, 99)).toEqual([1, 2, 3, 99]);
     expect(insert([1, 2, 3], 10, ["A", "B"])).toEqual([1, 2, 3, "A", "B"]);
     expect(insert([1, 2, 3], null, "A")).toEqual(["A", 1, 2, 3]);
+  });
+
+  it("shuffle", () => {
+    const origin = [1, 2, 3, 4];
+    const originLen = origin.length;
+    for (let i = 0; i < 10; i++) {
+      shuffle(origin);
+      expect(origin.length).toBe(originLen);
+    }
   });
 });

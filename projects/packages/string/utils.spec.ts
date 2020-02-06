@@ -22,6 +22,8 @@ import {
 } from "./utils";
 
 describe("string utils", () => {
+  beforeEach(() => {});
+
   it("refineWhitespace", () => {
     expect(refineWhitespace("\u2800")).toBe(" ");
     expect(refineWhitespace("&#10240;")).toBe(" ");
@@ -75,6 +77,8 @@ describe("string utils", () => {
     expect(toEllipsisEnd(test3, 9)).toBe("012345678...");
     expect(toEllipsisEnd(test3, 5)).toBe("01234...");
     expect(toEllipsisEnd(test3, 11)).toBe("0123456789");
+    expect(toEllipsisEnd(null, 11)).toBe(null);
+    expect(toEllipsisEnd(undefined, 11)).toBe(undefined);
   });
 
   it("toEllipsisMiddle", () => {
@@ -91,6 +95,8 @@ describe("string utils", () => {
     expect(toEllipsisMiddle(test3, 7)).toBe("012...789");
     expect(toEllipsisMiddle(test3, 6)).toBe("012...789");
     expect(toEllipsisMiddle(test3, 11)).toBe("0123456789");
+    expect(toEllipsisMiddle(null, 11)).toBe(null);
+    expect(toEllipsisMiddle(undefined, 11)).toBe(undefined);
   });
 
   it("padStart", () => {
@@ -101,6 +107,8 @@ describe("string utils", () => {
     expect(padStart("foo", "#", 4)).toBe("#foo");
     expect(padStart("hello", "@@", 5)).toBe("hello");
     expect(padStart("hello", "@@", 6)).toBe("@hello");
+    expect(padStart(undefined, "@@", 6)).toBe(undefined);
+    expect(padStart(null, "@@", 6)).toBe(null);
   });
 
   it("padEnd", () => {
@@ -111,6 +119,8 @@ describe("string utils", () => {
     expect(padEnd("foo", "#", 4)).toBe("foo#");
     expect(padEnd("hello", "@@", 5)).toBe("hello");
     expect(padEnd("hello", "@@", 6)).toBe("hello@");
+    expect(padEnd(undefined, "@@", 6)).toBe(undefined);
+    expect(padEnd(null, "@@", 6)).toBe(null);
   });
 
   it("leadingTime", () => {
@@ -153,6 +163,9 @@ describe("string utils", () => {
     expect(toCurrencyFormat(99.9999, options)).toBe("99.99");
     expect(toCurrencyFormat(0.9999, options)).toBe("0.99");
     expect(toCurrencyFormat(1234.1234, options)).toBe("1#234.12");
+
+    expect(toCurrencyFormat(null)).toBe(null);
+    expect(toCurrencyFormat(undefined)).toBe(undefined);
   });
 
   it("leadingTime", () => {
@@ -178,6 +191,8 @@ describe("string utils", () => {
     expect(replaceAll("a-b-c", "-", "@")).toBe("a@b@c");
     expect(replaceAll("a-b-c", "", "@")).toBe("a-b-c");
     expect(replaceAll("a-b-c", "-", "")).toBe("abc");
+    expect(replaceAll(null, "-", "")).toBe(null);
+    expect(replaceAll(undefined, "-", "")).toBe(undefined);
   });
 
   it("toUpperCaseHead", () => {
@@ -205,17 +220,28 @@ describe("string utils", () => {
   });
 
   it("removeTag", () => {
+    /*eslint-disable */ // 줄바꿈 테스트로 lint 제외
+
     const test1 = `<h2 id="도구_자원">도구 &amp; 자원</h2>`;
     const test2 = `<p><strong>JavaScript</strong> 코드 작성과 디버깅</p>`;
     const test3 = `<div><h1>Complete beginners</h1>
 <h2>first steps</h2></div>`;
+
+    expect(removeTag("\t<div>AAA</div>\t\t<br/>BBB", false)).toBe(
+      "\tAAA\t\tBBB"
+    );
+    expect(removeTag("\t<div>AAA</div>\t\t<br/>BBB", true)).toBe("AAABBB");
     expect(removeTag(test1)).toBe("도구 &amp; 자원");
     expect(removeTag(test2)).toBe("JavaScript 코드 작성과 디버깅");
     expect(removeTag(test3)).toBe(`Complete beginners
 first steps`);
+
+    /*eslint-enable */
   });
 
   it("collapseMultiline", () => {
+    /*eslint-disable */ // 줄바꿈 테스트로 lint 제외
+
     expect(
       collapseMultiline(`1
 
@@ -236,5 +262,6 @@ first steps`);
       )
     ).toBe(`1
       2`);
+    /*eslint-enable */
   });
 });

@@ -11,7 +11,16 @@
     "email": "molgga84@gmail.com"
   },
   "homepage": "https://molgga.github.io/jood-common",
-  "keywords": [],
+  "keywords": [
+    "javascript",
+    "typescript",
+    "angular",
+    "utility",
+    "array",
+    "string",
+    "number",
+    "date"
+  ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"

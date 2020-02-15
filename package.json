@@ -56,5 +56,15 @@
     "tsickle": "^0.37.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
-  }
+  },
+  "keywords": [
+    "javascript",
+    "typescript",
+    "angular",
+    "utility",
+    "array",
+    "string",
+    "number",
+    "date"
+  ]
 }

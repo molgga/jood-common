@@ -17,6 +17,7 @@ export interface DateFormatOption {
   format?: string;
   multiple?: number;
   alternative?: string;
+  labelDays?: string[];
 }
 
 /**
@@ -36,7 +37,8 @@ export function toFormat(at: number, options: DateFormatOption = {}): string {
   const {
     multiple = 1,
     alternative = "",
-    format = "YYYY-MM-DD hh:mm:ss"
+    format = "YYYY-MM-DD hh:mm:ss",
+    labelDays = ["일", "월", "화", "수", "목", "금", "토"]
   }: DateFormatOption = options;
   let dateStr = alternative;
   if (isNumber(at)) {
@@ -44,6 +46,7 @@ export function toFormat(at: number, options: DateFormatOption = {}): string {
     const dtYear = date.getFullYear();
     const dtMonth = date.getMonth() + 1;
     const dtDate = date.getDate();
+    const dtDay = date.getDay();
     const dtHour = date.getHours();
     const dtHourA = dtHour < 13 ? dtHour : dtHour - 12;
     const dtMinute = date.getMinutes();
@@ -59,6 +62,9 @@ export function toFormat(at: number, options: DateFormatOption = {}): string {
       dateStr = dateStr.replace(/hh/, leadingTime(dtHourA));
     } else {
       dateStr = dateStr.replace(/hh/, leadingTime(dtHour));
+    }
+    if (/d/.test(dateStr) === true) {
+      dateStr = dateStr.replace(/d/, labelDays[dtDay]);
     }
     dateStr = dateStr.replace(/mm/, leadingTime(dtMinute));
     dateStr = dateStr.replace(/ss/, leadingTime(dtSecond));

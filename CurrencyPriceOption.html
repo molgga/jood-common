@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>JdDate - Documentation</title>
+    <title>CurrencyPriceOption - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -30,7 +30,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">JdDate</h1>
+    <h1 class="page-title">CurrencyPriceOption</h1>
     
 
     
@@ -43,7 +43,7 @@
 <header>
     
         <h2>
-        JdDate
+        CurrencyPriceOption
         </h2>
         
     
@@ -53,10 +53,88 @@
     <div class="container-overview">
     
         
-            <div class="description">namespace array module</div>
+            <div class="description">가격 포맷 옵션</div>
         
 
         
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<div class="parameters-wrap">
+  <div class="parameters-inner">
+    <table class="props">
+      <thead>
+      <tr>
+          
+          <th>Name</th>
+          
+
+          <th>Type</th>
+
+          
+
+          
+
+          <th class="last">Description</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      
+
+          <tr>
+              
+                  <td class="name"><code>fixed?</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type">number</span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last">소숫점 까지 표시되어야 하는 경우 지정된 숫자만큼 표시. (예: fixed = 1 -> 99.0, fixed = 2 -> 99.00)</td>
+          </tr>
+
+      
+
+          <tr>
+              
+                  <td class="name"><code>replaceChar?</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type">string</span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last">가격 표시 중간에 들어가 대치 문자</td>
+          </tr>
+
+      
+      </tbody>
+    </table>
+  </div>
+</div>
+
 
 
 <dl class="details">
@@ -88,7 +166,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="public-api.ts.html">public-api.ts</a>, <a href="public-api.ts.html#line26">line 26</a>
+        <a href="string_utils.ts.html">string/utils.ts</a>, <a href="string_utils.ts.html#line410">line 410</a>
     </li></ul></dd>
     
 
@@ -99,12 +177,6 @@
     
 </dl>
 
-
-        
-            <h3>Example</h3>
-            
-    <pre class="prettyprint"><code>import { JdDate } from '@jood/common';
-JdDate.toFormat(...);</code></pre>
 
         
     

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>JdDate - Documentation</title>
+    <title>DateFormatOption - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -30,7 +30,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">JdDate</h1>
+    <h1 class="page-title">DateFormatOption</h1>
     
 
     
@@ -43,7 +43,7 @@
 <header>
     
         <h2>
-        JdDate
+        DateFormatOption
         </h2>
         
     
@@ -53,10 +53,111 @@
     <div class="container-overview">
     
         
-            <div class="description">namespace array module</div>
+            <div class="description">날짜 포맷 옵션</div>
         
 
         
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<div class="parameters-wrap">
+  <div class="parameters-inner">
+    <table class="props">
+      <thead>
+      <tr>
+          
+          <th>Name</th>
+          
+
+          <th>Type</th>
+
+          
+
+          
+
+          <th class="last">Description</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      
+
+          <tr>
+              
+                  <td class="name"><code>format</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type">string</span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last">at 정보를 변경할 문자 포맷 (예: YYYY-MM-DD AA hh -> 2020-01-01 오전 12시)</td>
+          </tr>
+
+      
+
+          <tr>
+              
+                  <td class="name"><code>multiple</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type">number</span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last">at 의 곱셈(at 정보를 unixtime 으로 다루는 경우 1000 을 옵션으로 지정)</td>
+          </tr>
+
+      
+
+          <tr>
+              
+                  <td class="name"><code>alternative</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type">string</span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last">at 정보가 invalid 할 때 대체 문자</td>
+          </tr>
+
+      
+      </tbody>
+    </table>
+  </div>
+</div>
+
 
 
 <dl class="details">
@@ -88,7 +189,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="public-api.ts.html">public-api.ts</a>, <a href="public-api.ts.html#line26">line 26</a>
+        <a href="date_utils.ts.html">date/utils.ts</a>, <a href="date_utils.ts.html#line90">line 90</a>
     </li></ul></dd>
     
 
@@ -99,12 +200,6 @@
     
 </dl>
 
-
-        
-            <h3>Example</h3>
-            
-    <pre class="prettyprint"><code>import { JdDate } from '@jood/common';
-JdDate.toFormat(...);</code></pre>
 
         
     

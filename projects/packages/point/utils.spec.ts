@@ -1,6 +1,6 @@
 import { intersect, isIntersect } from "./utils";
 
-fdescribe("point utils", () => {
+describe("point utils", () => {
   it("intersect", () => {
     expect(intersect({ start: 0, end: 100 }, { start: 20, end: 120 })).toEqual({
       start: 20,

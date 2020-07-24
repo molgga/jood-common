@@ -1,1 +1,1 @@
-export const A = {};
+export * from "./TTLCache";

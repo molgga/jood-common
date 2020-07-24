@@ -248,7 +248,7 @@ interface TransposeRowFilterParams<T> {
  * @template T 각 행의 타입
  * @template C 필터한 열의 타입
  * @param {T[]} ref 변경 할 배열
- * @param {(params: TransposeRowFilterParams<T>) => C} filter 각 요소를 정제할 함수.
+ * @param {Function} filter (params: TransposeRowFilterParams<T>) => C 각 요소를 정제할 함수.
  * @returns {C[][]}
  */
 export function transposeRowFilter<T, C>(

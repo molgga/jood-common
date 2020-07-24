@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>JdDate - Documentation</title>
+    <title>cache/ttl/TTLCache.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -30,106 +30,141 @@
 
 <div id="main">
     
-    <h1 class="page-title">JdDate</h1>
+    <h1 class="page-title">cache/ttl/TTLCache.ts</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-        JdDate
-        </h2>
-        
-    
-</header>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>type Serializable = any;
 
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description">namespace array module</div>
-        
+class CacheValue&lt;T = any> {
+  private _value: T;
+  private _expireAt: number;
+  get value() {
+    return this._value;
+  }
+  get expireAt() {
+    return this._expireAt;
+  }
+  setValue(value: T) {
+    this._value = value;
+  }
+  setExpireAt(at: number) {
+    this._expireAt = at;
+  }
+}
 
-        
+/**
+ * ttl 캐시
+ * @export
+ * @class TTLCache
+ */
+export class TTLCache {
+  protected cacheMap: Map&lt;string, CacheValue> = new Map();
 
+  protected now(): number {
+    return Date.now();
+  }
 
-<dl class="details">
+  /**
+   * 보유 맵
+   * @readonly
+   * @type {Map&lt;string, CacheValue>}
+   */
+  get map(): Map&lt;string, CacheValue> {
+    return this.cacheMap;
+  }
 
-    
+  /**
+   * key 가 존재하는 경우 값이 expire 되었는지 여부 확인.
+   * key 가 존재하지 않는 경우 true.
+   * @param {string} key
+   */
+  expired(key: string): boolean {
+    if (this.cacheMap.has(key)) {
+      const now = this.now();
+      const cacheValue = this.cacheMap.get(key);
+      const expireAt = cacheValue.expireAt;
+      if (expireAt &lt; now) {
+        this.remove(key);
+        return true;
+      } else {
+        return false;
+      }
+    }
+    return true;
+  }
 
-    
+  /**
+   * key 에 해당하는 값 반환
+   * @template T
+   * @param {string} key
+   */
+  get&lt;T>(key: string): T {
+    if (this.has(key)) {
+      if (this.expired(key)) {
+        return;
+      } else {
+        return this.cacheMap.get(key).value;
+      }
+    }
+    return;
+  }
 
-    
+  /**
+   * key 에 value 를 expire(millisecond) 만큼 저장
+   * @template T
+   * @param {string} key
+   * @param {T} value
+   * @param {number} expire
+   */
+  set&lt;T>(key: string, value: T, expire: number): void {
+    if (!expire) return;
+    const now = this.now();
+    const cacheValue = new CacheValue&lt;T>();
+    cacheValue.setValue(value);
+    cacheValue.setExpireAt(now + +expire);
+    this.cacheMap.set(key, cacheValue);
+  }
 
-    
+  /**
+   * key 가 존재하는지 여부
+   * @param {string} key
+   */
+  has(key: string): boolean {
+    return !this.expired(key) ? this.cacheMap.has(key) : false;
+  }
 
-    
+  /**
+   * key 삭제
+   * @param {string} key
+   */
+  remove(key: string): void {
+    this.cacheMap.delete(key);
+  }
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="public-api.ts.html">public-api.ts</a>, <a href="public-api.ts.html#line26">line 26</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-            <h3>Example</h3>
-            
-    <pre class="prettyprint"><code>import { JdDate } from '@jood/common';
-JdDate.toFormat(...);</code></pre>
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+  /**
+   * 보유하고 있는 key&amp;value 를 모두 반환
+   */
+  toJson() {
+    const keys = Array.from(this.cacheMap.keys());
+    const hash: { [key: string]: Serializable } = {};
+    keys.map((key) => {
+      if (!this.expired(key)) {
+        hash[key.toString()] = this.get(key);
+      }
+    });
+    return hash;
+  }
+}
+</code></pre>
+        </article>
+    </section>
 
 
 

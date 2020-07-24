@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>JdDate - Documentation</title>
+    <title>Global - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -30,7 +30,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">JdDate</h1>
+    <h1 class="page-title">Global</h1>
     
 
     
@@ -43,7 +43,7 @@
 <header>
     
         <h2>
-        JdDate
+        
         </h2>
         
     
@@ -52,8 +52,6 @@
 <article>
     <div class="container-overview">
     
-        
-            <div class="description">namespace array module</div>
         
 
         
@@ -86,11 +84,6 @@
     
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="public-api.ts.html">public-api.ts</a>, <a href="public-api.ts.html#line26">line 26</a>
-    </li></ul></dd>
-    
 
     
 
@@ -99,12 +92,6 @@
     
 </dl>
 
-
-        
-            <h3>Example</h3>
-            
-    <pre class="prettyprint"><code>import { JdDate } from '@jood/common';
-JdDate.toFormat(...);</code></pre>
 
         
     
@@ -122,6 +109,363 @@ JdDate.toFormat(...);</code></pre>
 
     
 
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="intersect"><span class="type-signature"></span>intersect<span class="signature">(one, other)</span><span class="type-signature"> &rarr; {<a href="IntersectRange.html">IntersectRange</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    축 교차점 비교
+one 의 { start, end } 와 other 의 { start, end } 를 비교
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<div class="parameters-wrap">
+  <div class="parameters-inner">
+    <table class="params">
+      <thead>
+      <tr>
+          
+          <th>Name</th>
+          
+
+          <th>Type</th>
+
+          
+
+          
+
+          <th class="last">Description</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      
+
+          <tr>
+              
+                  <td class="name"><code>one</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type"><a href="IntersectRange.html">IntersectRange</a></span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last"></td>
+          </tr>
+
+      
+
+          <tr>
+              
+                  <td class="name"><code>other</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type"><a href="IntersectRange.html">IntersectRange</a></span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last"></td>
+          </tr>
+
+      
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="point_utils.ts.html">point/utils.ts</a>, <a href="point_utils.ts.html#line9">line 9</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="IntersectRange.html">IntersectRange</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="isIntersect"><span class="type-signature"></span>isIntersect<span class="signature">(one, other)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    
+
+
+
+<div class="description">
+    intersect 를 이용해 hitTest
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<div class="parameters-wrap">
+  <div class="parameters-inner">
+    <table class="params">
+      <thead>
+      <tr>
+          
+          <th>Name</th>
+          
+
+          <th>Type</th>
+
+          
+
+          
+
+          <th class="last">Description</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      
+
+          <tr>
+              
+                  <td class="name"><code>one</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type"><a href="IntersectRange.html">IntersectRange</a></span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last"></td>
+          </tr>
+
+      
+
+          <tr>
+              
+                  <td class="name"><code>other</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type"><a href="IntersectRange.html">IntersectRange</a></span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last"></td>
+          </tr>
+
+      
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="point_utils.ts.html">point/utils.ts</a>, <a href="point_utils.ts.html#line26">line 26</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
     
 
     

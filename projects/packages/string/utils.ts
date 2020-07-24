@@ -57,7 +57,7 @@ export function toUpperCaseHead(text: string): string {
  * console.log(toCamelFromSnake("user_name")); // "userName"
  */
 export function toCamelFromSnake(text: string): string {
-  return text.replace(/([_][a-z])/gi, $1 => {
+  return text.replace(/([_][a-z])/gi, ($1) => {
     return $1.toUpperCase().replace("_", "");
   });
 }
@@ -69,7 +69,7 @@ export function toCamelFromSnake(text: string): string {
  * console.log(toCamelFromKebab("user-name")); // "userName"
  */
 export function toCamelFromKebab(text: string): string {
-  return text.replace(/([-][a-z])/gi, $1 => {
+  return text.replace(/([-][a-z])/gi, ($1) => {
     return $1.toUpperCase().replace("-", "");
   });
 }
@@ -365,7 +365,7 @@ export function refineSafeHtmlText(source: string): string {
  * console.log(escape("<div>ab&cd</div>")); // "&lt;div&gt;ab&amp;cd&lt;/div&gt;"
  */
 export function escape(text: string): string {
-  return text.replace(/[<>&]/g, function(match) {
+  return text.replace(/[<>&]/g, function (match) {
     switch (match) {
       case "<":
         return "&lt;";
@@ -435,4 +435,98 @@ export function collapseMultiline(text: string, allow: number = 2): string {
     }
   });
   return refine.join("\n");
+}
+
+/**
+ * 마스킹 처리 옵션
+ * @interface MaskingOptions
+ * @property mask? {string} 마스킹 문자
+ * @property maxShow? {number} 마스킹 되지 않는 최대 문자수
+ */
+interface MaskingOptions {
+  mask?: string;
+  maxShow?: number;
+}
+
+/**
+ * 문자열 마스킹 - 앞 기준
+ * @param {string} text 소수 문자열
+ * @param {MaskingOptions} [options={}] 마스킹 옵션
+ */
+export function toMaskingFirst(
+  text: string,
+  options: MaskingOptions = {}
+): string {
+  const strLength = text.length;
+  if (!strLength || strLength <= 1) return text;
+  const { mask = "*", maxShow = 0 } = options;
+  const strHalf = Math.floor(strLength / 2);
+  const cutPivot = maxShow ? Math.min(maxShow, strHalf) : strHalf;
+  const cutFirst = strLength - Math.max(1, cutPivot);
+  const strFirst = Array.from(Array(cutFirst))
+    .map(() => mask)
+    .join("");
+  const strLast = text.slice(cutFirst);
+  return strFirst + strLast;
+}
+
+/**
+ * 문자열 마스킹 - 뒤 기준
+ * @param {string} text 소수 문자열
+ * @param {MaskingOptions} [options={}] 마스킹 옵션
+ */
+export function toMaskingLast(text: string, options: MaskingOptions = {}) {
+  const strLength = text.length;
+  if (!strLength || strLength <= 1) return text;
+  const { mask = "*", maxShow = 0 } = options;
+  const strHalf = Math.floor(strLength / 2);
+  const cutPivot = maxShow ? Math.min(maxShow, strHalf) : strHalf;
+  const cutFirst = Math.max(1, cutPivot);
+  const strFirst = text.slice(0, cutFirst);
+  const strLast = Array.from(Array(strLength - cutFirst))
+    .map(() => mask)
+    .join("");
+  return strFirst + strLast;
+}
+
+/**
+ * 문자열 마스킹 - 중간 기준
+ * @param {string} text 소수 문자열
+ * @param {MaskingOptions} [options={}] 마스킹 옵션
+ */
+export function toMaskingMiddle(text: string, options: MaskingOptions = {}) {
+  const strLength = text.length;
+  if (!strLength || strLength <= 1) return text;
+  const { mask = "*", maxShow = 0 } = options;
+  const strHalf = Math.floor(strLength / 2);
+  const cutPivot = maxShow ? Math.min(maxShow, strHalf) : strHalf;
+  const cutFirst = Math.max(1, Math.ceil(cutPivot / 2));
+  const cutLast = Math.max(0, cutPivot - cutFirst);
+  const strFirst = text.slice(0, cutFirst);
+  const strMiddle = Array.from(Array(strLength - cutFirst - cutLast))
+    .map(() => mask)
+    .join("");
+  const strLast = cutLast ? text.slice(-cutLast) : "";
+  return strFirst + strMiddle + strLast;
+}
+
+/**
+ * 문자열 마스킹 - 양쪽 기준
+ * @param {string} text 소수 문자열
+ * @param {MaskingOptions} [options={}] 마스킹 옵션
+ */
+export function toMaskingJustify(text: string, options: MaskingOptions = {}) {
+  const strLength = text.length;
+  if (!strLength || strLength <= 1) return text;
+  const { mask = "*", maxShow = 0 } = options;
+  const strHalf = Math.floor(strLength / 2);
+  const cutPivot = maxShow ? Math.min(maxShow, strHalf) : strHalf;
+  const cutFirst = Math.max(1, Math.ceil((strLength - cutPivot) / 2));
+  const cutLast = Math.max(0, strLength - cutFirst - cutPivot);
+  const strFirst = text.slice(0, cutFirst).replace(/./g, mask);
+  const strMiddle = cutLast
+    ? text.slice(cutFirst, -cutLast)
+    : text.slice(cutFirst);
+  const strLast = cutLast ? text.slice(-cutLast).replace(/./g, mask) : "";
+  return strFirst + strMiddle + strLast;
 }

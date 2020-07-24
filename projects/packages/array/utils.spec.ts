@@ -5,7 +5,9 @@ import {
   extract,
   distinct,
   uniqueFilter,
-  shuffle
+  shuffle,
+  transposeRow,
+  transposeRowFilter,
 } from "./utils";
 
 describe("array utils", () => {
@@ -14,23 +16,23 @@ describe("array utils", () => {
       { id: 1, name: "google" },
       { id: 2, name: "microsoft" },
       { id: 1, name: "google" },
-      { id: 3, name: "amazone" }
+      { id: 3, name: "amazone" },
     ];
-    const idFilter = item => {
+    const idFilter = (item) => {
       return item.id;
     };
-    const nameFilter = item => {
+    const nameFilter = (item) => {
       return item.name;
     };
     expect(arr1.filter(uniqueFilter(idFilter))).toEqual([
       { id: 1, name: "google" },
       { id: 2, name: "microsoft" },
-      { id: 3, name: "amazone" }
+      { id: 3, name: "amazone" },
     ]);
     expect(arr1.filter(uniqueFilter(nameFilter))).toEqual([
       { id: 1, name: "google" },
       { id: 2, name: "microsoft" },
-      { id: 3, name: "amazone" }
+      { id: 3, name: "amazone" },
     ]);
   });
 
@@ -41,19 +43,19 @@ describe("array utils", () => {
       { id: 1, name: "google" },
       { id: 2, name: "microsoft" },
       { id: 1, name: "google" },
-      { id: 3, name: "amazone" }
+      { id: 3, name: "amazone" },
     ];
 
     expect(distinct(arr1)).toEqual([1, 2, 3, 4, 5]);
     expect(distinct(arr2)).toEqual([1, 2, 3, 4, 5]);
     expect(
-      distinct(arr3, item => {
+      distinct(arr3, (item) => {
         return item.id;
       })
     ).toEqual([
       { id: 1, name: "google" },
       { id: 2, name: "microsoft" },
-      { id: 3, name: "amazone" }
+      { id: 3, name: "amazone" },
     ]);
   });
 
@@ -103,7 +105,7 @@ describe("array utils", () => {
     enum TestEnum {
       A = 100,
       B = 200,
-      C = 300
+      C = 300,
     }
 
     const available1 = [10, 20, 30];
@@ -146,5 +148,105 @@ describe("array utils", () => {
       shuffle(origin);
       expect(origin.length).toBe(originLen);
     }
+  });
+
+  it("transposeRow", () => {
+    const A = { id: 1, name: "A" };
+    const B = { id: 2, name: "B" };
+    const C = { id: 3, name: "C" };
+    const D = { id: 4, name: "D" };
+    const arr = [A, B, C, D];
+    const rows = transposeRow(arr);
+    expect(rows.length).toBe(4);
+    expect(rows[0].length).toBe(4);
+    expect(rows[1].length).toBe(4);
+    expect(rows[2].length).toBe(4);
+    expect(rows[3].length).toBe(4);
+    expect(rows[0][0]).toBe(A);
+    expect(rows[0][1]).toBe(B);
+    expect(rows[0][2]).toBe(C);
+    expect(rows[0][3]).toBe(D);
+    expect(rows[1][0]).toBe(A);
+    expect(rows[1][1]).toBe(B);
+    expect(rows[1][2]).toBe(C);
+    expect(rows[1][3]).toBe(D);
+    expect(rows[2][0]).toBe(A);
+    expect(rows[2][1]).toBe(B);
+    expect(rows[2][2]).toBe(C);
+    expect(rows[2][3]).toBe(D);
+    expect(rows[3][0]).toBe(A);
+    expect(rows[3][1]).toBe(B);
+    expect(rows[3][2]).toBe(C);
+    expect(rows[3][3]).toBe(D);
+  });
+
+  it("transposeRowFilter", () => {
+    const A = { id: 1, name: "A" };
+    const B = { id: 2, name: "B" };
+    const C = { id: 3, name: "C" };
+    const D = { id: 4, name: "D" };
+    const arr = [A, B, C, D];
+    const rows = transposeRowFilter(arr, (params) => {
+      const { rowIndex, columnIndex, item } = params;
+      return {
+        ...item,
+        myValue1: item.name.toLowerCase(),
+        rowIndex,
+        columnIndex,
+      };
+    });
+    expect(rows.length).toBe(4);
+    expect(rows[0].length).toBe(4);
+    expect(rows[1].length).toBe(4);
+    expect(rows[2].length).toBe(4);
+    expect(rows[3].length).toBe(4);
+    expect(rows[0][0].myValue1).toBe("a");
+    expect(rows[0][1].myValue1).toBe("b");
+    expect(rows[0][2].myValue1).toBe("c");
+    expect(rows[0][3].myValue1).toBe("d");
+    expect(rows[0][0].rowIndex).toBe(0);
+    expect(rows[0][1].rowIndex).toBe(0);
+    expect(rows[0][2].rowIndex).toBe(0);
+    expect(rows[0][3].rowIndex).toBe(0);
+    expect(rows[0][0].columnIndex).toBe(0);
+    expect(rows[0][1].columnIndex).toBe(1);
+    expect(rows[0][2].columnIndex).toBe(2);
+    expect(rows[0][3].columnIndex).toBe(3);
+    expect(rows[1][0].myValue1).toBe("a");
+    expect(rows[1][1].myValue1).toBe("b");
+    expect(rows[1][2].myValue1).toBe("c");
+    expect(rows[1][3].myValue1).toBe("d");
+    expect(rows[1][0].rowIndex).toBe(1);
+    expect(rows[1][1].rowIndex).toBe(1);
+    expect(rows[1][2].rowIndex).toBe(1);
+    expect(rows[1][3].rowIndex).toBe(1);
+    expect(rows[1][0].columnIndex).toBe(0);
+    expect(rows[1][1].columnIndex).toBe(1);
+    expect(rows[1][2].columnIndex).toBe(2);
+    expect(rows[1][3].columnIndex).toBe(3);
+    expect(rows[2][0].myValue1).toBe("a");
+    expect(rows[2][1].myValue1).toBe("b");
+    expect(rows[2][2].myValue1).toBe("c");
+    expect(rows[2][3].myValue1).toBe("d");
+    expect(rows[2][0].rowIndex).toBe(2);
+    expect(rows[2][1].rowIndex).toBe(2);
+    expect(rows[2][2].rowIndex).toBe(2);
+    expect(rows[2][3].rowIndex).toBe(2);
+    expect(rows[2][0].columnIndex).toBe(0);
+    expect(rows[2][1].columnIndex).toBe(1);
+    expect(rows[2][2].columnIndex).toBe(2);
+    expect(rows[2][3].columnIndex).toBe(3);
+    expect(rows[3][0].myValue1).toBe("a");
+    expect(rows[3][1].myValue1).toBe("b");
+    expect(rows[3][2].myValue1).toBe("c");
+    expect(rows[3][3].myValue1).toBe("d");
+    expect(rows[3][0].rowIndex).toBe(3);
+    expect(rows[3][1].rowIndex).toBe(3);
+    expect(rows[3][2].rowIndex).toBe(3);
+    expect(rows[3][3].rowIndex).toBe(3);
+    expect(rows[3][0].columnIndex).toBe(0);
+    expect(rows[3][1].columnIndex).toBe(1);
+    expect(rows[3][2].columnIndex).toBe(2);
+    expect(rows[3][3].columnIndex).toBe(3);
   });
 });

@@ -178,7 +178,7 @@ export function uniqueFilter<T>(
   uniqueFn: (item: T) => string | any
 ): (item: T) => boolean {
   const hash: { [key: string]: boolean } = {};
-  return item => {
+  return (item) => {
     const key = uniqueFn(item);
     if (hash[key]) return false;
     hash[key] = true;
@@ -204,4 +204,69 @@ export function shuffle<T>(ref: T[], seed?: number): void {
     ref[i] = ref[j];
     ref[j] = temp;
   }
+}
+
+/**
+ * 1차원 행[]을 2차원 행열[][]로 바꿉니다. 원본 컬럼을 그대로 사용합니다.
+ * [{id:1,name:'A'},{id:2,name:'B'},{id:3,name:'C'}]
+ * [
+ *  [{id:1,name:'A'},{id:2,name:'B'},{id:3,name:'C'}],
+ *  [{id:1,name:'A'},{id:2,name:'B'},{id:3,name:'C'}],
+ *  [{id:1,name:'A'},{id:2,name:'B'},{id:3,name:'C'}]
+ * ]
+ * @template T 각 행의 타입
+ * @param {T[]} ref 변경 할 배열
+ * @returns {T[][]}
+ */
+export function transposeRow<T>(ref: T[]): T[][] {
+  const refLen = ref.length;
+  const newRow: T[][] = Array(refLen);
+  for (let r = 0; r < refLen; r++) {
+    const newColumn: T[] = Array(refLen);
+    for (let c = 0; c < refLen; c++) {
+      newColumn[c] = ref[c];
+    }
+    newRow[r] = newColumn;
+  }
+  return newRow;
+}
+
+interface TransposeRowFilterParams<T> {
+  rowIndex: number;
+  columnIndex: number;
+  item: T;
+}
+
+/**
+ * 1차원 행[]을 2차원 행열[][]로 바꿉니다. 필터를 거친 요소로 변경합니다.
+ * [{id:1,name:'A'},{id:2,name:'B'},{id:3,name:'C'}]
+ * [
+ *  [filter({ rowIndex,columnIndex,item }), filter(...), filter(...)],
+ *  [filter(...), filter(...), filter(...)],
+ *  [filter(...), filter(...), filter(...)]
+ * ]
+ * @template T 각 행의 타입
+ * @template C 필터한 열의 타입
+ * @param {T[]} ref 변경 할 배열
+ * @param {Function} filter (params: TransposeRowFilterParams<T>) => C 각 요소를 정제할 함수.
+ * @returns {C[][]}
+ */
+export function transposeRowFilter<T, C>(
+  ref: T[],
+  filter: (params: TransposeRowFilterParams<T>) => C
+): C[][] {
+  const refLen = ref.length;
+  const newRow: C[][] = Array(refLen);
+  for (let r = 0; r < refLen; r++) {
+    const newColumn: C[] = Array(refLen);
+    for (let c = 0; c < refLen; c++) {
+      newColumn[c] = filter({
+        rowIndex: r,
+        columnIndex: c,
+        item: ref[c],
+      });
+    }
+    newRow[r] = newColumn;
+  }
+  return newRow;
 }

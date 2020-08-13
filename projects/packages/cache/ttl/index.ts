@@ -1,1 +1,1 @@
-export * from "./TTLCache";
+export * from './TTLCache';

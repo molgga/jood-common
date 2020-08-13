@@ -34,4 +34,13 @@ import * as JdArray from "./public-api.array";
  */
 import * as JdDate from "./public-api.date";
 
-export { JdString, JdNumber, JdArray, JdDate };
+/**
+ * namespace point module
+ * @namespace JdPoint
+ * @example
+ * import { JdPoint } from '@jood/common';
+ * JdPoint.intersect(...);
+ */
+import * as JdPoint from "./public-api.point";
+
+export { JdString, JdNumber, JdArray, JdDate, JdPoint };

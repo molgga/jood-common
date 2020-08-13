@@ -22,21 +22,6 @@ notifications:
     on_success: never
     on_failure: always
 
-# Job Lifecycle
-# 1.  OPTIONAL Install apt addons
-# 2.  OPTIONAL Install cache components
-# 3.  before_install
-# 4.  install
-# 5.  before_script
-# 6.  script
-# 7.  OPTIONAL before_cache (for cleaning up cache)
-# 8.  after_success or after_failure
-# 9.  OPTIONAL before_deploy
-# 10. OPTIONAL deploy
-# 11. OPTIONAL after_deploy
-# 12. after_script
-# see: https://docs.travis-ci.com/user/job-lifecycle/#the-job-lifecycle
-
 install:
   - npm install
 
@@ -51,21 +36,31 @@ script:
   - echo $TRAVIS_PULL_REQUEST
   - echo $TRAVIS_BUILD_NUMBER
   - echo $TRAVIS_REPO_SLUG
-  - npm run travis:build
-  - npm run travis:doc
-  - npm run travis:test
+  - npm run ci:test
 
 branches:
   only:
     - master
-    - /^v[0-9]+\.[0-9]+\.[0-9]+$/
+    - /^v[0-9]+\.[0-9]+\.[0-9]+(\-[0-9]+)?$/
 
 # condition https://stackoverflow.com/questions/34591587/travis-conditional-on-branch-after-success
-#  - test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && npm run travis:codecov
 after_success:
-  - test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && npm run travis:codecov
+  - if [[ "$TRAVIS_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(\-[0-9]+)?$ ]];
+    then echo "Running build" && npm run ci:deploy-before;
+    else echo "Ignore build";
+    fi
 
 deploy:
+  # 배포 설정 - github page
+  - provider: pages
+    edge: true
+    skip_cleanup: true
+    local_dir: docs
+    github_token: $GITHUB_PAGES_TOKEN
+    on:
+      branch: master
+      condition: $TRAVIS_TAG =~ ^v[0-9]+\.[0-9]+\.[0-9]+(\-[0-9]+)?$
+
   # 배포 설정 - npm module
   - provider: npm
     edge: true
@@ -77,13 +72,4 @@ deploy:
     on:
       repo: molgga/jood-common
       all_branches: true
-      condition: $TRAVIS_TAG =~ ^v[0-9]+\.[0-9]+\.[0-9]+$
-
-  # 배포 설정 - github page
-  - provider: pages
-    edge: true
-    skip_cleanup: true
-    local_dir: docs
-    github_token: $GITHUB_PAGES_TOKEN
-    on:
-      branch: master
+      condition: $TRAVIS_TAG =~ ^v[0-9]+\.[0-9]+\.[0-9]+(\-[0-9]+)?$

@@ -1,15 +1,13 @@
 # @jood/common
 
+javascript array, string, number, point, cache, date utility/helper
+
 ![TRAVIS](https://travis-ci.org/molgga/jood-common.svg?branch=master)
 ![Codecov branch](https://img.shields.io/codecov/c/github/molgga/jood-common/master)
 ![NPM version](https://img.shields.io/npm/v/@jood/common.svg)
 ![NPM license](https://img.shields.io/npm/l/@jood/common)
 ![NPM download](https://img.shields.io/npm/dt/@jood/common)
 ![NPM bundle size](https://img.shields.io/bundlephobia/min/@jood/common)
-
-javascript common utility, constance, helper
-
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli)
 
 ## Quick link
 
@@ -20,11 +18,17 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
 ## Quick sample
 
 ```typescript
-import { JdString, JdNumber, JdArray, JdDate } from "@jood/common";
+import { JdString, JdNumber, JdArray, JdDate, JdPoint } from "@jood/common";
 import { replaceAll } from "@jood/common/string";
 import { isNumber } from "@jood/common/number";
 import { insert } from "@jood/common/array";
 import { toFormat } from "@jood/common/date";
+import { isIntersect } from "@jood/common/point";
+import { TTLCache } from "@jood/common/cache";
 
 console.log(replaceAll("hello-foo", "-", "#")); // "hello#foo"
 ```
+
+---
+
+This library was generated with [Angular CLI](https://github.com/angular/angular-cli)

@@ -5,7 +5,7 @@
  * import { JdString } from '@jood/common';
  * JdString.replaceAll(...);
  */
-import * as JdString from "./public-api.string";
+import * as JdString from './public-api.string';
 
 /**
  * namespace number module
@@ -14,7 +14,7 @@ import * as JdString from "./public-api.string";
  * import { JdNumber } from '@jood/common';
  * JdNumber.isNumber(...);
  */
-import * as JdNumber from "./public-api.number";
+import * as JdNumber from './public-api.number';
 
 /**
  * namespace array module
@@ -23,7 +23,7 @@ import * as JdNumber from "./public-api.number";
  * import { JdArray } from '@jood/common';
  * JdArray.insert(...);
  */
-import * as JdArray from "./public-api.array";
+import * as JdArray from './public-api.array';
 
 /**
  * namespace array module
@@ -32,7 +32,7 @@ import * as JdArray from "./public-api.array";
  * import { JdDate } from '@jood/common';
  * JdDate.toFormat(...);
  */
-import * as JdDate from "./public-api.date";
+import * as JdDate from './public-api.date';
 
 /**
  * namespace point module
@@ -41,6 +41,15 @@ import * as JdDate from "./public-api.date";
  * import { JdPoint } from '@jood/common';
  * JdPoint.intersect(...);
  */
-import * as JdPoint from "./public-api.point";
+import * as JdPoint from './public-api.point';
 
-export { JdString, JdNumber, JdArray, JdDate, JdPoint };
+/**
+ * namespace color module
+ * @namespace JdPoint
+ * @example
+ * import { JdColor } from '@jood/common';
+ * JdColor.hexToRgb(...);
+ */
+import * as JdColor from './public-api.color';
+
+export { JdString, JdNumber, JdArray, JdDate, JdPoint, JdColor };

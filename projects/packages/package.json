@@ -1,6 +1,6 @@
 {
   "name": "@jood/common",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
     "number",
     "date",
     "cache",
+    "color",
     "point"
   ],
   "publishConfig": {

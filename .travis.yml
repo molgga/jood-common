@@ -22,18 +22,21 @@ notifications:
     on_success: never
     on_failure: always
 
+# Job Lifecycle
+# see: https://docs.travis-ci.com/user/job-lifecycle/#the-job-lifecycle
+
 install:
-  - npm install
+  - npm run ci:bootstrap
 
 services:
   - xvfb
 
-# travis environment https://docs.travis-ci.com/user/environment-variables
 script:
   - echo $TRAVIS_COMMIT
   - echo $TRAVIS_BRANCH
   - echo $TRAVIS_TAG
   - echo $TRAVIS_PULL_REQUEST
+  - echo $TRAVIS_PULL_REQUEST_BRANCH
   - echo $TRAVIS_BUILD_NUMBER
   - echo $TRAVIS_REPO_SLUG
   - npm run ci:test
@@ -45,7 +48,7 @@ branches:
 
 # condition https://stackoverflow.com/questions/34591587/travis-conditional-on-branch-after-success
 after_success:
-  - if [[ "$TRAVIS_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(\-[0-9]+)?$ ]];
+  - if [[ "$TRAVIS_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(\-[0-9]+)?$ || "$TRAVIS_TAG" =~ ^doc[0-9]+\.[0-9]+\.[0-9]+(\-[0-9]+)?$ ]]; 
     then echo "Running build" && npm run ci:deploy-before;
     else echo "Ignore build";
     fi
@@ -59,7 +62,7 @@ deploy:
     github_token: $GITHUB_PAGES_TOKEN
     on:
       branch: master
-      condition: $TRAVIS_TAG =~ ^v[0-9]+\.[0-9]+\.[0-9]+(\-[0-9]+)?$
+      condition: $TRAVIS_TAG =~ ^v[0-9]+\.[0-9]+\.[0-9]+(\-[0-9]+)?$ OR $TRAVIS_TAG =~ ^doc[0-9]+\.[0-9]+\.[0-9]+(\-[0-9]+)?$
 
   # 배포 설정 - npm module
   - provider: npm

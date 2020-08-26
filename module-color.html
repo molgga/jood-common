@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>date - Documentation</title>
+    <title>color - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -30,7 +30,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">date</h1>
+    <h1 class="page-title">color</h1>
     
 
     
@@ -75,14 +75,14 @@
 
     
 
-    <h4 class="name" id=".toFormat"><span class="type-signature">(static) </span>toFormat<span class="signature">(at, options)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".hexToRgb"><span class="type-signature">(static) </span>hexToRgb<span class="signature">(hex)</span><span class="type-signature"> &rarr; {Array.&lt;number>}</span></h4>
 
     
 
 
 
 <div class="description">
-    지정된 시간을 지정된 옵션의 포맷으로 변경
+    hex('#ff0000') 컬러값을 rgb([255,0,0]) 형태로 변환 합니다.
 </div>
 
 
@@ -120,10 +120,15 @@
 
           <tr>
               
-                  <td class="name"><code>at</code></td>
+                  <td class="name"><code>hex</code></td>
               
 
               <td class="type">
+              
+                  
+<span class="param-type">string</span>
+
+
               
               </td>
 
@@ -131,25 +136,7 @@
 
               
 
-              <td class="description last">시간</td>
-          </tr>
-
-      
-
-          <tr>
-              
-                  <td class="name"><code>options</code></td>
-              
-
-              <td class="type">
-              
-              </td>
-
-              
-
-              
-
-              <td class="description last">옵션</td>
+              <td class="description last">변환할 컬러값</td>
           </tr>
 
       
@@ -192,7 +179,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="date_utils.ts.html">date/utils.ts</a>, <a href="date_utils.ts.html#line21">line 21</a>
+        <a href="color_utils.ts.html">color/utils.ts</a>, <a href="color_utils.ts.html#line15">line 15</a>
     </li></ul></dd>
     
 
@@ -215,17 +202,30 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;number></span>
+
+
+    </dd>
+</dl>
+
+    
 
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const at1 = 1553146437000; // new Date("2019-03-21 14:33:57").getTime();
-const at2 = 1553146437; // unixtime
-console.log(toFormat(at1)); // "2019-03-21 14:33:57"
-console.log(toFormat(at1, { format: "YYYY-MM-DD" })); // "2019-03-21"
-console.log(toFormat(at1, { format: "hh:mm:ss YYYY/MM/DD" })); // "14:33:57 2019/03/21"
-console.log(toFormat(at2, { multiple: 1000 })); // "2019-03-21 14:33:57"
-console.log(toFormat("", { alternative: "Unknown" })); // "Unknown"</code></pre>
+    <pre class="prettyprint"><code>console.log(hexToRgb("#ff0000")); // [255, 0, 0]
+console.log(hexToRgb("#12ff34")); // [18, 255, 52]</code></pre>
 
 
 
@@ -234,14 +234,14 @@ console.log(toFormat("", { alternative: "Unknown" })); // "Unknown"</code></pre>
 
     
 
-    <h4 class="name" id=".toPast"><span class="type-signature">(static) </span>toPast<span class="signature">(fromAt, pastAt, options)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".inHexRange"><span class="type-signature">(static) </span>inHexRange<span class="signature">(minHex, maxHex, percent)</span><span class="type-signature"> &rarr; {Array.&lt;number>}</span></h4>
 
     
 
 
 
 <div class="description">
-    pastAt 이 fromAt 으로 부터 지나간 시간을 지정된 옵션에 따라 반환.
+    minHex 와 maxHex 값 사이의 percent 에 해당하는 rgb 값을 반환 합니다.
 </div>
 
 
@@ -279,10 +279,15 @@ console.log(toFormat("", { alternative: "Unknown" })); // "Unknown"</code></pre>
 
           <tr>
               
-                  <td class="name"><code>fromAt</code></td>
+                  <td class="name"><code>minHex</code></td>
               
 
               <td class="type">
+              
+                  
+<span class="param-type">string</span>
+
+
               
               </td>
 
@@ -290,17 +295,22 @@ console.log(toFormat("", { alternative: "Unknown" })); // "Unknown"</code></pre>
 
               
 
-              <td class="description last">기준 시간</td>
+              <td class="description last"></td>
           </tr>
 
       
 
           <tr>
               
-                  <td class="name"><code>pastAt</code></td>
+                  <td class="name"><code>maxHex</code></td>
               
 
               <td class="type">
+              
+                  
+<span class="param-type">string</span>
+
+
               
               </td>
 
@@ -308,17 +318,22 @@ console.log(toFormat("", { alternative: "Unknown" })); // "Unknown"</code></pre>
 
               
 
-              <td class="description last">비교할 시간</td>
+              <td class="description last"></td>
           </tr>
 
       
 
           <tr>
               
-                  <td class="name"><code>options</code></td>
+                  <td class="name"><code>percent</code></td>
               
 
               <td class="type">
+              
+                  
+<span class="param-type">number</span>
+
+
               
               </td>
 
@@ -326,7 +341,7 @@ console.log(toFormat("", { alternative: "Unknown" })); // "Unknown"</code></pre>
 
               
 
-              <td class="description last">옵션</td>
+              <td class="description last"></td>
           </tr>
 
       
@@ -369,7 +384,7 @@ console.log(toFormat("", { alternative: "Unknown" })); // "Unknown"</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="date_utils.ts.html">date/utils.ts</a>, <a href="date_utils.ts.html#line68">line 68</a>
+        <a href="color_utils.ts.html">color/utils.ts</a>, <a href="color_utils.ts.html#line89">line 89</a>
     </li></ul></dd>
     
 
@@ -392,17 +407,403 @@ console.log(toFormat("", { alternative: "Unknown" })); // "Unknown"</code></pre>
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    const min = "#c80000";
+const max = "#ffff00";
+console.log(inHexRange(min, max, 0)); // [200, 0, 0]
+console.log(inHexRange(min, max, 0.25)); // [214, 64, 0]
+console.log(inHexRange(min, max, 0.5)); // [228, 128, 0]
+console.log(inHexRange(min, max, 0.75)); // [241, 191, 0]
+console.log(inHexRange(min, max, 1)); // [255, 255, 0]
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;number></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".inRgbRange"><span class="type-signature">(static) </span>inRgbRange<span class="signature">(minRgb, maxRgb, percent)</span><span class="type-signature"> &rarr; {Array.&lt;number>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    minRgb 과 maxRgb 값 사이의 percent 에 해당하는 rgb 값을 반환 합니다.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<div class="parameters-wrap">
+  <div class="parameters-inner">
+    <table class="params">
+      <thead>
+      <tr>
+          
+          <th>Name</th>
+          
+
+          <th>Type</th>
+
+          
+
+          
+
+          <th class="last">Description</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      
+
+          <tr>
+              
+                  <td class="name"><code>minRgb</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type">Array.&lt;number></span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last"></td>
+          </tr>
+
+      
+
+          <tr>
+              
+                  <td class="name"><code>maxRgb</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type">Array.&lt;number></span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last"></td>
+          </tr>
+
+      
+
+          <tr>
+              
+                  <td class="name"><code>percent</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type">number</span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last"></td>
+          </tr>
+
+      
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="color_utils.ts.html">color/utils.ts</a>, <a href="color_utils.ts.html#line66">line 66</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;number></span>
+
+
+    </dd>
+</dl>
+
+    
 
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const now = new Date("2019-03-12 08:10:20").getTime();
-console.log(toPast(now, new Date("2019-03-12 08:09:21").getTime())); // '방금 전'
-console.log(toPast(now, new Date("2019-03-12 08:00:20").getTime())); // '10분 전'
-console.log(toPast(now, new Date("2019-03-12 07:10:20").getTime())); // '1시간 전'
-console.log(toPast(now, new Date("2019-03-11 08:10:21").getTime())); // '23시간 전'
-console.log(toPast(now, new Date("2019-03-10 08:10:20").getTime())); // '2일 전'
-console.log(toPast(now, new Date("2019-02-10 08:10:19").getTime(), { format: "YYYY년 MM월 DD일"})); // "2019년 02월 10일"</code></pre>
+    <pre class="prettyprint"><code>const min = [200, 0, 0];
+const max = [255, 255, 0];
+console.log(inRgbRange(min, max, 0)); // [200, 0, 0]
+console.log(inRgbRange(min, max, 0.25)); // [214, 64, 0]
+console.log(inRgbRange(min, max, 0.5)); // [228, 128, 0]
+console.log(inRgbRange(min, max, 0.75)); // [241, 191, 0]
+console.log(inRgbRange(min, max, 1)); // [255, 255, 0]</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".rgbToHex"><span class="type-signature">(static) </span>rgbToHex<span class="signature">(rgb)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+<div class="description">
+    rgb([255,0,0]) 컬러값을 hex(#ff0000) 형태로 변환합니다.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<div class="parameters-wrap">
+  <div class="parameters-inner">
+    <table class="params">
+      <thead>
+      <tr>
+          
+          <th>Name</th>
+          
+
+          <th>Type</th>
+
+          
+
+          
+
+          <th class="last">Description</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      
+
+          <tr>
+              
+                  <td class="name"><code>rgb</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type">Array.&lt;number></span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last">변환할 컬러값</td>
+          </tr>
+
+      
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="color_utils.ts.html">color/utils.ts</a>, <a href="color_utils.ts.html#line43">line 43</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(rgbToHex([255, 0, 0])); // "#ff0000"
+console.log(rgbToHex([12, 0, 0])); // "#0c0000"</code></pre>
 
 
 

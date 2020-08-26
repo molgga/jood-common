@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>cache/ttl/TTLCache.ts - Documentation</title>
+    <title>cache/ttl/CacheValue.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -30,7 +30,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">cache/ttl/TTLCache.ts</h1>
+    <h1 class="page-title">cache/ttl/CacheValue.ts</h1>
     
 
     
@@ -40,203 +40,69 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { CacheValue } from "./CacheValue";
-import { Serializable } from "./types";
-
-/**
- * ttl 캐시
+            <pre class="prettyprint source linenums"><code>/**
+ * ttl 캐시 값
  * @export
- * @class TTLCache
- * @example
- *  const ttlCache = new TTLCache();
- * ttlCache.set("A", "myValue1", 0);
- * ttlCache.set("B", "myValue2", 100);
- * ttlCache.set("C", "myValue3", 200);
- * ttlCache.expired("unknown-k1"); // true;
- * ttlCache.expired("unknown-k2"); // true;
- * ttlCache.expired("A"); // true;
- * ttlCache.expired("B"); // false;
- * ttlCache.expired("C")); // false;
- * ttlCache.get("unknown-k1"); // undefined
- * ttlCache.get("unknown-k2"); // undefined
- * ttlCache.get("A"); // undefined
- * ttlCache.get("B"); // "myValue2"
- * ttlCache.get("C"); // "myValue3"
- * ttlCache.toJson(); // { B: "myValue2", C: "myValue3" }
- * // await delay(101);
- * ttlCache.expired("unknown-k1"); // true
- * ttlCache.expired("unknown-k2"); // true
- * ttlCache.expired("A"); // true
- * ttlCache.expired("B"); // true
- * ttlCache.expired("C"); // false
- * ttlCache.get("unknown-k1"); // undefined
- * ttlCache.get("unknown-k2"); // undefined
- * ttlCache.get("A"); // undefined
- * ttlCache.get("B"); // undefined
- * ttlCache.get("C"); // "myValue3"
- * ttlCache.toJson(); // { C: "myValue3" }
+ * @class CacheValue
+ * @template T
  */
-export class TTLCache {
-  protected cacheMap: Map&lt;string, CacheValue> = new Map();
-  protected now(): number {
-    return Date.now();
-  }
-
+export class CacheValue&lt;T = any> {
+  private _key: string;
+  private _value: T;
+  private _expireAt: number;
+  private _expireNotfyTimer: any;
   /**
-   * CacheValue 에 등록된 expire 시간(정도) 후 CacheValue 로 부터 호출을 기대하는 콜백
-   * @protected
-   */
-  protected fnExpireNotify = (key: string) => {
-    if (this.expired(key)) {
-      this.remove(key);
-    }
-  };
-
-  /**
-   * 보유 맵
+   * 캐시 값
    * @readonly
-   * @type {Map&lt;string, CacheValue>}
    */
-  get map(): Map&lt;string, CacheValue> {
-    return this.cacheMap;
+  get value() {
+    return this._value;
   }
-
   /**
-   * 맵의 value
-   * @protected
-   * @param {string} key
-   * @returns {CacheValue}
+   * 캐시 시간
+   * @readonly
    */
-  protected getCache(key: string): CacheValue {
-    return this.cacheMap.get(key);
+  get expireAt() {
+    return this._expireAt;
   }
-
   /**
-   * key 가 존재하는 경우 값이 expire 되었는지 여부 확인.
-   * key 가 존재하지 않는 경우 true.
+   * 캐시 키 지정
    * @param {string} key
    */
-  expired(key: string): boolean {
-    if (this.cacheMap.has(key)) {
-      const now = this.now();
-      const cacheValue = this.getCache(key);
-      const expireAt = cacheValue.expireAt;
-      if (expireAt &lt; now) {
-        this.remove(key);
-        return true;
-      } else {
-        return false;
-      }
-    }
-    return true;
+  setKey(key: string) {
+    this._key = key;
   }
-
   /**
-   * key 에 해당하는 값 반환
-   * @template T
-   * @param {string} key
-   */
-  get&lt;T>(key: string): T {
-    if (this.has(key)) {
-      if (this.expired(key)) {
-        return;
-      } else {
-        return this.getCache(key).value;
-      }
-    }
-    return;
-  }
-
-  /**
-   * key 에 value 를 expire(millisecond) 만큼 저장
-   * @template T
-   * @param {string} key
+   * 캐시 값 지정
    * @param {T} value
+   */
+  setValue(value: T) {
+    this._value = value;
+  }
+  /**
+   * 캐시 시간 지정
+   * @param {number} at
+   */
+  setExpireAt(at: number) {
+    this._expireAt = at;
+  }
+  /**
+   * 지정된 expire 시간 만큼 대기 후 fnCallback 을 트리거
    * @param {number} expire
+   * @param {Function} fnCallback
    */
-  set&lt;T>(key: string, value: T, expire: number): void {
-    if (!expire) return;
-    const now = this.now();
-    const cacheValue = new CacheValue&lt;T>();
-    const existCache = this.getCache(key);
-    if (existCache) {
-      existCache.destroy();
-    }
-    cacheValue.setKey(key);
-    cacheValue.setValue(value);
-    cacheValue.setExpireAt(now + +expire);
-    cacheValue.setExpireNotify(expire, this.fnExpireNotify);
-    this.cacheMap.set(key, cacheValue);
+  setExpireNotify(expire: number, fnCallback: Function) {
+    clearTimeout(this._expireNotfyTimer);
+    this._expireNotfyTimer = setTimeout(() => {
+      fnCallback(this._key);
+    }, expire + 900);
   }
-
-  /**
-   * key 가 존재하는지 여부
-   * @param {string} key
-   */
-  has(key: string): boolean {
-    return !this.expired(key) ? this.cacheMap.has(key) : false;
-  }
-
-  /**
-   * key 삭제
-   * @param {string} key
-   */
-  remove(key: string): void {
-    const cacheValue = this.getCache(key);
-    if (cacheValue) {
-      cacheValue.destroy();
-    }
-    this.cacheMap.delete(key);
-  }
-
-  /**
-   * key 배열 반환
-   * @returns {string[]}
-   */
-  getKeys(): string[] {
-    return Array.from(this.cacheMap.keys());
-  }
-
-  /**
-   * expire 된것 삭제
-   */
-  flushExpired() {
-    this.getKeys().forEach((key) => {
-      if (this.expired(key)) {
-        this.remove(key);
-      }
-    });
-  }
-
-  /**
-   * 비우기
-   */
-  flushAll() {
-    this.getKeys().forEach((key) => {
-      this.remove(key);
-    });
-  }
-
-  /**
-   * 보유하고 있는 key&amp;value 를 모두 반환
-   */
-  toJson() {
-    const keys = Array.from(this.cacheMap.keys());
-    const hash: { [key: string]: Serializable } = {};
-    keys.map((key) => {
-      if (!this.expired(key)) {
-        hash[key.toString()] = this.get(key);
-      }
-    });
-    return hash;
-  }
-
   /**
    * 파기
    */
   destroy() {
     try {
-      this.flushAll();
+      clearTimeout(this._expireNotfyTimer);
     } catch (err) {
       console.error(err);
     }

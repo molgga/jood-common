@@ -20,15 +20,16 @@ javascript array, string, number, point, color, cache, date utility/helper
 ## Quick sample
 
 ```typescript
-import { JdString, JdNumber, JdArray, JdDate, JdPoint } from "@jood/common";
 import { replaceAll } from "@jood/common/string";
 import { isNumber } from "@jood/common/number";
 import { insert } from "@jood/common/array";
 import { toFormat } from "@jood/common/date";
 import { isIntersect } from "@jood/common/point";
 import { TTLCache } from "@jood/common/cache";
+import { JdString, JdNumber, JdArray, JdDate, JdPoint } from "@jood/common";
 
 console.log(replaceAll("hello-foo", "-", "#")); // "hello#foo"
+console.log(JdString.replaceAll("hello-foo", "-", "#")); // "hello#foo"
 ```
 
 ---

@@ -53,16 +53,12 @@ export class CacheValue<T = any> {
     clearTimeout(this._expireNotfyTimer);
     this._expireNotfyTimer = setTimeout(() => {
       fnCallback(this._key);
-    }, expire + 900);
+    }, expire + 1);
   }
   /**
    * 파기
    */
   destroy() {
-    try {
-      clearTimeout(this._expireNotfyTimer);
-    } catch (err) {
-      console.error(err);
-    }
+    clearTimeout(this._expireNotfyTimer);
   }
 }

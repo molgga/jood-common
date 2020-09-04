@@ -109,9 +109,7 @@ describe("TTLCache", () => {
     ttlCache.set("B", "myValue2", 20);
     ttlCache.set("C", "myValue3", 30);
     expect(mockExpireNotify.calls.count()).toBe(0);
-    await delay(25);
-    expect(mockExpireNotify.calls.count()).toBe(2);
-    await delay(10);
+    await delay(100);
     expect(mockExpireNotify.calls.count()).toBe(3);
   });
 

@@ -10,6 +10,9 @@ describe("point utils", () => {
     expect(hexToRgb("#ff0")).toEqual([255, 255, 0]);
     expect(hexToRgb("#fff")).toEqual([255, 255, 255]);
     expect(hexToRgb("#123")).toEqual([17, 34, 51]);
+    expect(() => {
+      hexToRgb('')
+    }).toThrow();
   });
 
   it("rgbToHex", () => {

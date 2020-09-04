@@ -1,5 +1,5 @@
-import { CacheValue } from "./CacheValue";
-import { Serializable } from "./types";
+import { CacheValue } from './CacheValue';
+import { Serializable } from './types';
 
 /**
  * ttl 캐시
@@ -41,16 +41,6 @@ export class TTLCache {
   }
 
   /**
-   * CacheValue 에 등록된 expire 시간(정도) 후 CacheValue 로 부터 호출을 기대하는 콜백
-   * @protected
-   */
-  protected fnExpireNotify = (key: string) => {
-    if (this.expired(key)) {
-      this.remove(key);
-    }
-  };
-
-  /**
    * 보유 맵
    * @readonly
    * @type {Map<string, CacheValue>}
@@ -90,6 +80,16 @@ export class TTLCache {
   }
 
   /**
+   * CacheValue 에 등록된 expire 시간(정도) 후 CacheValue 로 부터 호출을 기대하는 콜백
+   * @param {string} key
+   */
+  expireNotify(key: string) {
+    if (this.expired(key)) {
+      this.remove(key);
+    }
+  }
+
+  /**
    * key 에 해당하는 값 반환
    * @template T
    * @param {string} key
@@ -123,7 +123,7 @@ export class TTLCache {
     cacheValue.setKey(key);
     cacheValue.setValue(value);
     cacheValue.setExpireAt(now + +expire);
-    cacheValue.setExpireNotify(expire, this.fnExpireNotify);
+    cacheValue.setExpireNotify(expire, this.expireNotify.bind(this));
     this.cacheMap.set(key, cacheValue);
   }
 
@@ -193,10 +193,6 @@ export class TTLCache {
    * 파기
    */
   destroy() {
-    try {
-      this.flushAll();
-    } catch (err) {
-      console.error(err);
-    }
+    this.flushAll();
   }
 }

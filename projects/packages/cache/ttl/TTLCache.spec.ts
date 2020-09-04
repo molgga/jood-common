@@ -6,11 +6,14 @@ function delay(duration: number) {
   });
 }
 
-describe("A", () => {
+describe("TTLCache", () => {
   let ttlCache: TTLCache;
 
   beforeEach(() => {
     ttlCache = new TTLCache();
+  });
+  afterEach(() => {
+    ttlCache.destroy();
   });
 
   it("expired", async () => {
@@ -78,6 +81,13 @@ describe("A", () => {
     expect(ttlCache.has("B")).toBe(false);
     expect(ttlCache.has("C")).toBe(false);
   });
+  
+  it("set exist", async () => {
+    ttlCache.set("A", "myValue1", 100);
+    expect(ttlCache.getKeys().length).toBe(1);
+    ttlCache.set("A", "myValue1", 100);
+    expect(ttlCache.getKeys().length).toBe(1);
+  });
 
   it("toJson", async () => {
     ttlCache.set("A", "myValue1", 0);
@@ -86,5 +96,49 @@ describe("A", () => {
     expect(ttlCache.toJson()).toEqual({ B: "myValue2", C: "myValue3" });
     await delay(101);
     expect(ttlCache.toJson()).toEqual({ C: "myValue3" });
+  });
+
+  it("map", async () => {
+    expect(ttlCache.map).not.toBeNull();
+    expect(ttlCache.map.constructor).toBe(Map);
+  });
+
+  it("expireNotify", async () => {
+    const mockExpireNotify = spyOn(ttlCache, 'expireNotify');
+    ttlCache.set("A", "myValue1", 10);
+    ttlCache.set("B", "myValue2", 20);
+    ttlCache.set("C", "myValue3", 30);
+    expect(mockExpireNotify.calls.count()).toBe(0);
+    await delay(25);
+    expect(mockExpireNotify.calls.count()).toBe(2);
+    await delay(10);
+    expect(mockExpireNotify.calls.count()).toBe(3);
+  });
+
+  it("flushExpired", async () => {
+    ttlCache.set("A", "myValue1", 100);
+    ttlCache.set("B", "myValue2", 200);
+    ttlCache.set("C", "myValue3", 300);
+    expect(ttlCache.getKeys().length).toBe(3);
+    ttlCache.flushExpired();
+    expect(ttlCache.getKeys().length).toBe(3);
+  });
+
+  it("flushAll", async () => {
+    ttlCache.set("A", "myValue1", 100);
+    ttlCache.set("B", "myValue2", 200);
+    ttlCache.set("C", "myValue3", 300);
+    expect(ttlCache.getKeys().length).toBe(3);
+    ttlCache.flushAll();
+    expect(ttlCache.getKeys().length).toBe(0);
+  });
+
+  it("destroy", async () => {
+    ttlCache.set("A", "myValue1", 100);
+    ttlCache.set("B", "myValue2", 200);
+    ttlCache.set("C", "myValue3", 300);
+    expect(ttlCache.getKeys().length).toBe(3);
+    ttlCache.destroy();
+    expect(ttlCache.getKeys().length).toBe(0);
   });
 });

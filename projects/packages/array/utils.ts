@@ -2,7 +2,7 @@
  * @packageDocumentation
  * @module array
  */
-import { getRandomizer } from "../number/utils";
+import { getRandomizer } from '../number/utils';
 
 /**
  * 지정된 avaliable 에 value 가 포함되는 경우 value 를, 그렇지 않은 경우 or 값을 반환
@@ -20,11 +20,7 @@ import { getRandomizer } from "../number/utils";
  * console.log(availableOr(available1, 333, 10)); // 10
  * console.log(availableOr(available1, 444, null)); // null
  */
-export function availableOr<T>(
-  available: ArrayLike<T> = [],
-  value: any,
-  or = null
-): T {
+export function availableOr<T>(available: ArrayLike<T> = [], value: any, or = null): T {
   if (!available.length) return or;
   const find = (available as any[]).find((compare: any) => {
     return compare === value;
@@ -78,11 +74,7 @@ export function insert(ref: any[], index: number = 0, value: any): any[] {
  * console.log(extract([1, 2, 3, 4], 0, 10)); // [];
  * console.log(extract([1, 2, 3, 4], 2, 10)); // [1, 2];
  */
-export function extract<T>(
-  ref: ArrayLike<T>,
-  index: number = 0,
-  deleteCount: number = 1
-): ArrayLike<T> {
+export function extract<T>(ref: ArrayLike<T>, index: number = 0, deleteCount: number = 1): ArrayLike<T> {
   if (isNaN(index) || index < 0 || ref.length <= index) {
     return ref;
   }
@@ -104,11 +96,7 @@ export function extract<T>(
  * console.log(tail([1, 2, 3, 4],4)); // 1
  * console.log(tail([1, 2, 3, 4],-1)); // 4
  */
-export function tail<T>(
-  array: ArrayLike<T>,
-  shiftIndex: number = 0,
-  overflowSafe: boolean = true
-): T {
+export function tail<T>(array: ArrayLike<T>, shiftIndex: number = 0, overflowSafe: boolean = true): T {
   const lastIndex = array.length - 1;
   let index = lastIndex - shiftIndex;
   if (overflowSafe) {
@@ -142,10 +130,7 @@ export function tail<T>(
  *   return item.id;
  * })); // [{ id: 1, name: "google" }, { id: 2, name: "microsoft" }, { id: 3, name: "amazone" }]
  */
-export function distinct<T>(
-  array: ReadonlyArray<T>,
-  uniqueFn?: (item: T) => string | any
-): T[] {
+export function distinct<T>(array: ReadonlyArray<T>, uniqueFn?: (item: T) => string | any): T[] {
   if (!uniqueFn) {
     return array.filter((item, index) => {
       return array.indexOf(item) === index;
@@ -174,9 +159,7 @@ export function distinct<T>(
  * console.log(arr1.filter(uniqueFilter(idFilter))); // [{ id: 1, name: "google" },{ id: 2, name: "microsoft" },{ id: 3, name: "amazone" } ]
  * console.log(arr1.filter(uniqueFilter(nameFilter))); // [{ id: 1, name: "google" },{ id: 2, name: "microsoft" },{ id: 3, name: "amazone" } ]
  */
-export function uniqueFilter<T>(
-  uniqueFn: (item: T) => string | any
-): (item: T) => boolean {
+export function uniqueFilter<T>(uniqueFn: (item: T) => string | any): (item: T) => boolean {
   const hash: { [key: string]: boolean } = {};
   return (item) => {
     const key = uniqueFn(item);
@@ -208,15 +191,13 @@ export function shuffle<T>(ref: T[], seed?: number): void {
 
 /**
  * 1차원 행[]을 2차원 행열[][]로 바꿉니다. 원본 컬럼을 그대로 사용합니다.
- * [{id:1,name:'A'},{id:2,name:'B'},{id:3,name:'C'}]
- * [
- *  [{id:1,name:'A'},{id:2,name:'B'},{id:3,name:'C'}],
- *  [{id:1,name:'A'},{id:2,name:'B'},{id:3,name:'C'}],
- *  [{id:1,name:'A'},{id:2,name:'B'},{id:3,name:'C'}]
- * ]
  * @template T 각 행의 타입
  * @param {T[]} ref 변경 할 배열
  * @returns {T[][]}
+ * @example
+ * const arr = [{id:1,name:'A'},{id:2,name:'B'},{id:3,name:'C'}];
+ * const rows = transposeRow(arr);
+ * console.log(rows); // [[{"id":1,"name":"A"},{"id":2,"name":"B"},{"id":3,"name":"C"}],[{"id":1,"name":"A"},{"id":2,"name":"B"},{"id":3,"name":"C"}],[{"id":1,"name":"A"},{"id":2,"name":"B"},{"id":3,"name":"C"}]]
  */
 export function transposeRow<T>(ref: T[]): T[][] {
   const refLen = ref.length;
@@ -239,22 +220,25 @@ interface TransposeRowFilterParams<T> {
 
 /**
  * 1차원 행[]을 2차원 행열[][]로 바꿉니다. 필터를 거친 요소로 변경합니다.
- * [{id:1,name:'A'},{id:2,name:'B'},{id:3,name:'C'}]
- * [
- *  [filter({ rowIndex,columnIndex,item }), filter(...), filter(...)],
- *  [filter(...), filter(...), filter(...)],
- *  [filter(...), filter(...), filter(...)]
- * ]
  * @template T 각 행의 타입
  * @template C 필터한 열의 타입
  * @param {T[]} ref 변경 할 배열
  * @param {Function} filter (params: TransposeRowFilterParams<T>) => C 각 요소를 정제할 함수.
  * @returns {C[][]}
+ * @example
+ * const arr = [{id:1,name:'A'},{id:2,name:'B'},{id:3,name:'C'}];
+ * const rows = transposeRowFilter(arr, (params) => {
+ *   const { rowIndex, columnIndex, item } = params;
+ *   return {
+ *     ...item,
+ *     myValue1: item.name.toLowerCase(),
+ *     rowIndex,
+ *     columnIndex,
+ *   };
+ * });
+ * console.log(rows); // [[{"id":1,"name":"A","myValue1":"a","rowIndex":0,"columnIndex":0},{"id":2,"name":"B","myValue1":"b","rowIndex":0,"columnIndex":1},{"id":3,"name":"C","myValue1":"c","rowIndex":0,"columnIndex":2}],[{"id":1,"name":"A","myValue1":"a","rowIndex":1,"columnIndex":0},{"id":2,"name":"B","myValue1":"b","rowIndex":1,"columnIndex":1},{"id":3,"name":"C","myValue1":"c","rowIndex":1,"columnIndex":2}],[{"id":1,"name":"A","myValue1":"a","rowIndex":2,"columnIndex":0},{"id":2,"name":"B","myValue1":"b","rowIndex":2,"columnIndex":1},{"id":3,"name":"C","myValue1":"c","rowIndex":2,"columnIndex":2}]];
  */
-export function transposeRowFilter<T, C>(
-  ref: T[],
-  filter: (params: TransposeRowFilterParams<T>) => C
-): C[][] {
+export function transposeRowFilter<T, C>(ref: T[], filter: (params: TransposeRowFilterParams<T>) => C): C[][] {
   const refLen = ref.length;
   const newRow: C[][] = Array(refLen);
   for (let r = 0; r < refLen; r++) {

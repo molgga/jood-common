@@ -79,6 +79,7 @@ export function inRgbRange(minRgb: number[], maxRgb: number[], percent: number):
  * @param {string} maxHex
  * @param {number} percent
  * @returns {number[]}
+ * @example
  * const min = "#c80000";
  * const max = "#ffff00";
  * console.log(inHexRange(min, max, 0)); // [200, 0, 0]

@@ -25,7 +25,7 @@
     "browser",
     "scroll"
   ],
-  "dependencies": {
+  "peerDependencies": {
     "rxjs": ">=6.5.4"
   },
   "publishConfig": {

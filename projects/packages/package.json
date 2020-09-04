@@ -23,6 +23,9 @@
     "color",
     "point"
   ],
+  "dependencies": {
+    "rxjs": ">=6.5.4"
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"

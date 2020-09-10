@@ -1,5 +1,9 @@
 import { ICookie, ICookieSet } from './types';
 
+interface IndexableValue {
+  [key: string]: string;
+}
+
 /**
  * 브라우져(document) 쿠키
  * @class BrowserCookie
@@ -70,9 +74,9 @@ export class BrowserCookie implements ICookie {
 
   /**
    * 모든 쿠키값을 key&value 로 반환
-   * @returns {{ [key: string]: string }}
+   * @returns {IndexableValue}
    */
-  getAll(): { [key: string]: string } {
+  getAll(): IndexableValue {
     const all: any = {};
     const cookies: string = this.getCookies();
     if (cookies && cookies != '') {

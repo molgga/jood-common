@@ -1,0 +1,22 @@
+.pad-box {
+  margin: 10px;
+  padding: 100px 0;
+  min-width: 800px;
+  border: 1px dashed #ff0000;
+  box-sizing: border-box;
+}
+
+.dom-box {
+  margin: 10px;
+  height: 100px;
+  overflow: auto;
+  box-sizing: border-box;
+
+  .dom-inner {
+    height: 300%;
+    width: 300%;
+    border: 3px dashed #ff0000;
+    background-color: #ffff00;
+    box-sizing: border-box;
+  }
+}

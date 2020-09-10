@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>point - Documentation</title>
+    <title>web/browser-scroll/DomScroll.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -30,606 +30,71 @@
 
 <div id="main">
     
-    <h1 class="page-title">point</h1>
+    <h1 class="page-title">web/browser-scroll/DomScroll.ts</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
-    
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id=".intersect"><span class="type-signature">(static) </span>intersect<span class="signature">(one, other)</span><span class="type-signature"> &rarr; {IntersectRange}</span></h4>
-
-    
-
-
-
-<div class="description">
-    축 교차점 비교
-one 의 { start, end } 와 other 의 { start, end } 를 비교
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<div class="parameters-wrap">
-  <div class="parameters-inner">
-    <table class="params">
-      <thead>
-      <tr>
-          
-          <th>Name</th>
-          
-
-          <th>Type</th>
-
-          
-
-          
-
-          <th class="last">Description</th>
-      </tr>
-      </thead>
-
-      <tbody>
-      
-
-          <tr>
-              
-                  <td class="name"><code>one</code></td>
-              
-
-              <td class="type">
-              
-                  
-<span class="param-type">IntersectRange</span>
-
-
-              
-              </td>
-
-              
-
-              
-
-              <td class="description last"></td>
-          </tr>
-
-      
-
-          <tr>
-              
-                  <td class="name"><code>other</code></td>
-              
-
-              <td class="type">
-              
-                  
-<span class="param-type">IntersectRange</span>
-
-
-              
-              </td>
-
-              
-
-              
-
-              <td class="description last"></td>
-          </tr>
-
-      
-      </tbody>
-    </table>
-  </div>
-</div>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="point_utils.ts.html">point/utils.ts</a>, <a href="point_utils.ts.html#line16">line 16</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">IntersectRange</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>intersect({ start: 0, end: 100 }, { start: 20, end: 120 }); // { start: 20,end: 100 }
-intersect({ start: 120, end: 200 }, { start: 20, end: 120 }); // { start: 0, end: 0 }</code></pre>
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".isCollision"><span class="type-signature">(static) </span>isCollision<span class="signature">(one, other)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-
-    
-
-
-
-<div class="description">
-    intersect 를 이용해 면 hitTest
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<div class="parameters-wrap">
-  <div class="parameters-inner">
-    <table class="params">
-      <thead>
-      <tr>
-          
-          <th>Name</th>
-          
-
-          <th>Type</th>
-
-          
-
-          
-
-          <th class="last">Description</th>
-      </tr>
-      </thead>
-
-      <tbody>
-      
-
-          <tr>
-              
-                  <td class="name"><code>one</code></td>
-              
-
-              <td class="type">
-              
-                  
-<span class="param-type">CollisionBound</span>
-
-
-              
-              </td>
-
-              
-
-              
-
-              <td class="description last"></td>
-          </tr>
-
-      
-
-          <tr>
-              
-                  <td class="name"><code>other</code></td>
-              
-
-              <td class="type">
-              
-                  
-<span class="param-type">CollisionBound</span>
-
-
-              
-              </td>
-
-              
-
-              
-
-              <td class="description last"></td>
-          </tr>
-
-      
-      </tbody>
-    </table>
-  </div>
-</div>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="point_utils.ts.html">point/utils.ts</a>, <a href="point_utils.ts.html#line50">line 50</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>let one = { x: 0, y: 0, w: 100, h: 100 };
-let two = { x: 50, y: 50, w: 100, h: 100 };
-isCollision(one, two); // true
-one = { x: 0, y: 0, w: 100, h: 100 };
-two = { x: 100, y: 100, w: 100, h: 100 };
-isCollision(one, two)); // false</code></pre>
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".isIntersect"><span class="type-signature">(static) </span>isIntersect<span class="signature">(one, other)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-
-    
-
-
-
-<div class="description">
-    intersect 를 이용해 축 hitTest
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<div class="parameters-wrap">
-  <div class="parameters-inner">
-    <table class="params">
-      <thead>
-      <tr>
-          
-          <th>Name</th>
-          
-
-          <th>Type</th>
-
-          
-
-          
-
-          <th class="last">Description</th>
-      </tr>
-      </thead>
-
-      <tbody>
-      
-
-          <tr>
-              
-                  <td class="name"><code>one</code></td>
-              
-
-              <td class="type">
-              
-                  
-<span class="param-type">IntersectRange</span>
-
-
-              
-              </td>
-
-              
-
-              
-
-              <td class="description last"></td>
-          </tr>
-
-      
-
-          <tr>
-              
-                  <td class="name"><code>other</code></td>
-              
-
-              <td class="type">
-              
-                  
-<span class="param-type">IntersectRange</span>
-
-
-              
-              </td>
-
-              
-
-              
-
-              <td class="description last"></td>
-          </tr>
-
-      
-      </tbody>
-    </table>
-  </div>
-</div>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { BrowserScroll } from './BrowserScroll';
+import { fromEvent } from 'rxjs';
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="point_utils.ts.html">point/utils.ts</a>, <a href="point_utils.ts.html#line33">line 33</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
+type TargetElement = HTMLElement;
 
+export class DomScroll extends BrowserScroll {
+  protected element: TargetElement;
 
+  /**
+   * 초기화
+   */
+  init(): void {
+    if (!this.element) {
+      throw new Error('require setElement');
+    }
+    this.initScroll();
+  }
 
+  protected initScroll() {
+    this.handleScroll = this.onScroll.bind(this);
+    this.scrollObserver = fromEvent(this.element, 'scroll');
+    this.eventListener.add(this.scrollObserver.subscribe(this.handleScroll));
+  }
 
+  setElement(element: TargetElement) {
+    this.element = element;
+  }
 
+  get scrollTop(): number {
+    return this.element.scrollTop;
+  }
 
+  get scrollLeft(): number {
+    return this.element.scrollLeft;
+  }
 
+  get scrollHeight(): number {
+    return this.element.scrollHeight;
+  }
 
+  get scrollWidth(): number {
+    return this.element.scrollWidth;
+  }
 
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>isIntersect({ start: 0, end: 100 }, { start: 20, end: 120 }); // true
-isIntersect({ start: 120, end: 200 }, { start: 20, end: 120 }); // true</code></pre>
-
-
-
-        
-    
-
-    
-
-    
-</article>
+  get innerHeight(): number {
+    return this.element.offsetHeight;
+  }
 
-</section>
+  get innerWidth(): number {
+    return this.element.offsetWidth;
+  }
+}
+</code></pre>
+        </article>
+    </section>
 
 
 

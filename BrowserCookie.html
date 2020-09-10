@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>color - Documentation</title>
+    <title>BrowserCookie - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -30,7 +30,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">color</h1>
+    <h1 class="page-title">BrowserCookie</h1>
     
 
     
@@ -42,6 +42,9 @@
 
 <header>
     
+        <h2>
+        BrowserCookie
+        </h2>
         
     
 </header>
@@ -51,7 +54,92 @@
     
         
 
+    
+
+    <h4 class="name" id="BrowserCookie"><span class="type-signature"></span>new BrowserCookie<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    브라우져(document) 쿠키
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
         
+            <li><a href="ICookie.html">ICookie</a></li>
+        
+    </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="web_browser-cookie_BrowserCookie.ts.html">web/browser-cookie/BrowserCookie.ts</a>, <a href="web_browser-cookie_BrowserCookie.ts.html#line2">line 2</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     </div>
 
@@ -75,14 +163,14 @@
 
     
 
-    <h4 class="name" id=".hexToRgb"><span class="type-signature">(static) </span>hexToRgb<span class="signature">(hex)</span><span class="type-signature"> &rarr; {Array.&lt;number>}</span></h4>
+    <h4 class="name" id="decode"><span class="type-signature"></span>decode<span class="signature">(value)</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
 
 
 
 <div class="description">
-    hex('#ff0000') 컬러값을 rgb([255,0,0]) 형태로 변환 합니다.
+    쿠키에 꺼내는 값 decode
 </div>
 
 
@@ -120,7 +208,7 @@
 
           <tr>
               
-                  <td class="name"><code>hex</code></td>
+                  <td class="name"><code>value</code></td>
               
 
               <td class="type">
@@ -136,7 +224,7 @@
 
               
 
-              <td class="description last">변환할 컬러값</td>
+              <td class="description last"></td>
           </tr>
 
       
@@ -179,7 +267,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="color_utils.ts.html">color/utils.ts</a>, <a href="color_utils.ts.html#line15">line 15</a>
+        <a href="web_browser-cookie_BrowserCookie.ts.html">web/browser-cookie/BrowserCookie.ts</a>, <a href="web_browser-cookie_BrowserCookie.ts.html#line21">line 21</a>
     </li></ul></dd>
     
 
@@ -213,19 +301,13 @@
     </dt>
     <dd>
         
-<span class="param-type">Array.&lt;number></span>
+<span class="param-type">string</span>
 
 
     </dd>
 </dl>
 
     
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>console.log(hexToRgb("#ff0000")); // [255, 0, 0]
-console.log(hexToRgb("#12ff34")); // [18, 255, 52]</code></pre>
 
 
 
@@ -234,14 +316,14 @@ console.log(hexToRgb("#12ff34")); // [18, 255, 52]</code></pre>
 
     
 
-    <h4 class="name" id=".inHexRange"><span class="type-signature">(static) </span>inHexRange<span class="signature">(minHex, maxHex, percent)</span><span class="type-signature"> &rarr; {Array.&lt;number>}</span></h4>
+    <h4 class="name" id="delete"><span class="type-signature"></span>delete<span class="signature">(name, path<span class="signature-attributes">opt</span>, domain<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    minHex 와 maxHex 값 사이의 percent 에 해당하는 rgb 값을 반환 합니다.
+    쿠키 중 일치하는 값 제거
 </div>
 
 
@@ -267,6 +349,8 @@ console.log(hexToRgb("#12ff34")); // [18, 255, 52]</code></pre>
           <th>Type</th>
 
           
+          <th>Attributes</th>
+          
 
           
 
@@ -279,7 +363,7 @@ console.log(hexToRgb("#12ff34")); // [18, 255, 52]</code></pre>
 
           <tr>
               
-                  <td class="name"><code>minHex</code></td>
+                  <td class="name"><code>name</code></td>
               
 
               <td class="type">
@@ -292,6 +376,14 @@ console.log(hexToRgb("#12ff34")); // [18, 255, 52]</code></pre>
               </td>
 
               
+                  <td class="attributes">
+                  
+
+                  
+
+                  
+                  </td>
+              
 
               
 
@@ -302,7 +394,7 @@ console.log(hexToRgb("#12ff34")); // [18, 255, 52]</code></pre>
 
           <tr>
               
-                  <td class="name"><code>maxHex</code></td>
+                  <td class="name"><code>path</code></td>
               
 
               <td class="type">
@@ -315,6 +407,16 @@ console.log(hexToRgb("#12ff34")); // [18, 255, 52]</code></pre>
               </td>
 
               
+                  <td class="attributes">
+                  
+                      &lt;optional><br>
+                  
+
+                  
+
+                  
+                  </td>
+              
 
               
 
@@ -325,18 +427,28 @@ console.log(hexToRgb("#12ff34")); // [18, 255, 52]</code></pre>
 
           <tr>
               
-                  <td class="name"><code>percent</code></td>
+                  <td class="name"><code>domain</code></td>
               
 
               <td class="type">
               
                   
-<span class="param-type">number</span>
+<span class="param-type">string</span>
 
 
               
               </td>
 
+              
+                  <td class="attributes">
+                  
+                      &lt;optional><br>
+                  
+
+                  
+
+                  
+                  </td>
               
 
               
@@ -384,7 +496,7 @@ console.log(hexToRgb("#12ff34")); // [18, 255, 52]</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="color_utils.ts.html">color/utils.ts</a>, <a href="color_utils.ts.html#line90">line 90</a>
+        <a href="web_browser-cookie_BrowserCookie.ts.html">web/browser-cookie/BrowserCookie.ts</a>, <a href="web_browser-cookie_BrowserCookie.ts.html#line116">line 116</a>
     </li></ul></dd>
     
 
@@ -407,35 +519,6 @@ console.log(hexToRgb("#12ff34")); // [18, 255, 52]</code></pre>
 
 
 
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array.&lt;number></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>const min = "#c80000";
-const max = "#ffff00";
-console.log(inHexRange(min, max, 0)); // [200, 0, 0]
-console.log(inHexRange(min, max, 0.25)); // [214, 64, 0]
-console.log(inHexRange(min, max, 0.5)); // [228, 128, 0]
-console.log(inHexRange(min, max, 0.75)); // [241, 191, 0]
-console.log(inHexRange(min, max, 1)); // [255, 255, 0]</code></pre>
 
 
 
@@ -444,14 +527,14 @@ console.log(inHexRange(min, max, 1)); // [255, 255, 0]</code></pre>
 
     
 
-    <h4 class="name" id=".inRgbRange"><span class="type-signature">(static) </span>inRgbRange<span class="signature">(minRgb, maxRgb, percent)</span><span class="type-signature"> &rarr; {Array.&lt;number>}</span></h4>
+    <h4 class="name" id="deleteAll"><span class="type-signature"></span>deleteAll<span class="signature">(path<span class="signature-attributes">opt</span>, domain<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    minRgb 과 maxRgb 값 사이의 percent 에 해당하는 rgb 값을 반환 합니다.
+    일치하는 모든 쿠키 제거
 </div>
 
 
@@ -477,6 +560,8 @@ console.log(inHexRange(min, max, 1)); // [255, 255, 0]</code></pre>
           <th>Type</th>
 
           
+          <th>Attributes</th>
+          
 
           
 
@@ -489,18 +574,28 @@ console.log(inHexRange(min, max, 1)); // [255, 255, 0]</code></pre>
 
           <tr>
               
-                  <td class="name"><code>minRgb</code></td>
+                  <td class="name"><code>path</code></td>
               
 
               <td class="type">
               
                   
-<span class="param-type">Array.&lt;number></span>
+<span class="param-type">string</span>
 
 
               
               </td>
 
+              
+                  <td class="attributes">
+                  
+                      &lt;optional><br>
+                  
+
+                  
+
+                  
+                  </td>
               
 
               
@@ -512,41 +607,28 @@ console.log(inHexRange(min, max, 1)); // [255, 255, 0]</code></pre>
 
           <tr>
               
-                  <td class="name"><code>maxRgb</code></td>
+                  <td class="name"><code>domain</code></td>
               
 
               <td class="type">
               
                   
-<span class="param-type">Array.&lt;number></span>
+<span class="param-type">string</span>
 
 
               
               </td>
 
               
-
-              
-
-              <td class="description last"></td>
-          </tr>
-
-      
-
-          <tr>
-              
-                  <td class="name"><code>percent</code></td>
-              
-
-              <td class="type">
-              
+                  <td class="attributes">
                   
-<span class="param-type">number</span>
+                      &lt;optional><br>
+                  
 
+                  
 
-              
-              </td>
-
+                  
+                  </td>
               
 
               
@@ -594,7 +676,7 @@ console.log(inHexRange(min, max, 1)); // [255, 255, 0]</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="color_utils.ts.html">color/utils.ts</a>, <a href="color_utils.ts.html#line66">line 66</a>
+        <a href="web_browser-cookie_BrowserCookie.ts.html">web/browser-cookie/BrowserCookie.ts</a>, <a href="web_browser-cookie_BrowserCookie.ts.html#line130">line 130</a>
     </li></ul></dd>
     
 
@@ -617,35 +699,6 @@ console.log(inHexRange(min, max, 1)); // [255, 255, 0]</code></pre>
 
 
 
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array.&lt;number></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>const min = [200, 0, 0];
-const max = [255, 255, 0];
-console.log(inRgbRange(min, max, 0)); // [200, 0, 0]
-console.log(inRgbRange(min, max, 0.25)); // [214, 64, 0]
-console.log(inRgbRange(min, max, 0.5)); // [228, 128, 0]
-console.log(inRgbRange(min, max, 0.75)); // [241, 191, 0]
-console.log(inRgbRange(min, max, 1)); // [255, 255, 0]</code></pre>
 
 
 
@@ -654,14 +707,14 @@ console.log(inRgbRange(min, max, 1)); // [255, 255, 0]</code></pre>
 
     
 
-    <h4 class="name" id=".rgbToHex"><span class="type-signature">(static) </span>rgbToHex<span class="signature">(rgb)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    <h4 class="name" id="encode"><span class="type-signature"></span>encode<span class="signature">(value)</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
 
 
 
 <div class="description">
-    rgb([255,0,0]) 컬러값을 hex(#ff0000) 형태로 변환합니다.
+    쿠키에 넣을 값 encode
 </div>
 
 
@@ -699,13 +752,13 @@ console.log(inRgbRange(min, max, 1)); // [255, 255, 0]</code></pre>
 
           <tr>
               
-                  <td class="name"><code>rgb</code></td>
+                  <td class="name"><code>value</code></td>
               
 
               <td class="type">
               
                   
-<span class="param-type">Array.&lt;number></span>
+<span class="param-type">string</span>
 
 
               
@@ -715,7 +768,7 @@ console.log(inRgbRange(min, max, 1)); // [255, 255, 0]</code></pre>
 
               
 
-              <td class="description last">변환할 컬러값</td>
+              <td class="description last"></td>
           </tr>
 
       
@@ -758,7 +811,7 @@ console.log(inRgbRange(min, max, 1)); // [255, 255, 0]</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="color_utils.ts.html">color/utils.ts</a>, <a href="color_utils.ts.html#line43">line 43</a>
+        <a href="web_browser-cookie_BrowserCookie.ts.html">web/browser-cookie/BrowserCookie.ts</a>, <a href="web_browser-cookie_BrowserCookie.ts.html#line13">line 13</a>
     </li></ul></dd>
     
 
@@ -801,10 +854,789 @@ console.log(inRgbRange(min, max, 1)); // [255, 255, 0]</code></pre>
     
 
 
-    <h5>Example</h5>
+
+        
+            
+
     
-    <pre class="prettyprint"><code>console.log(rgbToHex([255, 0, 0])); // "#ff0000"
-console.log(rgbToHex([12, 0, 0])); // "#0c0000"</code></pre>
+
+    <h4 class="name" id="get"><span class="type-signature"></span>get<span class="signature">(name)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+<div class="description">
+    쿠키 중 name 에 해당하는 값 반환
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<div class="parameters-wrap">
+  <div class="parameters-inner">
+    <table class="params">
+      <thead>
+      <tr>
+          
+          <th>Name</th>
+          
+
+          <th>Type</th>
+
+          
+
+          
+
+          <th class="last">Description</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      
+
+          <tr>
+              
+                  <td class="name"><code>name</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type">string</span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last"></td>
+          </tr>
+
+      
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="web_browser-cookie_BrowserCookie.ts.html">web/browser-cookie/BrowserCookie.ts</a>, <a href="web_browser-cookie_BrowserCookie.ts.html#line55">line 55</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getAll"><span class="type-signature"></span>getAll<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    모든 쿠키값을 key&value 로 반환
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="web_browser-cookie_BrowserCookie.ts.html">web/browser-cookie/BrowserCookie.ts</a>, <a href="web_browser-cookie_BrowserCookie.ts.html#line70">line 70</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getCookies"><span class="type-signature"></span>getCookies<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+<div class="description">
+    document 쿠키 값 반환
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="web_browser-cookie_BrowserCookie.ts.html">web/browser-cookie/BrowserCookie.ts</a>, <a href="web_browser-cookie_BrowserCookie.ts.html#line28">line 28</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="has"><span class="type-signature"></span>has<span class="signature">(name)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    
+
+
+
+<div class="description">
+    쿠키 중 name 에 해당하는 값이 있는지 여부
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<div class="parameters-wrap">
+  <div class="parameters-inner">
+    <table class="params">
+      <thead>
+      <tr>
+          
+          <th>Name</th>
+          
+
+          <th>Type</th>
+
+          
+
+          
+
+          <th class="last">Description</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      
+
+          <tr>
+              
+                  <td class="name"><code>name</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type">string</span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last"></td>
+          </tr>
+
+      
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="web_browser-cookie_BrowserCookie.ts.html">web/browser-cookie/BrowserCookie.ts</a>, <a href="web_browser-cookie_BrowserCookie.ts.html#line43">line 43</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="set"><span class="type-signature"></span>set<span class="signature">(options)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+<div class="description">
+    쿠키에 값 넣기
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<div class="parameters-wrap">
+  <div class="parameters-inner">
+    <table class="params">
+      <thead>
+      <tr>
+          
+          <th>Name</th>
+          
+
+          <th>Type</th>
+
+          
+
+          
+
+          <th class="last">Description</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      
+
+          <tr>
+              
+                  <td class="name"><code>options</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type"><a href="ICookieSet.html">ICookieSet</a></span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last"></td>
+          </tr>
+
+      
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="web_browser-cookie_BrowserCookie.ts.html">web/browser-cookie/BrowserCookie.ts</a>, <a href="web_browser-cookie_BrowserCookie.ts.html#line88">line 88</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setCookies"><span class="type-signature"></span>setCookies<span class="signature">(cookie)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    document 에 쿠키 값 지정
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<div class="parameters-wrap">
+  <div class="parameters-inner">
+    <table class="params">
+      <thead>
+      <tr>
+          
+          <th>Name</th>
+          
+
+          <th>Type</th>
+
+          
+
+          
+
+          <th class="last">Description</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      
+
+          <tr>
+              
+                  <td class="name"><code>cookie</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type">string</span>
+|
+
+<span class="param-type">any</span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last"></td>
+          </tr>
+
+      
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="web_browser-cookie_BrowserCookie.ts.html">web/browser-cookie/BrowserCookie.ts</a>, <a href="web_browser-cookie_BrowserCookie.ts.html#line35">line 35</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,28 +1,50 @@
-import { BrowserScroll } from "projects/packages/web/browser-scroll";
 import { Subscription } from 'rxjs';
+import { BrowserScroll } from "./BrowserScroll";
 
 interface SpyMocks {
   mockScrollTop?: jasmine.Spy;
   mockScrollHeight?: jasmine.Spy;
   mockInnerHeight?: jasmine.Spy;
+  mockScrollLeft?: jasmine.Spy;
+  mockScrollWidth?: jasmine.Spy;
+  mockInnerWidth?: jasmine.Spy;
 }
 
 function spyCreate(browserScroll: BrowserScroll) {
   const mockScrollTop = spyOnProperty(browserScroll, 'scrollTop');
   const mockScrollHeight = spyOnProperty(browserScroll, 'scrollHeight');
   const mockInnerHeight = spyOnProperty(browserScroll, 'innerHeight');
+  const mockScrollLeft = spyOnProperty(browserScroll, 'scrollLeft');
+  const mockScrollWidth = spyOnProperty(browserScroll, 'scrollWidth');
+  const mockInnerWidth = spyOnProperty(browserScroll, 'innerWidth');
   return {
     mockScrollTop,
     mockScrollHeight,
     mockInnerHeight,
+    mockScrollLeft,
+    mockScrollWidth,
+    mockInnerWidth,
   }
 }
 
-function spyScroll(mocks: SpyMocks, { scrollTop, scrollHeight, innerHeight}, scrollEvent = true) {
-  const { mockScrollTop, mockScrollHeight, mockInnerHeight } = mocks;
+interface SpyProps {
+  scrollTop?: number;
+  scrollHeight?: number;
+  innerHeight?: number; 
+  scrollLeft?: number;
+  scrollWidth?: number;
+  innerWidth?: number;
+}
+
+function spyScroll(mocks: SpyMocks, props: SpyProps, scrollEvent = true) {
+  const { scrollTop, scrollHeight, innerHeight, scrollLeft, scrollWidth, innerWidth} = props;
+  const { mockScrollTop, mockScrollHeight, mockInnerHeight, mockScrollLeft, mockScrollWidth, mockInnerWidth } = mocks;
   if (mockScrollTop && !isNaN(scrollTop)) mockScrollTop.and.returnValue(scrollTop);
   if (mockScrollHeight && !isNaN(scrollHeight)) mockScrollHeight.and.returnValue(scrollHeight);
   if (mockInnerHeight && !isNaN(innerHeight)) mockInnerHeight.and.returnValue(innerHeight);
+  if (mockScrollLeft && !isNaN(scrollLeft)) mockScrollLeft.and.returnValue(scrollLeft);
+  if (mockScrollWidth && !isNaN(scrollWidth)) mockScrollWidth.and.returnValue(scrollWidth);
+  if (mockInnerWidth && !isNaN(innerWidth)) mockInnerWidth.and.returnValue(innerWidth);
   if (scrollEvent) {
     triggerScrollEvent();
   }
@@ -88,10 +110,10 @@ describe('BrowserScroll', () => {
   });
 
   it('resize',  (testDone) => {
-    const mockScroll = spyOn(browserScroll, 'dispatchScroll');
+    const mockScroll = spyOnProperty(browserScroll, 'scrollTop');
     expect(mockScroll.calls.count()).toBe(0);
     window.dispatchEvent(new Event('resize'));
-    expect(mockScroll.calls.count()).toBe(1);
+    expect(1 <= mockScroll.calls.count()).toBe(true);
     testDone();
   });
 
@@ -131,6 +153,26 @@ describe('BrowserScroll', () => {
     testDone();
   });
 
+  it('observeDirectionX', (testDone) => {
+    let expectDirection = 0;
+    const observe = browserScroll.observeDirectionX().subscribe(state => {
+      expectDirection = state.directionX;
+    });
+    listener.add(observe);
+    const mocks = spyCreate(browserScroll);
+    spyScroll(mocks, { scrollLeft: 0, scrollWidth: 200, innerWidth: 100 });
+    expect(expectDirection).toBe(0);
+    spyScroll(mocks, { scrollLeft: 10, scrollWidth: 200, innerWidth: 100 });
+    expect(expectDirection).toBe(1);
+    spyScroll(mocks, { scrollLeft: 20, scrollWidth: 200, innerWidth: 100 });
+    expect(expectDirection).toBe(1);
+    spyScroll(mocks, { scrollLeft: 10, scrollWidth: 200, innerWidth: 100 });
+    expect(expectDirection).toBe(-1);
+    spyScroll(mocks, { scrollLeft: 20, scrollWidth: 200, innerWidth: 100 });
+    expect(expectDirection).toBe(1);
+    testDone();
+  });
+
   it('observeDirectionLooseY', (testDone) => {
     let expectDirection = 0;
     const observe = browserScroll.observeDirectionLooseY().subscribe(state => {
@@ -154,19 +196,28 @@ describe('BrowserScroll', () => {
     testDone();
   });
 
-  it('observeHalfEndY', (testDone) => {
-    let expectCalled = false;
-    const observe = browserScroll.observeHalfEndY().subscribe(state => {
-      expectCalled = true;
+
+  it('observeDirectionLooseX', (testDone) => {
+    let expectDirection = 0;
+    const observe = browserScroll.observeDirectionLooseX().subscribe(state => {
+      expectDirection = state.directionX;
     });
+    browserScroll.setDirectionLooseGapX(20);
     listener.add(observe);
     const mocks = spyCreate(browserScroll);
-    spyScroll(mocks, { scrollTop: 10, scrollHeight: 200, innerHeight: 100 });
-    expect(expectCalled).toBe(false);
-    spyScroll(mocks, { scrollTop: 49, scrollHeight: 200, innerHeight: 100 });
-    expect(expectCalled).toBe(false);
-    spyScroll(mocks, { scrollTop: 50, scrollHeight: 200, innerHeight: 100 });
-    expect(expectCalled).toBe(true);
+    spyScroll(mocks, { scrollTop: 0, scrollHeight: 200, innerHeight: 100 });
+    spyScroll(mocks, { scrollLeft: 0, scrollWidth: 200, innerWidth: 100 });
+    expect(expectDirection).toBe(0);
+    spyScroll(mocks, { scrollLeft: 10, scrollWidth: 200, innerWidth: 100 });
+    expect(expectDirection).toBe(0);
+    spyScroll(mocks, { scrollLeft: 30, scrollWidth: 200, innerWidth: 100 });
+    expect(expectDirection).toBe(1);
+    spyScroll(mocks, { scrollLeft: 20, scrollWidth: 200, innerWidth: 100 });
+    expect(expectDirection).toBe(1);
+    spyScroll(mocks, { scrollLeft: 0, scrollWidth: 200, innerWidth: 100 });
+    expect(expectDirection).toBe(-1);
+    spyScroll(mocks, { scrollLeft: 20, scrollWidth: 200, innerWidth: 100 });
+    expect(expectDirection).toBe(1);
     testDone();
   });
 
@@ -182,6 +233,22 @@ describe('BrowserScroll', () => {
     spyScroll(mocks, { scrollTop: 99, scrollHeight: 200, innerHeight: 100 });
     expect(expectCalled).toBe(false);
     spyScroll(mocks, { scrollTop: 100, scrollHeight: 200, innerHeight: 100 });
+    expect(expectCalled).toBe(true);
+    testDone();
+  });
+
+  it('observeEndX', (testDone) => {
+    let expectCalled = false;
+    const observe = browserScroll.observeEndX().subscribe(state => {
+      expectCalled = true;
+    });
+    listener.add(observe);
+    const mocks = spyCreate(browserScroll);
+    spyScroll(mocks, { scrollLeft: 10, scrollWidth: 200, innerWidth: 100 });
+    expect(expectCalled).toBe(false);
+    spyScroll(mocks, { scrollLeft: 99, scrollWidth: 200, innerWidth: 100 });
+    expect(expectCalled).toBe(false);
+    spyScroll(mocks, { scrollLeft: 100, scrollWidth: 200, innerWidth: 100 });
     expect(expectCalled).toBe(true);
     testDone();
   });

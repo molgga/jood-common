@@ -1,10 +1,21 @@
 import { Observable } from 'rxjs';
 
 export enum ScrollDirection {
+  NONE = 0,
   UP = -1,
   LEFT = -1,
   DOWN = 1,
-  RIGHT = 1
+  RIGHT = 1,
+}
+
+export enum ScrollType {
+  SCROLL,
+  DIRECTION_Y,
+  DIRECTION_LOOSE_Y,
+  END_Y,
+  DIRECTION_X,
+  DIRECTION_LOOSE_X,
+  END_X,
 }
 
 export interface IBrowserScroll {
@@ -33,11 +44,15 @@ export interface IScrollState {
   scrollTop: number;
   scrollHeight: number;
   innerHeight: number;
-  endHeight: number;
-  halfHeight: number;
-  halfEndHeight: number;
   directionY: number;
   holdEndY: boolean;
-  holdHalfY: boolean;
   percentY: number;
+  endY: number;
+  scrollLeft: number;
+  scrollWidth: number;
+  innerWidth: number;
+  directionX: number;
+  holdEndX: boolean;
+  percentX: number;
+  endX: number;
 }

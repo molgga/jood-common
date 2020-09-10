@@ -42,6 +42,10 @@
         <article>
             <pre class="prettyprint source linenums"><code>import { ICookie, ICookieSet } from './types';
 
+interface IndexableValue {
+  [key: string]: string;
+}
+
 /**
  * 브라우져(document) 쿠키
  * @class BrowserCookie
@@ -112,9 +116,9 @@ export class BrowserCookie implements ICookie {
 
   /**
    * 모든 쿠키값을 key&amp;value 로 반환
-   * @returns {{ [key: string]: string }}
+   * @returns {IndexableValue}
    */
-  getAll(): { [key: string]: string } {
+  getAll(): IndexableValue {
     const all: any = {};
     const cookies: string = this.getCookies();
     if (cookies &amp;&amp; cookies != '') {
@@ -193,7 +197,7 @@ export class BrowserCookie implements ICookie {
 <br class="clear">
 
 <footer>
-    Documentation generated at Thu Sep 10 2020 10:25:35 GMT+0000 (Coordinated Universal Time)
+    Documentation generated at Thu Sep 10 2020 10:44:55 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script>prettyPrint();</script>

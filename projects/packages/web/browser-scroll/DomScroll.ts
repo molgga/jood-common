@@ -3,6 +3,11 @@ import { fromEvent } from 'rxjs';
 
 type TargetElement = HTMLElement;
 
+/**
+ * 브라우져(DOM) 스크롤
+ * @export
+ * @class DomScroll
+ */
 export class DomScroll extends BrowserScroll {
   protected element: TargetElement;
 
@@ -22,6 +27,10 @@ export class DomScroll extends BrowserScroll {
     this.eventListener.add(this.scrollObserver.subscribe(this.handleScroll));
   }
 
+  /**
+   * 스크롤 타겟 지정
+   * @param {TargetElement} element
+   */
   setElement(element: TargetElement) {
     this.element = element;
   }

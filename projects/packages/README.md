@@ -26,6 +26,7 @@ import { insert } from "@jood/common/array";
 import { toFormat } from "@jood/common/date";
 import { isIntersect } from "@jood/common/point";
 import { TTLCache } from "@jood/common/cache";
+import { BrowserCookie, BrowserScroll, DomScroll } from "@jood/common/web";
 import { JdString, JdNumber, JdArray, JdDate, JdPoint } from "@jood/common";
 
 console.log(replaceAll("hello-foo", "-", "#")); // "hello#foo"

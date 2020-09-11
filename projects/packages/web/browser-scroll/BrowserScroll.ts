@@ -251,19 +251,19 @@ export class BrowserScroll {
    * @protected
    */
   protected onScroll(): void {
-    const yCurrent = this.yCurrent;
-    const xCurrent = this.xCurrent;
-    const { scrollTop, endY, directionY, scrollLeft, endX, directionX } = this.getState();
+    this.onScrollX();
+    this.onScrollY();
+    this.dispatchScroll(ScrollType.SCROLL);
+  }
 
-    let yDirection = 0;
+  /**
+   * 스크롤 X 축
+   * @protected
+   */
+  protected onScrollX() {
+    const { scrollLeft, endX, directionX } = this.getState();
+    const xCurrent = this.xCurrent;
     let xDirection = 0;
-    if (yCurrent < scrollTop) {
-      yDirection = ScrollDirection.DOWN;
-    } else if (scrollTop < yCurrent) {
-      yDirection = ScrollDirection.UP;
-    } else {
-      yDirection = ScrollDirection.NONE;
-    }
     if (xCurrent < scrollLeft) {
       xDirection = ScrollDirection.RIGHT;
     } else if (scrollLeft < xCurrent) {
@@ -271,40 +271,15 @@ export class BrowserScroll {
     } else {
       xDirection = ScrollDirection.NONE;
     }
-
-    this.yDirection = yDirection;
     this.xDirection = xDirection;
-    this.yCurrent = scrollTop;
     this.xCurrent = scrollLeft;
-    this.dispatchScroll(ScrollType.SCROLL);
-
-    if (this.yDirection !== directionY) {
-      this.dispatchScroll(ScrollType.DIRECTION_Y);
-    }
-
     if (this.xDirection !== directionX) {
       this.dispatchScroll(ScrollType.DIRECTION_X);
     }
-
-    if (this.yDirectionLooseBefore !== this.yDirection && this.yDirectionLooseGap <= Math.abs(scrollTop - yCurrent)) {
-      this.dispatchScroll(ScrollType.DIRECTION_LOOSE_Y);
-      this.yDirectionLooseBefore = this.yDirection;
-    }
-
     if (this.xDirectionLooseBefore !== this.xDirection && this.xDirectionLooseGap <= Math.abs(scrollLeft - xCurrent)) {
       this.dispatchScroll(ScrollType.DIRECTION_LOOSE_X);
       this.xDirectionLooseBefore = this.xDirection;
     }
-
-    if (endY <= scrollTop) {
-      if (!this.yEndDispatchHold) {
-        this.dispatchScroll(ScrollType.END_Y);
-      }
-      this.holdDispatchEndY(true);
-    } else {
-      this.holdDispatchEndY(false);
-    }
-
     if (endX <= scrollLeft) {
       if (!this.xEndDispatchHold) {
         this.dispatchScroll(ScrollType.END_X);
@@ -312,6 +287,40 @@ export class BrowserScroll {
       this.holdDispatchEndX(true);
     } else {
       this.holdDispatchEndX(false);
+    }
+  }
+
+  /**
+   * 스크롤 Y 축
+   * @protected
+   */
+  protected onScrollY() {
+    const { scrollTop, endY, directionY } = this.getState();
+    const yCurrent = this.yCurrent;
+    let yDirection = 0;
+    if (yCurrent < scrollTop) {
+      yDirection = ScrollDirection.DOWN;
+    } else if (scrollTop < yCurrent) {
+      yDirection = ScrollDirection.UP;
+    } else {
+      yDirection = ScrollDirection.NONE;
+    }
+    this.yDirection = yDirection;
+    this.yCurrent = scrollTop;
+    if (this.yDirection !== directionY) {
+      this.dispatchScroll(ScrollType.DIRECTION_Y);
+    }
+    if (this.yDirectionLooseBefore !== this.yDirection && this.yDirectionLooseGap <= Math.abs(scrollTop - yCurrent)) {
+      this.dispatchScroll(ScrollType.DIRECTION_LOOSE_Y);
+      this.yDirectionLooseBefore = this.yDirection;
+    }
+    if (endY <= scrollTop) {
+      if (!this.yEndDispatchHold) {
+        this.dispatchScroll(ScrollType.END_Y);
+      }
+      this.holdDispatchEndY(true);
+    } else {
+      this.holdDispatchEndY(false);
     }
   }
 

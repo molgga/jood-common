@@ -8,6 +8,8 @@ import { toFormat } from 'dist/packages/date';
 // import { BrowserScroll } from 'dist/packages/web';
 import { BrowserScroll } from 'projects/packages/web/public-api';
 import { DomScroll } from 'projects/packages/web/browser-scroll/DomScroll';
+import { debounce, delay } from 'projects/packages/functional/public-api';
+import { IScrollState } from 'packages/web/web/public-api';
 
 // import { JdString } from "@jood/common";
 // import { toWordArray } from "@jood/common/string";
@@ -32,15 +34,26 @@ export class AppComponent {
     console.log('isNumber', isNumber(1));
     console.log('toFormat', toFormat(Date.now()));
 
+    (async () => {
+      console.log(Date.now());
+      await delay(1000);
+      console.log(Date.now());
+      await delay(1000);
+      console.log(Date.now());
+    })();
+
     const ttl = new TTLCache();
     ttl.set('key1', { foo: 'bar' }, 1000);
     console.log(ttl.get('key1'));
 
     const scroll = new BrowserScroll();
+    const onDebounce = debounce<[IScrollState]>((state) => {
+      console.log('onDebounce', state);
+    }, 100);
     scroll.init();
-    // scroll.observeScroll().subscribe((state) => {
-    //   console.log('observeScroll', state);
-    // });
+    scroll.observeScroll().subscribe((state) => {
+      onDebounce(state);
+    });
 
     // scroll.observeDirectionY().subscribe((state) => {
     //   console.log('observeDirectionY', state);

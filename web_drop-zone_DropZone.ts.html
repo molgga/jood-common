@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>JdDate - Documentation</title>
+    <title>web/drop-zone/DropZone.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -30,106 +30,96 @@
 
 <div id="main">
     
-    <h1 class="page-title">JdDate</h1>
+    <h1 class="page-title">web/drop-zone/DropZone.ts</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-        JdDate
-        </h2>
-        
-    
-</header>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { fromEvent, Subscription, Subject, Observable } from 'rxjs';
+import { filter } from 'rxjs/operators';
+import { TargetElement, DropZoneEvent, DropZoneEventType } from './types';
 
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description">namespace array module</div>
-        
+/**
+ * 드랍존
+ * @export
+ * @class DropZone
+ */
+export class DropZone {
+  constructor() {
+    this.listener = new Subscription();
+    this.subjectEvent = new Subject();
+    this.observableEvent = this.subjectEvent.asObservable();
+  }
 
-        
+  protected element: TargetElement;
+  protected listener: Subscription;
+  protected subjectEvent: Subject&lt;DropZoneEvent>;
+  protected observableEvent: Observable&lt;DropZoneEvent>;
 
+  init(element: TargetElement) {
+    this.element = element;
+    const observeDragOver = fromEvent(this.element, 'dragover').subscribe(this.onDragOver.bind(this));
+    const observeDragEnter = fromEvent(this.element, 'dragenter').subscribe(this.onDragEnter.bind(this));
+    const observeDragLeave = fromEvent(this.element, 'dragleave').subscribe(this.onDragLeave.bind(this));
+    const observeDrop = fromEvent(this.element, 'drop').subscribe(this.onDrop.bind(this));
+    this.listener.add(observeDragOver);
+    this.listener.add(observeDragEnter);
+    this.listener.add(observeDragLeave);
+    this.listener.add(observeDrop);
+  }
 
-<dl class="details">
+  protected onDragOver(evt: DragEvent): void {
+    evt.preventDefault();
+    evt.dataTransfer.dropEffect = 'move';
+  }
 
-    
+  protected onDragEnter(): void {
+    this.subjectEvent.next({ type: DropZoneEventType.DRAG_ENTER });
+  }
 
-    
+  protected onDragLeave(): void {
+    this.subjectEvent.next({ type: DropZoneEventType.DRAG_LEAVE });
+  }
 
-    
+  protected onDrop(evt: DragEvent): void {
+    evt.preventDefault();
+    this.subjectEvent.next({ type: DropZoneEventType.DROP, dataTransfer: evt.dataTransfer });
+  }
 
-    
+  protected pipeEvent(observer: Observable&lt;DropZoneEvent>, type: DropZoneEventType): Observable&lt;DropZoneEvent> {
+    return observer.pipe(filter((evt) => evt.type === type));
+  }
 
-    
+  observeDragEnter(): Observable&lt;DropZoneEvent> {
+    return this.pipeEvent(this.observableEvent, DropZoneEventType.DRAG_ENTER);
+  }
 
-    
+  observeDragLeave(): Observable&lt;DropZoneEvent> {
+    return this.pipeEvent(this.observableEvent, DropZoneEventType.DRAG_LEAVE);
+  }
 
-    
+  observeDrop(): Observable&lt;DropZoneEvent> {
+    return this.pipeEvent(this.observableEvent, DropZoneEventType.DROP);
+  }
 
-    
+  observeEvent(): Observable&lt;DropZoneEvent> {
+    return this.observableEvent;
+  }
 
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="public-api.ts.html">public-api.ts</a>, <a href="public-api.ts.html#line26">line 26</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-            <h3>Example</h3>
-            
-    <pre class="prettyprint"><code>import { JdDate } from '@jood/common';
-JdDate.toFormat(...);</code></pre>
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+  destroy() {
+    if (this.listener) {
+      this.listener.unsubscribe();
+    }
+  }
+}
+</code></pre>
+        </article>
+    </section>
 
 
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>JdDate - Documentation</title>
+    <title>web/page-visibility/PageVisibility.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -30,106 +30,82 @@
 
 <div id="main">
     
-    <h1 class="page-title">JdDate</h1>
+    <h1 class="page-title">web/page-visibility/PageVisibility.ts</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-        JdDate
-        </h2>
-        
-    
-</header>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { Subject, fromEvent, Subscription } from 'rxjs';
+import { VisibilityState } from './types';
 
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description">namespace array module</div>
-        
+/**
+ * Page Visibility
+ * @export
+ * @class PageVisibility
+ */
+export class PageVisibility {
+  protected subjectState: Subject&lt;VisibilityState>;
+  protected eventListener: Subscription;
+  protected hiddenProp: string;
+  protected hiddenEventName: string;
 
-        
+  constructor() {
+    this.eventListener = new Subscription();
+    this.subjectState = new Subject();
+  }
 
+  init() {
+    this.initCompatibility();
+    const visibilityObserver = fromEvent(document, this.hiddenEventName);
+    this.eventListener.add(visibilityObserver.subscribe(this.onVisibilityChange.bind(this)));
+  }
 
-<dl class="details">
+  protected initCompatibility() {
+    if ('hidden' in document) {
+      this.hiddenProp = 'hidden';
+      this.hiddenEventName = 'visibilitychange';
+    } else if ('msHidden' in document) {
+      this.hiddenProp = 'msHidden';
+      this.hiddenEventName = 'msvisibilitychange';
+    } else if ('webkitHidden' in document) {
+      this.hiddenProp = 'webkitHidden';
+      this.hiddenEventName = 'webkitvisibilitychange';
+    }
+  }
 
-    
+  protected onVisibilityChange() {
+    this.subjectState.next(this.getState());
+  }
 
-    
+  isHidden(): boolean {
+    return !!document[this.hiddenProp];
+  }
 
-    
+  observeState() {
+    return this.subjectState.asObservable();
+  }
 
-    
+  getState() {
+    const hidden = this.isHidden();
+    return {
+      hidden,
+    };
+  }
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="public-api.ts.html">public-api.ts</a>, <a href="public-api.ts.html#line26">line 26</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-            <h3>Example</h3>
-            
-    <pre class="prettyprint"><code>import { JdDate } from '@jood/common';
-JdDate.toFormat(...);</code></pre>
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+  destroy() {
+    if (this.eventListener) {
+      this.eventListener.unsubscribe();
+    }
+  }
+}
+</code></pre>
+        </article>
+    </section>
 
 
 

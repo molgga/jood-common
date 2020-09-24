@@ -1,6 +1,6 @@
 {
   "name": "@jood/common",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -23,7 +23,10 @@
     "color",
     "point",
     "browser",
-    "scroll"
+    "scroll",
+    "page-visibility",
+    "debounce",
+    "delay"
   ],
   "peerDependencies": {
     "rxjs": ">=6.5.4"

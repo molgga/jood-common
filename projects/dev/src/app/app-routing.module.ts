@@ -4,8 +4,8 @@ import { EchoComponent } from 'projects/dev/src/app/pages/echo/echo.component';
 
 const routes: Routes = [
   {
-    path: 'scroll',
-    loadChildren: () => import('projects/dev/src/app/pages/scroll/scroll.module').then((m) => m.ScrollModule),
+    path: 'web',
+    loadChildren: () => import('projects/dev/src/app/pages/web/web.module').then((m) => m.WebModule),
   },
   {
     path: 'echo',

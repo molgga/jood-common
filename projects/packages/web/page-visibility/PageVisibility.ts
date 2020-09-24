@@ -1,6 +1,11 @@
 import { Subject, fromEvent, Subscription } from 'rxjs';
 import { VisibilityState } from './types';
 
+/**
+ * Page Visibility
+ * @export
+ * @class PageVisibility
+ */
 export class PageVisibility {
   protected subjectState: Subject<VisibilityState>;
   protected eventListener: Subscription;

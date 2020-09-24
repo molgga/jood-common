@@ -1,0 +1,9 @@
+.zone {
+  margin: 10px;
+  padding: 10px;
+  border: 1px dashed #000000;
+
+  &.drop-able {
+    border-color: #ff0000;
+  }
+}

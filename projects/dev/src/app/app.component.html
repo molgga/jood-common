@@ -1,12 +1,5 @@
-<div class="pad-box">foo</div>
-<div class="dom-box" #refScrollDom>
-  <div class="dom-inner">foo</div>
+<div>
+  <a [routerLink]="['/']">main</a> | <a [routerLink]="['/scroll']">scroll</a> |
+  <a [routerLink]="['/echo']">echo</a>
 </div>
-<div class="pad-box">foo</div>
-<div class="pad-box">foo</div>
-<div class="pad-box">foo</div>
-<div class="pad-box">foo</div>
-<div class="pad-box">foo</div>
-<div class="pad-box">foo</div>
-<div class="pad-box">foo</div>
-<div class="pad-box">foo</div>
+<router-outlet></router-outlet>

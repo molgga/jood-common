@@ -2,6 +2,11 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  },
   "projects": {
     "packages": {
       "projectType": "library",
@@ -32,10 +37,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "projects/packages/tsconfig.lib.json",
-              "projects/packages/tsconfig.spec.json"
-            ],
+            "tsConfig": ["projects/packages/tsconfig.lib.json", "projects/packages/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**"]
           }
         }
@@ -61,10 +63,7 @@
             "polyfills": "projects/dev/src/polyfills.ts",
             "tsConfig": "projects/dev/tsconfig.app.json",
             "aot": false,
-            "assets": [
-              "projects/dev/src/favicon.ico",
-              "projects/dev/src/assets"
-            ],
+            "assets": ["projects/dev/src/favicon.ico", "projects/dev/src/assets"],
             "styles": ["projects/dev/src/styles.scss"],
             "scripts": []
           },
@@ -124,10 +123,7 @@
             "polyfills": "projects/dev/src/polyfills.ts",
             "tsConfig": "projects/dev/tsconfig.spec.json",
             "karmaConfig": "projects/dev/karma.conf.js",
-            "assets": [
-              "projects/dev/src/favicon.ico",
-              "projects/dev/src/assets"
-            ],
+            "assets": ["projects/dev/src/favicon.ico", "projects/dev/src/assets"],
             "styles": ["projects/dev/src/styles.scss"],
             "scripts": []
           }
@@ -135,11 +131,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "projects/dev/tsconfig.app.json",
-              "projects/dev/tsconfig.spec.json",
-              "projects/dev/e2e/tsconfig.json"
-            ],
+            "tsConfig": ["projects/dev/tsconfig.app.json", "projects/dev/tsconfig.spec.json", "projects/dev/e2e/tsconfig.json"],
             "exclude": ["**/node_modules/**"]
           }
         },

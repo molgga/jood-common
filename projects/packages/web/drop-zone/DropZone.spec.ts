@@ -1,6 +1,6 @@
 import { DropZone } from "projects/packages/web/drop-zone/DropZone";
 
-fdescribe("DropZone", () => {
+describe("DropZone", () => {
   let dropZone: DropZone;
   let element: HTMLElement;
   beforeEach(() => {

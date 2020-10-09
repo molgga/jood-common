@@ -2,7 +2,7 @@
  * @packageDocumentation
  * @module string
  */
-import { isNumber } from "../number/utils";
+import { isNumber } from '../number/utils';
 
 /**
  * 일치하는 모든 문자를 변경
@@ -12,11 +12,7 @@ import { isNumber } from "../number/utils";
  * @example
  * console.log(replaceAll("a-b-c", "-", "@")); // "a@b@c"
  */
-export function replaceAll(
-  text: string,
-  find: string,
-  replace: string = ""
-): string {
+export function replaceAll(text: string, find: string, replace: string = ''): string {
   if (!text) return text;
   if (!find) return text;
   return text.split(find).join(replace);
@@ -29,12 +25,9 @@ export function replaceAll(
  * @example
  * console.log(removeTag(`<div><h1>Complete beginners</h1> <h2>first steps</h2></div>`)); // "Complete beginners first steps"
  */
-export function removeTag(
-  tagText: string,
-  removeTabSpace: boolean = true
-): string {
-  let refine = tagText.replace(/(<([^>]+)>)/gi, "");
-  if (removeTabSpace) refine = replaceAll(refine, "\t", "");
+export function removeTag(tagText: string, removeTabSpace: boolean = true): string {
+  let refine = tagText.replace(/(<([^>]+)>)/gi, '');
+  if (removeTabSpace) refine = replaceAll(refine, '\t', '');
   return refine;
 }
 
@@ -58,7 +51,7 @@ export function toUpperCaseHead(text: string): string {
  */
 export function toCamelFromSnake(text: string): string {
   return text.replace(/([_][a-z])/gi, ($1) => {
-    return $1.toUpperCase().replace("_", "");
+    return $1.toUpperCase().replace('_', '');
   });
 }
 
@@ -70,7 +63,7 @@ export function toCamelFromSnake(text: string): string {
  */
 export function toCamelFromKebab(text: string): string {
   return text.replace(/([-][a-z])/gi, ($1) => {
-    return $1.toUpperCase().replace("-", "");
+    return $1.toUpperCase().replace('-', '');
   });
 }
 
@@ -87,7 +80,7 @@ export function toWordArray(text: string): string[] {
   while (word) {
     refine.push(word);
     word = strReg.exec(text)[0].trim();
-    if (word === "") break;
+    if (word === '') break;
   }
   return refine;
 }
@@ -131,22 +124,18 @@ export function insert(text: string, index: number, addText: string): string {
   console.log(padStart("hello", "0", 5)); // "hello"
   console.log(padStart("hello", "0", 6)); // "0hello"
  */
-export function padStart(
-  text: string | number,
-  addText: string,
-  expectCount?: number
-): string | number {
+export function padStart(text: string | number, addText: string, expectCount?: number): string | number {
   let refine;
   if (!expectCount) {
     return text;
   }
-  if (typeof text === "string" || typeof text === "number") {
+  if (typeof text === 'string' || typeof text === 'number') {
     refine = text.toString();
     const len = refine.length;
     if (len < expectCount) {
       const count = expectCount - len;
       const adds = Array.from(Array(count)).map(() => addText);
-      refine = `${adds.join("")}${text}`;
+      refine = `${adds.join('')}${text}`;
       if (expectCount < refine.length) {
         refine = refine.substring(refine.length - expectCount, refine.length);
       }
@@ -174,22 +163,18 @@ export function padStart(
   console.log(padEnd("hello", "0", 5)); // "hello"
   console.log(padEnd("hello", "0", 6)); // "hello0"
  */
-export function padEnd(
-  text: string | number,
-  addText: string,
-  expectCount?: number
-): string | number {
+export function padEnd(text: string | number, addText: string, expectCount?: number): string | number {
   let refine;
   if (!expectCount) {
     return text;
   }
-  if (typeof text === "string" || typeof text === "number") {
+  if (typeof text === 'string' || typeof text === 'number') {
     refine = text.toString();
     const len = refine.length;
     if (len < expectCount) {
       const count = expectCount - len;
       const adds = Array.from(Array(count)).map(() => addText);
-      refine = `${text}${adds.join("")}`;
+      refine = `${text}${adds.join('')}`;
       if (expectCount < refine.length) {
         refine = refine.substring(0, expectCount);
       }
@@ -240,23 +225,24 @@ export interface CurrencyPriceOption {
  * console.log(toCurrencyFormat(1234)); // "1,234"
  * console.log(toCurrencyFormat(1234.9, { fixed: 2 })); // "1,234.90"
  */
-export function toCurrencyFormat(
-  price: string | number,
-  options: CurrencyPriceOption = {}
-): string | any {
+export function toCurrencyFormat(price: string | number, options: CurrencyPriceOption = {}): string | any {
   if (!isNumber(price)) {
     return price;
   }
-  const { fixed = 0, replaceChar = "," } = options;
+  const { fixed = 0, replaceChar = ',' } = options;
   const safeStr = String(price);
-  let refine = "";
-  let splits = safeStr.split(".");
-  let decimal = "";
+  let refine = '';
+  let splits = safeStr.split('.');
+  let decimal = '';
   let normal = splits[0];
   normal = Number(normal)
     .toFixed(1)
     .replace(/\d(?=(\d{3})+\.)/g, `$&${replaceChar}`);
   normal = normal.substring(0, normal.length - 2);
+
+  if (-1 < price && price < 0 && !/^-/.test(normal)) {
+    normal = '-' + normal;
+  }
 
   const hasPoint = /\./.test(safeStr);
   if (hasPoint) {
@@ -267,8 +253,8 @@ export function toCurrencyFormat(
     const decimalLen = decimal.length;
     if (decimalLen < fixed) {
       const pad = Array.from(Array(fixed - decimalLen))
-        .map(() => "0")
-        .join("");
+        .map(() => '0')
+        .join('');
       decimal = `${decimal}${pad}`;
     } else {
       decimal = decimal.substring(0, fixed);
@@ -291,11 +277,7 @@ export function toCurrencyFormat(
  console.log(toEllipsisMiddle("01234567890", 10)); // "0123456789"
  console.log(toEllipsisMiddle("01234567890", 11)); // "0123456789"
  */
-export function toEllipsisMiddle(
-  text: string,
-  max: number = 50,
-  alternative: string = "..."
-): string {
+export function toEllipsisMiddle(text: string, max: number = 50, alternative: string = '...'): string {
   if (!text) return text;
   let refine = text.toString();
   const strLen = refine.length;
@@ -320,11 +302,7 @@ export function toEllipsisMiddle(
  console.log(toEllipsisEnd("01234567890", 10)); // "01234567890"
  console.log(toEllipsisEnd("01234567890", 11)); // "01234567890"
  */
-export function toEllipsisEnd(
-  text: string,
-  max: number = 50,
-  alternative: string = "..."
-): string {
+export function toEllipsisEnd(text: string, max: number = 50, alternative: string = '...'): string {
   if (!text) return text;
   let refine = text.toString();
   const strLen = refine.length;
@@ -347,10 +325,10 @@ let _domParser: DOMParser = null;
  * console.log(refineSafeHtmlText("&lt;div&gt;1&lt;/div&gt;")); // "<div>1</div>"
  */
 export function refineSafeHtmlText(source: string): string {
-  let refine = "";
+  let refine = '';
   try {
     if (!_domParser) _domParser = new DOMParser();
-    const dom = _domParser.parseFromString(source, "text/html");
+    const dom = _domParser.parseFromString(source, 'text/html');
     refine = dom.body.textContent;
   } catch (err) {
     refine = source;
@@ -367,12 +345,12 @@ export function refineSafeHtmlText(source: string): string {
 export function escape(text: string): string {
   return text.replace(/[<>&]/g, function (match) {
     switch (match) {
-      case "<":
-        return "&lt;";
-      case ">":
-        return "&gt;";
-      case "&":
-        return "&amp;";
+      case '<':
+        return '&lt;';
+      case '>':
+        return '&gt;';
+      case '&':
+        return '&amp;';
       default:
         return match;
     }
@@ -386,7 +364,7 @@ export function escape(text: string): string {
  * console.log(trimStart("&#10240; \u2800 a b ")); // "a b "
  */
 export function trimStart(text: string): string {
-  return text.replace(/^(\u2800|&#10240;|\s)+/g, "");
+  return text.replace(/^(\u2800|&#10240;|\s)+/g, '');
 }
 
 /**
@@ -396,7 +374,7 @@ export function trimStart(text: string): string {
  * console.log(trimEnd(" a b &#10240; \u2800")); // " a b"
  */
 export function trimEnd(text: string): string {
-  return text.replace(/(\u2800|&#10240;|\s)+$/g, "");
+  return text.replace(/(\u2800|&#10240;|\s)+$/g, '');
 }
 
 /**
@@ -406,7 +384,7 @@ export function trimEnd(text: string): string {
  * console.log(refineWhitespace("&#10240;\u2800")); // "  "
  */
 export function refineWhitespace(text: string): string {
-  return text.replace(/(\u2800|&#10240;)/g, " ");
+  return text.replace(/(\u2800|&#10240;)/g, ' ');
 }
 
 /**
@@ -434,7 +412,7 @@ export function collapseMultiline(text: string, allow: number = 2): string {
       cnt = 0;
     }
   });
-  return refine.join("\n");
+  return refine.join('\n');
 }
 
 /**
@@ -453,19 +431,16 @@ interface MaskingOptions {
  * @param {string} text 소수 문자열
  * @param {MaskingOptions} [options={}] 마스킹 옵션
  */
-export function toMaskingFirst(
-  text: string,
-  options: MaskingOptions = {}
-): string {
+export function toMaskingFirst(text: string, options: MaskingOptions = {}): string {
   const strLength = text.length;
   if (!strLength || strLength <= 1) return text;
-  const { mask = "*", maxShow = 0 } = options;
+  const { mask = '*', maxShow = 0 } = options;
   const strHalf = Math.floor(strLength / 2);
   const cutPivot = maxShow ? Math.min(maxShow, strHalf) : strHalf;
   const cutFirst = strLength - Math.max(1, cutPivot);
   const strFirst = Array.from(Array(cutFirst))
     .map(() => mask)
-    .join("");
+    .join('');
   const strLast = text.slice(cutFirst);
   return strFirst + strLast;
 }
@@ -478,14 +453,14 @@ export function toMaskingFirst(
 export function toMaskingLast(text: string, options: MaskingOptions = {}) {
   const strLength = text.length;
   if (!strLength || strLength <= 1) return text;
-  const { mask = "*", maxShow = 0 } = options;
+  const { mask = '*', maxShow = 0 } = options;
   const strHalf = Math.floor(strLength / 2);
   const cutPivot = maxShow ? Math.min(maxShow, strHalf) : strHalf;
   const cutFirst = Math.max(1, cutPivot);
   const strFirst = text.slice(0, cutFirst);
   const strLast = Array.from(Array(strLength - cutFirst))
     .map(() => mask)
-    .join("");
+    .join('');
   return strFirst + strLast;
 }
 
@@ -497,7 +472,7 @@ export function toMaskingLast(text: string, options: MaskingOptions = {}) {
 export function toMaskingMiddle(text: string, options: MaskingOptions = {}) {
   const strLength = text.length;
   if (!strLength || strLength <= 1) return text;
-  const { mask = "*", maxShow = 0 } = options;
+  const { mask = '*', maxShow = 0 } = options;
   const strHalf = Math.floor(strLength / 2);
   const cutPivot = maxShow ? Math.min(maxShow, strHalf) : strHalf;
   const cutFirst = Math.max(1, Math.ceil(cutPivot / 2));
@@ -505,8 +480,8 @@ export function toMaskingMiddle(text: string, options: MaskingOptions = {}) {
   const strFirst = text.slice(0, cutFirst);
   const strMiddle = Array.from(Array(strLength - cutFirst - cutLast))
     .map(() => mask)
-    .join("");
-  const strLast = cutLast ? text.slice(-cutLast) : "";
+    .join('');
+  const strLast = cutLast ? text.slice(-cutLast) : '';
   return strFirst + strMiddle + strLast;
 }
 
@@ -518,15 +493,13 @@ export function toMaskingMiddle(text: string, options: MaskingOptions = {}) {
 export function toMaskingJustify(text: string, options: MaskingOptions = {}) {
   const strLength = text.length;
   if (!strLength || strLength <= 1) return text;
-  const { mask = "*", maxShow = 0 } = options;
+  const { mask = '*', maxShow = 0 } = options;
   const strHalf = Math.floor(strLength / 2);
   const cutPivot = maxShow ? Math.min(maxShow, strHalf) : strHalf;
   const cutFirst = Math.max(1, Math.ceil((strLength - cutPivot) / 2));
   const cutLast = Math.max(0, strLength - cutFirst - cutPivot);
   const strFirst = text.slice(0, cutFirst).replace(/./g, mask);
-  const strMiddle = cutLast
-    ? text.slice(cutFirst, -cutLast)
-    : text.slice(cutFirst);
-  const strLast = cutLast ? text.slice(-cutLast).replace(/./g, mask) : "";
+  const strMiddle = cutLast ? text.slice(cutFirst, -cutLast) : text.slice(cutFirst);
+  const strLast = cutLast ? text.slice(-cutLast).replace(/./g, mask) : '';
   return strFirst + strMiddle + strLast;
 }

@@ -164,6 +164,17 @@ describe("string utils", () => {
   });
 
   it("toCurrencyFormat", () => {
+    expect(toCurrencyFormat(-0.1)).toBe("-0.1");
+    expect(toCurrencyFormat(-1.1)).toBe("-1.1");
+    expect(toCurrencyFormat(-1.12)).toBe("-1.12");
+    expect(toCurrencyFormat(-1.123)).toBe("-1.123");
+    expect(toCurrencyFormat(-1.1234)).toBe("-1.1234");
+    expect(toCurrencyFormat(-1.12345)).toBe("-1.12345");
+    expect(toCurrencyFormat(-12.1234)).toBe("-12.1234");
+    expect(toCurrencyFormat(-123.1234)).toBe("-123.1234");
+    expect(toCurrencyFormat(-1234.1234)).toBe("-1,234.1234");
+    expect(toCurrencyFormat(-12341234.1234)).toBe("-12,341,234.1234");
+
     expect(toCurrencyFormat(0)).toBe("0");
     expect(toCurrencyFormat(1234)).toBe("1,234");
     expect(toCurrencyFormat(1234567)).toBe("1,234,567");

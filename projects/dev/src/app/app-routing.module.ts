@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('projects/dev/src/app/pages/echo/echo.module').then((m) => m.EchoModule),
   },
   {
+    path: 'rx',
+    loadChildren: () => import('projects/dev/src/app/pages/rx/rx.module').then((m) => m.RxModule),
+  },
+  {
     path: '**',
     component: EchoComponent,
   },

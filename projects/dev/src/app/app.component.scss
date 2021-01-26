@@ -1,3 +1,10 @@
+.link-list {
+  display: flex;
+  flex-wrap: wrap;
+}
 .link-btn {
-  padding: 5px;
+  margin: 2px;
+  padding: 5px 10px;
+  border-radius: 2px;
+  background-color: #f0f0f0;
 }

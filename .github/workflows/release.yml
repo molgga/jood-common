@@ -12,25 +12,24 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      uses: actions/checkout@v2
-      uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
 
-      name: build and test
-      run: yarn install --frozen-lockfile # yarn 사용시 npm ci 와 같다
+      - name: Build and Test
+        run: yarn install --frozen-lockfile # yarn 사용시 npm ci 와 같다
+        run: npm run ci:test
+        run: npm run ci:deploy-before
 
-      run: npm run ci:test
-      run: npm run ci:deploy-before
-
-      name: NPM publish
-      run: npm publish
+      - name: NPM publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
 
-      name: Github pages publish
-      uses: peaceiris/actions-gh-pages@v3
+      - name: Github pages publish
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }} # https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-set-runners-access-token-github_token
           publish_dir: './docs'

@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RoutingModule } from './rx.routing';
-import { RxComponent } from './rx.component';
+import { DecelerateComponent } from './decelerate.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [CommonModule, RoutingModule],
-  declarations: [RxComponent],
+  imports: [CommonModule, FormsModule, RoutingModule],
+  declarations: [DecelerateComponent],
 })
 export class RxModule {}

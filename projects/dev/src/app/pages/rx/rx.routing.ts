@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RxComponent } from './rx.component';
+import { DecelerateComponent } from './decelerate.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: RxComponent,
+    path: 'decelerate',
+    component: DecelerateComponent,
   },
 ];
 

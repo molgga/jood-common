@@ -25,8 +25,8 @@ jobs:
 
       - name: NPM publish
       - run: npm publish
-       env:
-         NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
 
       - name: Github pages publish
       - uses: peaceiris/actions-gh-pages@v3

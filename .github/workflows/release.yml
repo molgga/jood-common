@@ -1,8 +1,9 @@
 name: Release deploy
 
 on:
-  push:
-    branches: [master]
+  release:
+    types:
+      - created
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+**'
 

@@ -24,6 +24,7 @@ export class PageVisibility {
   }
 
   protected initCompatibility() {
+    /* istanbul ignore else */
     if ('hidden' in document) {
       this.hiddenProp = 'hidden';
       this.hiddenEventName = 'visibilitychange';

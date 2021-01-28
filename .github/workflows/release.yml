@@ -22,7 +22,7 @@ jobs:
           npm run ci:deploy-before
           
       - name: NPM publish
-        run: npm publish
+        run: npm publish ./dist/packages
         env:
           NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
 

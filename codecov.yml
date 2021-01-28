@@ -1,5 +1,5 @@
 codecov:
-  bot: 'codecov-io'
+  bot: 'codecov-bot'
   strict_yaml_branch: 'yaml-config'
   max_report_age: 24
   disable_default_path_fixes: no
@@ -23,4 +23,4 @@ comment:
   require_base: no # [yes :: must have a base report to post]
   require_head: yes # [yes :: must have a head report to post]
   branchs:
-    - 'main'
+    - 'master'

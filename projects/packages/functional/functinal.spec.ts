@@ -23,8 +23,11 @@ describe("functinal", () => {
     let isCalled = false;
     setTimeout(() => {
       expect(isCalled).toBe(false);
+    }, 140);
+    setTimeout(() => {
+      expect(isCalled).toBe(true);
       testDone();
-    }, 100);
+    }, 160);
     await delay(150);
     isCalled = true;
   });

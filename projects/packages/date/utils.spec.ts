@@ -89,36 +89,15 @@ describe("date utils", () => {
     const test1 = new Date("2019-03-21 14:33:57");
     const test2 = new Date("2019-03-21 00:33:57");
     expect(toFormat(test1.getTime())).toBe("2019-03-21 14:33:57");
-    expect(toFormat(test1.getTime(), { format: "YYYY-MM-DD" })).toBe(
-      "2019-03-21"
-    );
+    expect(toFormat(test1.getTime(), { format: "YYYY-MM-DD" })).toBe("2019-03-21");
     expect(toFormat(test1.getTime(), { format: "hh:mm:ss" })).toBe("14:33:57");
-    expect(toFormat(test1.getTime(), { format: "hh:mm:ss YYYY/MM/DD" })).toBe(
-      "14:33:57 2019/03/21"
-    );
-    expect(toFormat(test1.getTime(), { format: "YYYY-MM-DD AA hh:mm" })).toBe(
-      "2019-03-21 오후 02:33"
-    );
-    expect(toFormat(test2.getTime(), { format: "YYYY-MM-DD AA hh:mm" })).toBe(
-      "2019-03-21 오전 00:33"
-    );
-    expect(
-      toFormat(Math.ceil(test1.getTime() / 1000), {
-        multiple: 1000,
-        format: "hh:mm:ss YYYY/MM/DD"
-      })
-    ).toBe("14:33:57 2019/03/21");
-    expect(
-      toFormat(null, {
-        alternative: "Unknown"
-      })
-    ).toBe("Unknown");
-    expect(
-      toFormat(undefined, {
-        alternative: "Unknown"
-      })
-    ).toBe("Unknown");
-
+    expect(toFormat(test1.getTime(), { format: "hh:mm:ss YYYY/MM/DD" })).toBe("14:33:57 2019/03/21");
+    expect(toFormat(test1.getTime(), { format: "YYYY-MM-DD AA hh:mm" })).toBe("2019-03-21 오후 02:33");
+    expect(toFormat(test2.getTime(), { format: "YYYY-MM-DD AA hh:mm" })).toBe("2019-03-21 오전 00:33");
+    expect(toFormat(test2.getTime(), { format: "YYYY-MM-DD AA hh:mm (d)" })).toBe("2019-03-21 오전 00:33 (목)");
+    expect(toFormat(Math.ceil(test1.getTime() / 1000), { multiple: 1000, format: "hh:mm:ss YYYY/MM/DD" })).toBe("14:33:57 2019/03/21");
+    expect(toFormat(null, { alternative: "Unknown" })).toBe("Unknown");
+    expect(toFormat(undefined, { alternative: "Unknown" })).toBe("Unknown");
     expect(toFormat(0, { format: "YYYY-MM-DD" })).toBe("1970-01-01"); // timezone offset 때문에 시간은 테스트 제외함
   });
 });

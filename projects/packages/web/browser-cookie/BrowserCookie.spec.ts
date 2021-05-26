@@ -57,7 +57,7 @@ describe('BrowserCookie', () => {
     cookie.set({ name: 'e', value: 'bar', domain: 'unknown-domain-foo' });
     expect(cookie.has('e')).toBe(false);
     cookie.set({ name: 'f', value: 'bar', secure: true });
-    expect(cookie.has('f')).toBe(false);
+    expect(cookie.has('f')).toBe(true);
   });
 
   it('set expire', async () => {

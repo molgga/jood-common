@@ -1,13 +1,13 @@
 import { fromEvent, Subscription, Observable, Subject } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
-import { IScrollState, ScrollDirection, ScrollType } from './types';
+import { IBrowserScroll, IScrollState, ScrollDirection, ScrollType } from './types';
 
 /**
  * 브라우져(window) 스크롤
  * @export
  * @class BrowserScroll
  */
-export class BrowserScroll {
+export class BrowserScroll implements IBrowserScroll {
   protected handleScroll: () => void;
   protected handleResize: () => void;
   protected resizeObserver: Observable<Event>;
@@ -171,7 +171,7 @@ export class BrowserScroll {
   /**
    * 트리거: observeScroll() 의 구독자들에게 알림
    */
-  protected dispatchScroll(type: ScrollType): void {
+  dispatchScroll(type: ScrollType): void {
     this.subjectScroll.next(type);
   }
 

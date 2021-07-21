@@ -20,16 +20,15 @@ export enum ScrollType {
 
 export interface IBrowserScroll {
   init(): void;
+  dispatchScroll(type: ScrollType): void;
   observeScroll(): Observable<IScrollState>;
-  observeLooseDirectionY(): Observable<IScrollState>;
+  observeEndX(): Observable<IScrollState>;
   observeEndY(): Observable<IScrollState>;
-  observeHalfEndY(): Observable<IScrollState>;
-  dispatchEndY(): void;
-  dispatchScroll(): void;
-  dispatchDirectionLooseY(): void;
-  dispatchHalfEndY(): void;
+  observeDirectionLooseX(): Observable<IScrollState>;
+  observeDirectionLooseY(): Observable<IScrollState>;
+  holdDispatchEndX(is: boolean): void;
   holdDispatchEndY(is: boolean): void;
-  holdDispatchHalfEndY(is: boolean): void;
+  setDirectionLooseGapX(gap: number): void;
   setDirectionLooseGapY(gap: number): void;
   setScroll(top: number, left?: number): void;
   setScrollTo(top: number, left?: number, behavior?: boolean): void;

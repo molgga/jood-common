@@ -29,8 +29,8 @@ describe('StorageCast', () => {
 
   it('dispatch & observe event', async (testDone) => {
     storageCast.observe('test-event', (evt) => {
-      expect(evt.value.articleId).toBe(99)
-      expect(evt.value.like).toBe(true)
+      expect(evt.dispatchValue.articleId).toBe(99)
+      expect(evt.dispatchValue.like).toBe(true)
       testDone()
     })
     otherWindow.storageCast.dispatch('test-event', { articleId: 99, like: true });

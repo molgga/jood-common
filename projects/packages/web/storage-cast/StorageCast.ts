@@ -63,8 +63,8 @@ export class StorageCast {
     }
   }
 
-  dispatch(type: DispatchType, serializableData?: any) {
-    const value = JSON.stringify({ type, data: serializableData, stamp: Date.now() });
+  dispatch(dispatchType: DispatchType, serializableData?: any) {
+    const value = JSON.stringify({ dispatchType, data: serializableData, stamp: Date.now() });
     this.localStorage.setItem(this._configStorageKey, value);
     if (this._configRemoveDispatched) {
       this.localStorage.removeItem(this._configStorageKey);

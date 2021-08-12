@@ -46,12 +46,13 @@ export class StorageCast {
   }
 
   private onStorage(evt: StorageEvent) {
-    const { key, newValue } = evt;
+    const { key, oldValue, newValue } = evt;
     const focus = this.document.hasFocus();
     const visibility = this.document.visibilityState;
     const isFocusOut = !focus || visibility === 'hidden';
     const isSameKey = key === this._configStorageKey;
-    if (isFocusOut && isSameKey && newValue) {
+    const isChanged = oldValue !== newValue;
+    if (isFocusOut && isSameKey && isChanged) {
       const value = JSON.parse(newValue);
       const { dispatchType, data: dispatchValue } = value;
       this._subject.next({

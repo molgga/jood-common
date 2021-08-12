@@ -4,11 +4,12 @@ export interface CastConfig {
 }
 
 export interface StorageCastEvent<T = any> {
-  type: EventType;
-  value: T;
   event: StorageEvent;
+  key: string;
+  dispatchType: DispatchType;
+  dispatchValue: T;
 }
 
-export type EventType = string;
+export type DispatchType = string;
 
 export type StorageCastObserver<T> = (evt: StorageCastEvent<T>) => void;

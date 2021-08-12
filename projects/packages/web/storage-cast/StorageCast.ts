@@ -1,6 +1,6 @@
 import { Subject, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { StorageCastObserver, StorageCastEvent, CastConfig, EventType } from './types';
+import { StorageCastObserver, StorageCastEvent, CastConfig, DispatchType } from './types';
 
 export class StorageCast {
   protected _window: Window;
@@ -48,18 +48,22 @@ export class StorageCast {
   private onStorage(evt: StorageEvent) {
     const { key, newValue } = evt;
     const focus = this.document.hasFocus();
-    if (!focus && key === this._configStorageKey && newValue) {
+    const visibility = this.document.visibilityState;
+    const isFocusOut = !focus || visibility === 'hidden';
+    const isSameKey = key === this._configStorageKey;
+    if (isFocusOut && isSameKey && newValue) {
       const value = JSON.parse(newValue);
-      const { type, data } = value;
+      const { dispatchType, data: dispatchValue } = value;
       this._subject.next({
-        type,
-        value: data,
+        key,
         event: evt,
+        dispatchType,
+        dispatchValue,
       });
     }
   }
 
-  dispatch(type: EventType, serializableData?: any) {
+  dispatch(type: DispatchType, serializableData?: any) {
     const value = JSON.stringify({ type, data: serializableData, stamp: Date.now() });
     this.localStorage.setItem(this._configStorageKey, value);
     if (this._configRemoveDispatched) {
@@ -67,7 +71,11 @@ export class StorageCast {
     }
   }
 
-  observe<T = any>(type: EventType, observer: StorageCastObserver<T>): Subscription {
-    return this._subject.pipe(filter((evt) => evt.type === type)).subscribe(observer);
+  observe<T = any>(dispatchType: DispatchType, observer: StorageCastObserver<T>): Subscription {
+    return this._subject.pipe(filter((evt) => evt.dispatchType === dispatchType)).subscribe(observer);
+  }
+
+  observeAny<T = any>(observer: StorageCastObserver<T>): Subscription {
+    return this._subject.subscribe(observer);
   }
 }

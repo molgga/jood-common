@@ -1,7 +1,7 @@
 import { debounce, delay } from "./public-api";
 
 describe("functinal", () => {
-  it("debounce", async (testDone) => {
+  it("debounce", (testDone) => {
     let callCount = 0;
     function executeDebounce() {
       callCount++;
@@ -19,16 +19,17 @@ describe("functinal", () => {
     }, 150);
   });
 
-  it("delay", async (testDone) => {
+  it("delay", async () => {
     let isCalled = false;
     setTimeout(() => {
       expect(isCalled).toBe(false);
-    }, 140);
+    }, 20);
     setTimeout(() => {
       expect(isCalled).toBe(true);
-      testDone();
-    }, 160);
-    await delay(150);
+    }, 60);
+    await delay(40);
     isCalled = true;
+    await delay(80);
+    return Promise.resolve(true);
   });
 });

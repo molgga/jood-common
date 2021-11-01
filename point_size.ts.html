@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>Home - Documentation</title>
+    <title>point/size.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -30,60 +30,102 @@
 
 <div id="main">
     
+    <h1 class="page-title">point/size.ts</h1>
+    
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { DrawBound } from './types';
 
+interface MaxSize {
+  maxWidth: number;
+  maxHeight: number;
+}
 
+function getMaxSize(sw: number, sh: number, cw: number, ch: number): MaxSize {
+  let maxWidth = cw;
+  let maxHeight = ch;
+  if (cw &lt;= 0 &amp;&amp; ch &lt;= 0) {
+    maxWidth = sw;
+    maxHeight = sh;
+  } else if (cw &lt;= 0) {
+    maxWidth = maxHeight;
+  } else if (ch &lt;= 0) {
+    maxHeight = maxWidth;
+  }
+  return { maxWidth, maxHeight };
+}
 
+/**
+ * 원본 사이즈(sw, sh)의 비율을 유지 하면서,
+ * 컨테이너 사이즈(cw, ch) 내부에 들어가는 바운더리 정보를 반환.
+ * - dx, dy 는 음수가 나올 수 없다.
+ * - dw, dh 가 cw, ch 보다 클 수 없다.
+ * @export
+ * @param {number} sw 원본 width
+ * @param {number} sh 원본 height
+ * @param {number} cw 컨테이너 width
+ * @param {number} ch 컨테이너 height
+ * @returns {DrawBound}
+ */
+export function sizeToContain(sw: number, sh: number, cw: number, ch: number): DrawBound {
+  const { maxWidth, maxHeight } = getMaxSize(sw, sh, cw, ch);
+  let dx: number = 0;
+  let dy: number = 0;
+  let dw: number = 0;
+  let dh: number = 0;
+  const isLandscape: boolean = sh / ch &lt;= sw / cw;
+  if (isLandscape) {
+    dw = Math.min(maxWidth, sw);
+    dh = Math.floor((dw / sw) * sh);
+  } else {
+    dh = Math.min(maxHeight, sh);
+    dw = Math.floor((dh / sh) * sw);
+  }
+  dx = (maxWidth - dw) * 0.5;
+  dy = (maxHeight - dh) * 0.5;
+  return { dx, dy, dw, dh };
+}
 
-
-
-
-
-
-    
-
-
-    <section class="readme">
-        <article><h1>@jood/common</h1>
-<p>javascript array, string, number, point, color, cache, date utility/helper</p>
-<blockquote>
-<p><strong><a href="https://molgga.github.io/jood-common">Documentation</a></strong>
-| <strong><a href="https://github.com/molgga/jood-common/tree/master/projects/packages">Package source</a></strong>
-| <strong><a href="https://www.npmjs.com/package/@jood/common">NPM</a></strong>
-<br>
-<br>
-<img src="https://img.shields.io/static/v1.svg?label=&amp;style=flat-square&amp;logoColor=white&amp;color=3178c6&amp;logo=typescript&amp;message=Typescript" alt="Typescript">
-<img src="https://travis-ci.org/molgga/jood-common.svg?branch=master" alt="TRAVIS">
-<img src="https://img.shields.io/codecov/c/github/molgga/jood-common/master" alt="Codecov branch">
-<img src="https://img.shields.io/npm/v/@jood/common.svg" alt="NPM version">
-<img src="https://img.shields.io/npm/l/@jood/common" alt="NPM license">
-<img src="https://img.shields.io/npm/dt/@jood/common" alt="NPM download">
-<img src="https://img.shields.io/bundlephobia/min/@jood/common" alt="NPM bundle size"></p>
-</blockquote>
-<hr>
-<h2>Quick sample</h2>
-<pre class="prettyprint source lang-typescript"><code>import { replaceAll } from &quot;@jood/common/string&quot;;
-import { isNumber } from &quot;@jood/common/number&quot;;
-import { insert } from &quot;@jood/common/array&quot;;
-import { toFormat } from &quot;@jood/common/date&quot;;
-import { isIntersect } from &quot;@jood/common/point&quot;;
-import { TTLCache } from &quot;@jood/common/cache&quot;;
-import { BrowserCookie, BrowserScroll, DomScroll } from &quot;@jood/common/web&quot;;
-import { JdString, JdNumber, JdArray, JdDate, JdPoint } from &quot;@jood/common&quot;;
-
-console.log(replaceAll(&quot;hello-foo&quot;, &quot;-&quot;, &quot;#&quot;)); // &quot;hello#foo&quot;
-console.log(JdString.replaceAll(&quot;hello-foo&quot;, &quot;-&quot;, &quot;#&quot;)); // &quot;hello#foo&quot;
+/**
+ * 원본 사이즈(sw, sh)의 비율을 유지 하면서,
+ * 컨테이너 사이즈(cw, ch)를 가득 채우는 바운더리 정보를 반환.
+ * - dx, dy 는 양수가 나올 수 없다.
+ * - dw, dh 가 cw, ch 보다 작을 수 없다.
+ * @export
+ * @param {number} sw
+ * @param {number} sh
+ * @param {number} cw
+ * @param {number} ch
+ * @returns {DrawBound}
+ */
+export function sizeToCover(sw: number, sh: number, cw: number, ch: number): DrawBound {
+  const { maxWidth, maxHeight } = getMaxSize(sw, sh, cw, ch);
+  let dx: number = 0;
+  let dy: number = 0;
+  let dw: number = 0;
+  let dh: number = 0;
+  const expectRatio: number = maxWidth / maxHeight;
+  const contentRatio: number = sw / sh;
+  if (expectRatio &lt; contentRatio) {
+    dh = maxHeight;
+    dw = maxHeight * contentRatio;
+  } else {
+    dw = maxWidth;
+    dh = maxWidth / contentRatio;
+  }
+  dx = (maxWidth - dw) * 0.5;
+  dy = (maxHeight - dh) * 0.5;
+  return { dx, dy, dw, dh };
+}
 </code></pre>
-<hr>
-<p>This library was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a></p></article>
+        </article>
     </section>
-
-
 
 
 

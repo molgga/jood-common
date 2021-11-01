@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>Home - Documentation</title>
+    <title>point/intersect.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -30,60 +30,72 @@
 
 <div id="main">
     
+    <h1 class="page-title">point/intersect.ts</h1>
+    
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { IntersectRange, CollisionBound } from './types';
 
+/**
+ * 축 교차점 비교
+ * one 의 { start, end } 와 other 의 { start, end } 를 비교
+ * @param {IntersectRange} one
+ * @param {IntersectRange} other
+ * @returns {IntersectRange}
+ * @example
+ * intersect({ start: 0, end: 100 }, { start: 20, end: 120 }); // { start: 20,end: 100 }
+ * intersect({ start: 120, end: 200 }, { start: 20, end: 120 }); // { start: 0, end: 0 }
+ */
+export function intersect(one: IntersectRange, other: IntersectRange): IntersectRange {
+  if (other.end &lt;= one.start || one.end &lt;= other.start) {
+    return { start: 0, end: 0 };
+  }
+  const start = Math.max(one.start, other.start);
+  const end = Math.min(one.end, other.end);
+  return { start, end };
+}
 
+/**
+ * intersect 를 이용해 축 hitTest
+ * @param {IntersectRange} one
+ * @param {IntersectRange} other
+ * @returns {boolean}
+ * @example
+ * isIntersect({ start: 0, end: 100 }, { start: 20, end: 120 }); // true
+ * isIntersect({ start: 120, end: 200 }, { start: 20, end: 120 }); // true
+ */
+export function isIntersect(one: IntersectRange, other: IntersectRange): boolean {
+  const sect = intersect(one, other);
+  return sect.start !== 0 || sect.end !== 0;
+}
 
-
-
-
-
-
-
-    
-
-
-    <section class="readme">
-        <article><h1>@jood/common</h1>
-<p>javascript array, string, number, point, color, cache, date utility/helper</p>
-<blockquote>
-<p><strong><a href="https://molgga.github.io/jood-common">Documentation</a></strong>
-| <strong><a href="https://github.com/molgga/jood-common/tree/master/projects/packages">Package source</a></strong>
-| <strong><a href="https://www.npmjs.com/package/@jood/common">NPM</a></strong>
-<br>
-<br>
-<img src="https://img.shields.io/static/v1.svg?label=&amp;style=flat-square&amp;logoColor=white&amp;color=3178c6&amp;logo=typescript&amp;message=Typescript" alt="Typescript">
-<img src="https://travis-ci.org/molgga/jood-common.svg?branch=master" alt="TRAVIS">
-<img src="https://img.shields.io/codecov/c/github/molgga/jood-common/master" alt="Codecov branch">
-<img src="https://img.shields.io/npm/v/@jood/common.svg" alt="NPM version">
-<img src="https://img.shields.io/npm/l/@jood/common" alt="NPM license">
-<img src="https://img.shields.io/npm/dt/@jood/common" alt="NPM download">
-<img src="https://img.shields.io/bundlephobia/min/@jood/common" alt="NPM bundle size"></p>
-</blockquote>
-<hr>
-<h2>Quick sample</h2>
-<pre class="prettyprint source lang-typescript"><code>import { replaceAll } from &quot;@jood/common/string&quot;;
-import { isNumber } from &quot;@jood/common/number&quot;;
-import { insert } from &quot;@jood/common/array&quot;;
-import { toFormat } from &quot;@jood/common/date&quot;;
-import { isIntersect } from &quot;@jood/common/point&quot;;
-import { TTLCache } from &quot;@jood/common/cache&quot;;
-import { BrowserCookie, BrowserScroll, DomScroll } from &quot;@jood/common/web&quot;;
-import { JdString, JdNumber, JdArray, JdDate, JdPoint } from &quot;@jood/common&quot;;
-
-console.log(replaceAll(&quot;hello-foo&quot;, &quot;-&quot;, &quot;#&quot;)); // &quot;hello#foo&quot;
-console.log(JdString.replaceAll(&quot;hello-foo&quot;, &quot;-&quot;, &quot;#&quot;)); // &quot;hello#foo&quot;
+/**
+ * intersect 를 이용해 면 hitTest
+ * @param {CollisionBound} one
+ * @param {CollisionBound} other
+ * @returns {boolean}
+ * @example
+ * let one = { x: 0, y: 0, w: 100, h: 100 };
+ * let two = { x: 50, y: 50, w: 100, h: 100 };
+ * isCollision(one, two); // true
+ * one = { x: 0, y: 0, w: 100, h: 100 };
+ * two = { x: 100, y: 100, w: 100, h: 100 };
+ * isCollision(one, two)); // false
+ */
+export function isCollision(one: CollisionBound, other: CollisionBound): boolean {
+  const hitX = isIntersect({ start: one.x, end: one.x + one.w }, { start: other.x, end: other.x + other.w });
+  const hitY = isIntersect({ start: one.y, end: one.y + one.h }, { start: other.y, end: other.y + other.h });
+  return hitX &amp;&amp; hitY;
+}
 </code></pre>
-<hr>
-<p>This library was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a></p></article>
+        </article>
     </section>
-
-
 
 
 

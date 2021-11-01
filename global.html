@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>CacheValue - Documentation</title>
+    <title>Global - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -30,7 +30,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">CacheValue</h1>
+    <h1 class="page-title">Global</h1>
     
 
     
@@ -43,7 +43,7 @@
 <header>
     
         <h2>
-        CacheValue
+        
         </h2>
         
     
@@ -54,28 +54,7 @@
     
         
 
-    
-
-    <h4 class="name" id="CacheValue"><span class="type-signature"></span>new CacheValue<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    ttl 캐시 값
-</div>
-
-
-
-
-
-
-
-
-
-
-
+        
 
 
 <dl class="details">
@@ -105,11 +84,6 @@
     
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="cache_ttl_CacheValue.ts.html">cache/ttl/CacheValue.ts</a>, <a href="cache_ttl_CacheValue.ts.html#line2">line 2</a>
-    </li></ul></dd>
-    
 
     
 
@@ -119,20 +93,7 @@
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
     
     </div>
 
@@ -147,134 +108,6 @@
     
 
     
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id="expireAt"><span class="type-signature">(readonly) </span>expireAt<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    캐시 시간
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="cache_ttl_CacheValue.ts.html">cache/ttl/CacheValue.ts</a>, <a href="cache_ttl_CacheValue.ts.html#line20">line 20</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="value"><span class="type-signature">(readonly) </span>value<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    캐시 값
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="cache_ttl_CacheValue.ts.html">cache/ttl/CacheValue.ts</a>, <a href="cache_ttl_CacheValue.ts.html#line13">line 13</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -284,96 +117,15 @@
 
     
 
-    <h4 class="name" id="destroy"><span class="type-signature"></span>destroy<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="intersect"><span class="type-signature"></span>intersect<span class="signature">(one, other)</span><span class="type-signature"> &rarr; {<a href="IntersectRange.html">IntersectRange</a>}</span></h4>
 
     
 
 
 
 <div class="description">
-    파기
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="cache_ttl_CacheValue.ts.html">cache/ttl/CacheValue.ts</a>, <a href="cache_ttl_CacheValue.ts.html#line58">line 58</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="setExpireAt"><span class="type-signature"></span>setExpireAt<span class="signature">(at)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    캐시 시간 지정
+    축 교차점 비교
+one 의 { start, end } 와 other 의 { start, end } 를 비교
 </div>
 
 
@@ -411,7 +163,854 @@
 
           <tr>
               
-                  <td class="name"><code>at</code></td>
+                  <td class="name"><code>one</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type"><a href="IntersectRange.html">IntersectRange</a></span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last"></td>
+          </tr>
+
+      
+
+          <tr>
+              
+                  <td class="name"><code>other</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type"><a href="IntersectRange.html">IntersectRange</a></span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last"></td>
+          </tr>
+
+      
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="point_intersect.ts.html">point/intersect.ts</a>, <a href="point_intersect.ts.html#line12">line 12</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="IntersectRange.html">IntersectRange</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>intersect({ start: 0, end: 100 }, { start: 20, end: 120 }); // { start: 20,end: 100 }
+intersect({ start: 120, end: 200 }, { start: 20, end: 120 }); // { start: 0, end: 0 }</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="isCollision"><span class="type-signature"></span>isCollision<span class="signature">(one, other)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    
+
+
+
+<div class="description">
+    intersect 를 이용해 면 hitTest
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<div class="parameters-wrap">
+  <div class="parameters-inner">
+    <table class="params">
+      <thead>
+      <tr>
+          
+          <th>Name</th>
+          
+
+          <th>Type</th>
+
+          
+
+          
+
+          <th class="last">Description</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      
+
+          <tr>
+              
+                  <td class="name"><code>one</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type"><a href="CollisionBound.html">CollisionBound</a></span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last"></td>
+          </tr>
+
+      
+
+          <tr>
+              
+                  <td class="name"><code>other</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type"><a href="CollisionBound.html">CollisionBound</a></span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last"></td>
+          </tr>
+
+      
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="point_intersect.ts.html">point/intersect.ts</a>, <a href="point_intersect.ts.html#line46">line 46</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>let one = { x: 0, y: 0, w: 100, h: 100 };
+let two = { x: 50, y: 50, w: 100, h: 100 };
+isCollision(one, two); // true
+one = { x: 0, y: 0, w: 100, h: 100 };
+two = { x: 100, y: 100, w: 100, h: 100 };
+isCollision(one, two)); // false</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="isIntersect"><span class="type-signature"></span>isIntersect<span class="signature">(one, other)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    
+
+
+
+<div class="description">
+    intersect 를 이용해 축 hitTest
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<div class="parameters-wrap">
+  <div class="parameters-inner">
+    <table class="params">
+      <thead>
+      <tr>
+          
+          <th>Name</th>
+          
+
+          <th>Type</th>
+
+          
+
+          
+
+          <th class="last">Description</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      
+
+          <tr>
+              
+                  <td class="name"><code>one</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type"><a href="IntersectRange.html">IntersectRange</a></span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last"></td>
+          </tr>
+
+      
+
+          <tr>
+              
+                  <td class="name"><code>other</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type"><a href="IntersectRange.html">IntersectRange</a></span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last"></td>
+          </tr>
+
+      
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="point_intersect.ts.html">point/intersect.ts</a>, <a href="point_intersect.ts.html#line29">line 29</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>isIntersect({ start: 0, end: 100 }, { start: 20, end: 120 }); // true
+isIntersect({ start: 120, end: 200 }, { start: 20, end: 120 }); // true</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="sizeToContain"><span class="type-signature"></span>sizeToContain<span class="signature">(sw, sh, cw, ch)</span><span class="type-signature"> &rarr; {<a href="DrawBound.html">DrawBound</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    원본 사이즈(sw, sh)의 비율을 유지 하면서,
+컨테이너 사이즈(cw, ch) 내부에 들어가는 바운더리 정보를 반환.
+- dx, dy 는 음수가 나올 수 없다.
+- dw, dh 가 cw, ch 보다 클 수 없다.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<div class="parameters-wrap">
+  <div class="parameters-inner">
+    <table class="params">
+      <thead>
+      <tr>
+          
+          <th>Name</th>
+          
+
+          <th>Type</th>
+
+          
+
+          
+
+          <th class="last">Description</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      
+
+          <tr>
+              
+                  <td class="name"><code>sw</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type">number</span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last">원본 width</td>
+          </tr>
+
+      
+
+          <tr>
+              
+                  <td class="name"><code>sh</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type">number</span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last">원본 height</td>
+          </tr>
+
+      
+
+          <tr>
+              
+                  <td class="name"><code>cw</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type">number</span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last">컨테이너 width</td>
+          </tr>
+
+      
+
+          <tr>
+              
+                  <td class="name"><code>ch</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type">number</span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last">컨테이너 height</td>
+          </tr>
+
+      
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="point_size.ts.html">point/size.ts</a>, <a href="point_size.ts.html#line29">line 29</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="DrawBound.html">DrawBound</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="sizeToCover"><span class="type-signature"></span>sizeToCover<span class="signature">(sw, sh, cw, ch)</span><span class="type-signature"> &rarr; {<a href="DrawBound.html">DrawBound</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    원본 사이즈(sw, sh)의 비율을 유지 하면서,
+컨테이너 사이즈(cw, ch)를 가득 채우는 바운더리 정보를 반환.
+- dx, dy 는 양수가 나올 수 없다.
+- dw, dh 가 cw, ch 보다 작을 수 없다.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<div class="parameters-wrap">
+  <div class="parameters-inner">
+    <table class="params">
+      <thead>
+      <tr>
+          
+          <th>Name</th>
+          
+
+          <th>Type</th>
+
+          
+
+          
+
+          <th class="last">Description</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      
+
+          <tr>
+              
+                  <td class="name"><code>sw</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type">number</span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last"></td>
+          </tr>
+
+      
+
+          <tr>
+              
+                  <td class="name"><code>sh</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type">number</span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last"></td>
+          </tr>
+
+      
+
+          <tr>
+              
+                  <td class="name"><code>cw</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type">number</span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last"></td>
+          </tr>
+
+      
+
+          <tr>
+              
+                  <td class="name"><code>ch</code></td>
               
 
               <td class="type">
@@ -470,7 +1069,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="cache_ttl_CacheValue.ts.html">cache/ttl/CacheValue.ts</a>, <a href="cache_ttl_CacheValue.ts.html#line41">line 41</a>
+        <a href="point_size.ts.html">point/size.ts</a>, <a href="point_size.ts.html#line60">line 60</a>
     </li></ul></dd>
     
 
@@ -493,434 +1092,24 @@
 
 
 
-
-
+<h5>Returns:</h5>
 
         
-            
 
-    
 
-    <h4 class="name" id="setExpireNotify"><span class="type-signature"></span>setExpireNotify<span class="signature">(expire, fnCallback)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    지정된 expire 시간 만큼 대기 후 fnCallback 을 트리거
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<div class="parameters-wrap">
-  <div class="parameters-inner">
-    <table class="params">
-      <thead>
-      <tr>
-          
-          <th>Name</th>
-          
-
-          <th>Type</th>
-
-          
-
-          
-
-          <th class="last">Description</th>
-      </tr>
-      </thead>
-
-      <tbody>
-      
-
-          <tr>
-              
-                  <td class="name"><code>expire</code></td>
-              
-
-              <td class="type">
-              
-                  
-<span class="param-type">number</span>
-
-
-              
-              </td>
-
-              
-
-              
-
-              <td class="description last"></td>
-          </tr>
-
-      
-
-          <tr>
-              
-                  <td class="name"><code>fnCallback</code></td>
-              
-
-              <td class="type">
-              
-                  
-<span class="param-type">function</span>
-
-
-              
-              </td>
-
-              
-
-              
-
-              <td class="description last"></td>
-          </tr>
-
-      
-      </tbody>
-    </table>
-  </div>
-</div>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="cache_ttl_CacheValue.ts.html">cache/ttl/CacheValue.ts</a>, <a href="cache_ttl_CacheValue.ts.html#line49">line 49</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
         
-            
-
-    
-
-    <h4 class="name" id="setKey"><span class="type-signature"></span>setKey<span class="signature">(key)</span><span class="type-signature"></span></h4>
-
-    
+<span class="param-type"><a href="DrawBound.html">DrawBound</a></span>
 
 
-
-<div class="description">
-    캐시 키 지정
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<div class="parameters-wrap">
-  <div class="parameters-inner">
-    <table class="params">
-      <thead>
-      <tr>
-          
-          <th>Name</th>
-          
-
-          <th>Type</th>
-
-          
-
-          
-
-          <th class="last">Description</th>
-      </tr>
-      </thead>
-
-      <tbody>
-      
-
-          <tr>
-              
-                  <td class="name"><code>key</code></td>
-              
-
-              <td class="type">
-              
-                  
-<span class="param-type">string</span>
-
-
-              
-              </td>
-
-              
-
-              
-
-              <td class="description last"></td>
-          </tr>
-
-      
-      </tbody>
-    </table>
-  </div>
-</div>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="cache_ttl_CacheValue.ts.html">cache/ttl/CacheValue.ts</a>, <a href="cache_ttl_CacheValue.ts.html#line27">line 27</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
+    </dd>
 </dl>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
     
-
-    <h4 class="name" id="setValue"><span class="type-signature"></span>setValue<span class="signature">(value)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    캐시 값 지정
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<div class="parameters-wrap">
-  <div class="parameters-inner">
-    <table class="params">
-      <thead>
-      <tr>
-          
-          <th>Name</th>
-          
-
-          <th>Type</th>
-
-          
-
-          
-
-          <th class="last">Description</th>
-      </tr>
-      </thead>
-
-      <tbody>
-      
-
-          <tr>
-              
-                  <td class="name"><code>value</code></td>
-              
-
-              <td class="type">
-              
-                  
-<span class="param-type">T</span>
-
-
-              
-              </td>
-
-              
-
-              
-
-              <td class="description last"></td>
-          </tr>
-
-      
-      </tbody>
-    </table>
-  </div>
-</div>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="cache_ttl_CacheValue.ts.html">cache/ttl/CacheValue.ts</a>, <a href="cache_ttl_CacheValue.ts.html#line34">line 34</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -27,7 +27,7 @@ describe('StorageCast', () => {
     otherWindow = undefined;
   });
 
-  it('dispatch & observe event', async (testDone) => {
+  it('dispatch & observe event', (testDone) => {
     storageCast.observe('test-event', (evt) => {
       expect(evt.dispatchValue.articleId).toBe(99)
       expect(evt.dispatchValue.like).toBe(true)
@@ -36,7 +36,7 @@ describe('StorageCast', () => {
     otherWindow.storageCast.dispatch('test-event', { articleId: 99, like: true });
   });
 
-  it('dispatch & observe event #2', async (testDone) => {
+  it('dispatch & observe event #2', (testDone) => {
     let count = 0;
     storageCast.observe('test-event', (evt) => count += 1)
     storageCast.observe('test-event2', (evt) => count += 10)

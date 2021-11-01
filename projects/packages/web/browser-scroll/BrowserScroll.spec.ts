@@ -99,14 +99,14 @@ describe('BrowserScroll', () => {
     testDone();
   });
 
-  it('setScrollTo',  async (testDone) => {
+  it('setScrollTo',  async () => {
     expect(browserScroll.scrollTop).toBe(0);
     document.body.style.height = '10000px';
     browserScroll.setScrollTo(5, 0, true); // animate 되는거라 테스트 환경에 따라 차이가 있을듯, 문제가 된다면 제거 필요.
     await delay(200);
     expect(browserScroll.scrollTop).toBe(5);
     document.body.style.removeProperty('height');
-    testDone();
+    return Promise.resolve(true);
   });
 
   it('resize',  (testDone) => {
